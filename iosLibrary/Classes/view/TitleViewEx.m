@@ -9,7 +9,7 @@
 #import "TitleViewEx.h"
 #import "toolMacro.h"
 #import "UIButton+WebCache.h"
-#import "UIView+WZLBadge.h"
+//#import "UIView+WZLBadge.h"
 
 @interface BtnInfo : NSObject
 
@@ -260,20 +260,20 @@
 
 -(void)showBadgeBtnIndex:(int)index
 {
-    if (index < btnArray.count)
-    {
-        UIButton * btn = btnArray[index];
-        [btn showBadge];
-    }
+//    if (index < btnArray.count)
+//    {
+//        UIButton * btn = btnArray[index];
+//        [btn showBadge];
+//    }
 }
 
 -(void)hiddenBadgeBtnIndex:(int)index
 {
-    if (index < btnArray.count)
-    {
-        UIButton * btn = btnArray[index];
-        [btn clearBadge];
-    }
+//    if (index < btnArray.count)
+//    {
+//        UIButton * btn = btnArray[index];
+//        [btn clearBadge];
+//    }
 }
 //
 -(void)setTitleViewBottomLineColor:(UIColor *)color lineHeight:(int)height
