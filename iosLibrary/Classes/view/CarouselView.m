@@ -9,7 +9,7 @@
 #import "CarouselView.h"
 #import "UIView+UIViewHelper.h"
 #import "toolMacro.h"
-#import <UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 #import "NSObject+NSObjectHelper.h"
 
 @interface CarouselView()<UIScrollViewDelegate>

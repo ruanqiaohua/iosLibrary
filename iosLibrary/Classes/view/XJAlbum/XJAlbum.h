@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SDWebImageManager.h"
+
 typedef enum
 {
     XJAlbumOutImgViewPointLeftUp =1,

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <MyLayout.h>
+#import "MyLayout.h"
 
 #define TITLE_ALIG_LEFT         0
 #define TITLE_ALIG_MIDDLE       1

@@ -9,7 +9,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'iosLibrary/Classes/**/*'
+  s.resources = 'iosLibrary/Assets'
+  s.frameworks = 'Foundation', 'UIKit', 'AVFoundation', 'AVKit'
   s.dependency 'SDWebImage', '~> 4.0'
-  s.dependency 'MyLayout’,’~> 1.4.1’
+  s.dependency 'MyLayout','~> 1.4.1'
   s.dependency 'WZLBadge'
 end

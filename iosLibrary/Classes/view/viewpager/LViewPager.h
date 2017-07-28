@@ -40,6 +40,6 @@
 -(instancetype)initHostVC:(UIViewController *)vc tabs:(NSArray *)tabs subVC:(NSArray *)svc;
 -(void)setTitleIcons:(NSArray *)icons selectIcons:(NSArray *)selIcons;
 //显示右上角红点数量，-1 为红点， 0 为去掉红点， 大于0 为红点中数字
--(void)setTipsNumber:(NSUInteger)number titleIndex:(NSUInteger)ti;
+//-(void)setTipsNumber:(NSUInteger)number titleIndex:(NSUInteger)ti;
 -(void)enterViewController;
 @end

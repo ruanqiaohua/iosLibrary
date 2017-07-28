@@ -7,6 +7,8 @@
 //
 
 #import "XJAlbum.h"
+#import "SDWebImageManager.h"
+
 @implementation XJAlbum
 {
     //UI

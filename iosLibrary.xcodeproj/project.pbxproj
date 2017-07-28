@@ -124,7 +124,7 @@
 		5AC74EB71F2B10B400146115 /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
 		5AC74EB81F2B10B400146115 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
 		5AC74EB91F2B10B400146115 /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
-		5AC74EBA1F2B10B400146115 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		5AC74EBA1F2B10B400146115 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = unicode_to_hanyu_pinyin.txt; path = ../Classes/utils/pinyin4obj/unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		5AC74EBB1F2B10B400146115 /* PinYinUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinUtil.h; sourceTree = "<group>"; };
 		5AC74EBC1F2B10B400146115 /* PinYinUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinUtil.m; sourceTree = "<group>"; };
 		5AC74EBF1F2B10B400146115 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -227,6 +227,7 @@
 		5AC74DFA1F29992400146115 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5AC74EBA1F2B10B400146115 /* unicode_to_hanyu_pinyin.txt */,
 				5AC74DFB1F29992400146115 /* .gitkeep */,
 			);
 			path = Assets;
@@ -362,7 +363,6 @@
 				5AC74EB71F2B10B400146115 /* PinyinFormatter.m */,
 				5AC74EB81F2B10B400146115 /* PinyinHelper.h */,
 				5AC74EB91F2B10B400146115 /* PinyinHelper.m */,
-				5AC74EBA1F2B10B400146115 /* unicode_to_hanyu_pinyin.txt */,
 			);
 			path = pinyin4obj;
 			sourceTree = "<group>";

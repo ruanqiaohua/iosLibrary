@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+Ex.h"
-#import <UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 
 @implementation UIImageView (Ex)
 
