@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-#import "toolMacro.h"
 #import "UIViewController+ViewControllerHelper.h"
+#import "toolMacro.h"
 #import "NSObject+NSObjectHelper.h"
 
 static __weak BaseViewController                    * curr_vc;
@@ -65,6 +65,7 @@ static __weak BaseViewController                    * exitToVC;
         if (!self.showInfo.isReturn)
         {
             [self onInitData:self.showInfo.data];
+            self.showInfo.data = nil;
         }
     }
     //
@@ -106,14 +107,14 @@ static __weak BaseViewController                    * exitToVC;
     }
 }
 
-/*********************************        ViewControllerDelegate           **********************************/
+/*************        ViewControllerDelegate           *****************/
 -(void)setReturnData:(NSDictionary *)data
 {
     self.showInfo.data = data;
     self.showInfo.isReturn = YES;
 }
 
-/************************************************************************************************************/
+/***********************************************************************/
 -(void)lightStatusBar
 {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -124,7 +125,7 @@ static __weak BaseViewController                    * exitToVC;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
-/*********************************        static funaction           **********************************/
+/**********        static funaction           **************/
 +(NSMutableArray *)getVCSet
 {
     @synchronized([BaseViewController class])
@@ -193,19 +194,25 @@ static __weak BaseViewController                    * exitToVC;
     [BaseViewController showVC:bvc showType:VC_SHOW_PRESENT isAnimated:YES withVC:vc data:data];
 }
 
++(void)showDirectClass:(Class)cls withVC:(BaseViewController *)vc data:(NSDictionary *)data
+{
+    [BaseViewController showVCClass:cls showType:VC_SHOW_DIRECT isAnimated:YES withVC:vc data:data];
+}
+
++(void)showDirectVC:(BaseViewController *)bvc withVC:(BaseViewController *)vc data:(NSDictionary *)data
+{
+    [BaseViewController showVC:bvc showType:VC_SHOW_DIRECT isAnimated:YES withVC:vc data:data];
+}
+
 +(void)popCount:(NSUInteger)count data:(NSDictionary *)data
 {
     if (count < vc_set.count)
     {
-        exitTo = YES;
-        exitToVC = vc_set[vc_set.count - count - 1];
-        exitToVC.showInfo.data = data;
-        vc_set[vc_set.count - 1].showInfo.isShowAnimated = NO;
-        [vc_set[vc_set.count - 1] closeWindowVC];
+        [BaseViewController exitToIndex:vc_set.count - count - 1 data:data];
     }
 }
 
-+(void)exitToIndex:(NSUInteger)index
++(void)exitToIndex:(NSUInteger)index data:(NSDictionary *)data;
 {
     if (index == vc_set.count - 1)
     {
@@ -214,6 +221,7 @@ static __weak BaseViewController                    * exitToVC;
     {
         exitTo = YES;
         exitToVC = vc_set[index];
+        exitToVC.showInfo.data = data;
         vc_set[vc_set.count - 1].showInfo.isShowAnimated = NO;
         [vc_set[vc_set.count - 1] closeWindowVC];
     }
@@ -227,9 +235,9 @@ static __weak BaseViewController                    * exitToVC;
         {
             vc_set = [BaseViewController getVCSet];
         }
-        if (vc_set.count > 0)
+        if (vc_set.count > 1)
         {
-            if (vc_set[vc_set.count - 1] == vcPop && vc_set.count > 1)
+            if (vc_set[vc_set.count - 1] == vcPop)
             {
                 [[UIApplication sharedApplication].delegate window].rootViewController = vc_set[vc_set.count - 2];
                 [vc_set removeObjectAtIndex:vc_set.count - 1];
@@ -267,7 +275,7 @@ static __weak BaseViewController                    * exitToVC;
     }
 }
 
-/*********************************        public funaction           **********************************/
+/*************        public funaction        ****************/
 -(void)closeWindowVC
 {
     switch (self.showInfo.showType)
@@ -299,9 +307,9 @@ static __weak BaseViewController                    * exitToVC;
     }
     if (sec > 0)
     {
-        WEAKOBJ(self);
+        __weak __typeof(self) ws = self;
         [self performUIAsync:^{
-            [weak_self closeWindowVC];
+            [ws closeWindowVC];
         } time:sec];
     }else
     {
@@ -319,14 +327,14 @@ static __weak BaseViewController                    * exitToVC;
     return curr_vc;
 }
 
-/*********************************           KeyBoard            ******************************************/
+/****************           KeyBoard            **********************/
 -(void)retract
 {
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     [UIView beginAnimations:@"srcollView" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.275];
-    self.view.frame = CGRectMake(self.left, 0, self.width, self.height);
+    self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.width, self.height);
     [UIView commitAnimations];
 }
 

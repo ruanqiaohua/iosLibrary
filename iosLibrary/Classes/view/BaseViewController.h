@@ -51,14 +51,18 @@
 -(void)closeWindowVCWithData:(NSDictionary *)data delay:(int)sec;
 -(void)closeAnimated;
 //
-+(void)showVCClass:(Class)cls showType:(NSUInteger)st isAnimated:(BOOL)anim withVC:(BaseViewController *)vc data:(NSDictionary *)data;
 +(void)showPushClass:(Class)cls withVC:(BaseViewController *)vc data:(NSDictionary *)data;
-+(void)showPresentClass:(Class)cls withVC:(BaseViewController *)vc data:(NSDictionary *)data;
-//
 +(void)showPushVC:(BaseViewController *)bvc withVC:(BaseViewController *)vc data:(NSDictionary *)data;
+//present
++(void)showPresentClass:(Class)cls withVC:(BaseViewController *)vc data:(NSDictionary *)data;
 +(void)showPresentVC:(BaseViewController *)bvc withVC:(BaseViewController *)vc data:(NSDictionary *)data;
+//
++(void)showDirectClass:(Class)cls withVC:(BaseViewController *)vc data:(NSDictionary *)data;
++(void)showDirectVC:(BaseViewController *)bvc withVC:(BaseViewController *)vc data:(NSDictionary *)data;
+//
++(void)showVCClass:(Class)cls showType:(NSUInteger)st isAnimated:(BOOL)anim withVC:(BaseViewController *)vc data:(NSDictionary *)data;
 +(void)showVC:(BaseViewController *)bvc showType:(NSUInteger)st isAnimated:(BOOL)anim withVC:(BaseViewController *)vc data:(NSDictionary *)data;
-+(void)exitToIndex:(NSUInteger)index;
++(void)exitToIndex:(NSUInteger)index data:(NSDictionary *)data;
 +(void)popCount:(NSUInteger)count data:(NSDictionary *)data;
 +(void)directPopVC:(BaseViewController *)vcPop;
 //
