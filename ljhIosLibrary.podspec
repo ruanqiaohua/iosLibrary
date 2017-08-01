@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
  s.name             = 'ljhIosLibrary'
- s.version          = '0.2.1'
+ s.version          = '0.2.3'
  s.summary          = 'self iosLibrary.'
  s.homepage         = 'https://github.com/myplxdm/iosLibrary'
  s.license          = { :type => 'MIT', :file => 'LICENSE' }

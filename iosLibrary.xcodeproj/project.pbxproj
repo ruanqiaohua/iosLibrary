@@ -51,6 +51,7 @@
 		5AC74F261F2B164B00146115 /* ZYShareSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC74F081F2B164B00146115 /* ZYShareSheetCell.m */; };
 		5AC74F271F2B164B00146115 /* ZYShareSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC74F0A1F2B164B00146115 /* ZYShareSheetView.m */; };
 		5AC74F281F2B164B00146115 /* ZYShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC74F0C1F2B164B00146115 /* ZYShareView.m */; };
+		5AC74F451F30667200146115 /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC74F441F30667200146115 /* CameraManager.m */; };
 		70F221F53986DA635A831DB5 /* libPods-iosLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 724CF1EA31FE52C7EF9FD224 /* libPods-iosLibrary.a */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,8 @@
 		5AC74F0B1F2B164B00146115 /* ZYShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareView.h; sourceTree = "<group>"; };
 		5AC74F0C1F2B164B00146115 /* ZYShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYShareView.m; sourceTree = "<group>"; };
 		5AC74F0D1F2B164B00146115 /* ZYShareViewDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareViewDefine.h; sourceTree = "<group>"; };
+		5AC74F431F30667200146115 /* CameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManager.h; sourceTree = "<group>"; };
+		5AC74F441F30667200146115 /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
 		724CF1EA31FE52C7EF9FD224 /* libPods-iosLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -314,6 +317,8 @@
 		5AC74EA71F2B10B400146115 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				5AC74F431F30667200146115 /* CameraManager.h */,
+				5AC74F441F30667200146115 /* CameraManager.m */,
 				5AC74EAC1F2B10B400146115 /* MotionManager.h */,
 				5AC74EAD1F2B10B400146115 /* MotionManager.m */,
 				5AC74EBF1F2B10B400146115 /* Utils.h */,
@@ -559,6 +564,7 @@
 				5AC74DE81F2998BE00146115 /* AppDelegate.m in Sources */,
 				5AC74E071F29992500146115 /* NSString+NSStringHelper.m in Sources */,
 				5AC74ECF1F2B10B400146115 /* VerifyUtil.m in Sources */,
+				5AC74F451F30667200146115 /* CameraManager.m in Sources */,
 				5AC74F1B1F2B164B00146115 /* TitleViewEx.m in Sources */,
 				5AC74DE51F2998BE00146115 /* main.m in Sources */,
 				5AC74E061F29992500146115 /* NSObject+NSObjectHelper.m in Sources */,
