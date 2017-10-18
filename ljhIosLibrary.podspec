@@ -8,13 +8,13 @@
 
 Pod::Spec.new do |s|
  s.name             = 'ljhIosLibrary'
- s.version          = '0.2.3'
+ s.version          = '0.2.4'
  s.summary          = 'self iosLibrary.'
  s.homepage         = 'https://github.com/myplxdm/iosLibrary'
  s.license          = { :type => 'MIT', :file => 'LICENSE' }
  s.author           = { 'ljh' => 'myplxdm@163.com' }
  s.source           = { :git => 'https://github.com/myplxdm/iosLibrary.git', :tag => s.version.to_s }
- s.ios.deployment_target = '8.0'
+ s.ios.deployment_target = '7.0'
 
  s.source_files = 'iosLibrary/Classes/**/*'
 
@@ -25,5 +25,12 @@ Pod::Spec.new do |s|
  # s.public_header_files = 'Pod/Classes/**/*.h'
  s.frameworks = 'Foundation', 'UIKit', 'AVFoundation', 'AVKit'
  s.dependency 'SDWebImage', '~> 4.0'
- s.dependency 'MyLayout','~> 1.4.1'
+ s.dependency 'MyLayout','~> 1.5.0'
+ s.dependency 'WZLBadge'
+ s.dependency 'AFNetworking', '~> 3.1.0'
+ s.dependency 'YYModel'
+ s.dependency 'WechatOpenSDK'
+ s.dependency 'JPush'
+ s.dependency 'UMengAnalytics-NO-IDFA'
+ s.dependency 'YYCache'
 end
