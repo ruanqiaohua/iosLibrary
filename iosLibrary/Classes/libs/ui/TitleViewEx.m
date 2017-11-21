@@ -11,6 +11,8 @@
 #import <UIKit/UIKit.h>
 #import <UIButton+WebCache.h>
 #import <UIView+WZLBadge.h>
+#import "UIView+UIViewHelper.h"
+#import "UIButton+WGBCustom.h"
 
 @interface BtnInfo : NSObject
 
@@ -27,7 +29,9 @@
 @interface TitleViewEx()
 {
     UIButton                            * btnExit;
-    UIButton                            * btnTitle;
+    MyLinearLayout                      * llTitleLayout;
+    UILabel                             * labTitle;
+    UIImageView                         * ivTitleIco;
     UIView                              * line;
     //
     MyLinearLayout                      * llLeft;
@@ -46,17 +50,30 @@
     btnExit = ONEW(UIButton);
     btnExit.hidden = YES;
     btnExit.leftPos.equalTo(@0);
-    btnExit.centerYPos.equalTo(btnTitle);
+    btnExit.centerYPos.equalTo(llTitleLayout);
     [self addSubview:btnExit];
     [btnExit addTarget:self action:@selector(exit_click:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)initTitleBtn
 {
-    btnTitle = ONEW(UIButton);
-    btnTitle.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    btnTitle.titleLabel.numberOfLines = 1;
-    [btnTitle addTarget:self action:@selector(title_click:) forControlEvents:UIControlEventTouchUpInside];
+    llTitleLayout = [MyLinearLayout linearLayoutWithOrientation:MyOrientation_Horz];
+    llTitleLayout.backgroundColor = [UIColor clearColor];
+    llTitleLayout.heightSize.equalTo(self);
+    llTitleLayout.wrapContentWidth = YES;
+    [llTitleLayout addTapGestureSelector:@selector(titleLayoutClick:) target:self];
+    [self addSubview:llTitleLayout];
+    //
+    labTitle = ONEW(UILabel);
+    labTitle.numberOfLines = 1;
+    labTitle.widthSize.equalTo(labTitle.widthSize).max(SCREEN_WIDTH * 0.5);
+    labTitle.heightSize.equalTo(llTitleLayout);
+    [llTitleLayout addSubview:labTitle];
+    //
+    ivTitleIco = ONEW(UIImageView);
+    ivTitleIco.wrapContentSize = YES;
+    ivTitleIco.myCenterY = 0;
+    [llTitleLayout addSubview:ivTitleIco];
 }
 
 -(void)initView
@@ -68,8 +85,8 @@
     llLeft = [MyLinearLayout linearLayoutWithOrientation:MyOrientation_Horz];
     [llLeft makeLayout:^(MyMaker *make) {
         make.left.equalTo(btnExit.rightPos);
-        make.centerY.equalTo(btnTitle);
-        make.height.equalTo(btnTitle);
+        make.centerY.equalTo(llTitleLayout);
+        make.height.equalTo(llTitleLayout);
     }];
     llLeft.wrapContentWidth = YES;
     [self addSubview:llLeft];
@@ -79,7 +96,7 @@
     
     [llRight makeLayout:^(MyMaker *make) {
         make.right.equalTo(self.rightPos);
-        make.centerY.equalTo(btnTitle);
+        make.centerY.equalTo(llTitleLayout);
         make.height.equalTo(llLeft);
     }];
     [self addSubview:llRight];
@@ -108,9 +125,15 @@
     return ONEW(TitleViewEx);
 }
 
+-(void)setTitleRightImage:(UIImage *)img space:(CGFloat)space
+{
+    ivTitleIco.image = img;
+    ivTitleIco.myLeft = space;
+}
+
 -(void)setTitle:(NSString *)title
 {
-    [btnTitle setTitle:title forState:UIControlStateNormal];
+    labTitle.text = title;
 }
 
 -(void)setTitle:(NSString *)title titleFont:(UIFont *)tf titleColor:(UIColor *)tc
@@ -120,28 +143,18 @@
 
 -(void)setTitle:(NSString *)title titleFont:(UIFont *)tf titleColor:(UIColor *)tc titleAlignment:(int)ta
 {
-    [btnTitle removeFromSuperview];
-    //
-    [btnTitle setTitle:title forState:UIControlStateNormal];
-    [btnTitle setTitleColor:tc forState:UIControlStateNormal];
-    btnTitle.titleLabel.font = tf;
+    labTitle.text = title;
+    labTitle.textColor = tc;
+    labTitle.font = tf;
     //
     if (ta == TITLE_ALIG_LEFT)
     {
-        btnTitle.leftPos.equalTo(llLeft.rightPos).offset(HOR_SPACE);
-        btnTitle.titleLabel.textAlignment = NSTextAlignmentLeft;
+        llTitleLayout.leftPos.equalTo(llLeft.rightPos).offset(HOR_SPACE);
     }else
     {
-        btnTitle.centerXPos.equalTo(self.centerXPos);
-        btnTitle.titleLabel.textAlignment = NSTextAlignmentCenter;
+        llTitleLayout.centerXPos.equalTo(self.centerXPos);
     }
-    btnTitle.wrapContentSize = YES;
-    btnTitle.centerYPos.equalTo(self.centerYPos).offset(SYSTEM_STATUS_HEIGHT / 2);
-    [self addSubview:btnTitle];
-    btnTitle.viewLayoutCompleteBlock = ^(MyBaseLayout *layout, UIView *v)
-    {
-        NSLog(@"------------- btnTitle t = %f, h = %f",v.frame.origin.y,v.frame.size.height);
-    };
+    llTitleLayout.centerYPos.equalTo(self.centerYPos).offset(SYSTEM_STATUS_HEIGHT / 2);
 }
 
 -(void)setExitImgStr:(NSString *)eis
@@ -306,7 +319,7 @@
     }
 }
 
--(void)title_click:(UIButton *)sender
+-(void)titleLayoutClick:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(onTitleClick)])
     {

@@ -48,6 +48,11 @@
     return nil;
 }
 
+-(void)appDidFinishLaunching
+{
+
+}
+
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     if (loaderArray.count > 0)
@@ -61,6 +66,7 @@
             [loader initLoaderWithDict:nil];
         }
     }
+    [self appDidFinishLaunching];
     return YES;
 }
 

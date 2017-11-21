@@ -166,7 +166,8 @@ singleton_implementation(WXSDK)
          req.bText = NO;
          req.message = message;
          req.scene = scene;
-         [WXApi sendReq:req];
+         BOOL ss = [WXApi sendReq:req];
+         NSLog(@"%d",ss);
      }];
 }
 
@@ -294,7 +295,7 @@ singleton_implementation(WXSDK)
                 return;
             }
             [self.delegate onWXResult:@{WX_RV_ERRCODE:@(sr.errCode),
-                                        WX_RV_ERRSTR:sr.errStr} type:TYPE_AUTH_ERROR];
+                                        WX_RV_ERRSTR:SAFESTR(sr.errStr)} type:TYPE_AUTH_ERROR];
         }else if ([resp isKindOfClass:[SendMessageToWXResp class]])
         {
             [self.delegate onWXResult:@{WX_RV_IS_SUCCESS:(resp.errCode == 0 ? @"1" : @"0")} type:TYPE_MESSAGE_RESP];
@@ -303,7 +304,7 @@ singleton_implementation(WXSDK)
             PayResp * response = (PayResp*)resp;
             [self.delegate onWXResult:@{WX_RV_IS_SUCCESS:(resp.errCode == 0 ? @"1" : @"0"),
                                         WX_RV_ERRCODE:@(response.errCode),
-                                        WX_RV_ERRSTR:response.errStr} type:TYPE_PAY_RESULT];
+                                        WX_RV_ERRSTR:SAFESTR(response.errStr)} type:TYPE_PAY_RESULT];
         }
         return;
     }

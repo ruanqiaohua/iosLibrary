@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, ‘7.0’
+platform :ios, ‘8.0’
 target "iosLibrary" do
 pod 'SDWebImage', '~> 4.0'
 pod 'MyLayout’,’~> 1.5.0’
@@ -10,4 +10,5 @@ pod 'WechatOpenSDK'
 pod 'JPush'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'YYCache'
+pod 'SPAlertController'
 end

@@ -13,8 +13,9 @@
 @property (strong, nonatomic) UIWindow * window;
 
 -(NSArray<id<IAppDelegateLoader>> *)getLoader;
-
 -(void)addLoader:(id<IAppDelegateLoader>)loader;
 -(void)removeLoader:(id<IAppDelegateLoader>)loader;
+
+-(void)appDidFinishLaunching;
 
 @end

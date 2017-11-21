@@ -45,7 +45,7 @@ static void * originalScrollEnabledKey = &originalScrollEnabledKey;
     objc_setAssociatedObject(self, &placeholderViewKey, cq_placeholderView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(void)ljh_setPlaceholderView:(UIView *)view type:(NSInteger)type
+-(void)setPlaceholderView:(UIView *)view type:(NSInteger)type
 {
     NSMutableDictionary * dict = objc_getAssociatedObject(self, &dictViewsKey);
     if (!dict)
@@ -56,7 +56,7 @@ static void * originalScrollEnabledKey = &originalScrollEnabledKey;
     dict[@(type)] = view;
 }
 
--(void)ljg_showPlaceholderViewType:(NSInteger)type
+-(void)showPlaceholderViewType:(NSInteger)type
 {
     NSMutableDictionary * dict = objc_getAssociatedObject(self, &dictViewsKey);
     if (dict)
@@ -86,7 +86,7 @@ static void * originalScrollEnabledKey = &originalScrollEnabledKey;
     }
 }
 
--(void)ljh_removePlaceholderView
+-(void)removePlaceholderView
 {
     if (self.ljh_placeholderView)
     {

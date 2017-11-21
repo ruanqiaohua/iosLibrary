@@ -19,6 +19,9 @@
 /** 压缩图片至指定像素 */
 - (UIImage *)rescaleImageToPX:(CGFloat )toPX;
 
+//根据宽度来等比例缩放
+- (UIImage *)rescaleImageBaseWidth:(CGFloat)width;
+
 /** 在指定的size里面生成一个平铺的图片 */
 - (UIImage *)getTiledImageWithSize:(CGSize)size;
 

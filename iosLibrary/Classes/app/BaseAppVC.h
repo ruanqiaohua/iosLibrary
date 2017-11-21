@@ -21,5 +21,9 @@
 -(void)initUI;
 -(UIColor *)getRootBgColor;
 -(UIColor *)getContentBgColor;
-
+-(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction;
+-(NSString *)getTFTextWithViewTag:(NSInteger)tag;
+-(void)setTFTextWithViewTag:(NSInteger)tag text:(NSString *)text;
+-(NSString *)getLabTextWithViewTag:(NSInteger)tag ;
+-(void)setLabTextWithViewTag:(NSInteger)tag text:(NSString *)text;
 @end

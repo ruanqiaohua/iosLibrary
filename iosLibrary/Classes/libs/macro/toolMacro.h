@@ -40,7 +40,7 @@
 #define PTTO6SH(pt)             (pt) / 736.0 * SCREEN_HEIGHT
 #define PTTO6SIZE(size)         CGSizeMake(PTTO6SW(size.width), PTTO6SW(size.height))
 #define PXTO6SIZE(size)         CGSizeMake(PXTO6SW(size.width), PXTO6SW(size.height))
-
+#define CUR_TIME_MS             (long)(CFAbsoluteTimeGetCurrent() * 1000)
 //color
 #define RGBA(r,g,b,a)            [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a]
 #define UIColorFromRGBA(rgbaValue) \

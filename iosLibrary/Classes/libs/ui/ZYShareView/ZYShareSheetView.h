@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZYShareSheetView : UIToolbar
+@interface ZYShareSheetView : UIView
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *cancelButton;

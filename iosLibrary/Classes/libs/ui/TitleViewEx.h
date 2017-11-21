@@ -38,6 +38,7 @@
 @property(weak,nonatomic) id<TitleViewDelegate> delegate;
 +(instancetype)createTitleView;
 
+-(void)setTitleRightImage:(UIImage *)img space:(CGFloat)space;
 -(void)setTitle:(NSString *)title;
 -(void)setTitle:(NSString *)title titleFont:(UIFont *)tf titleColor:(UIColor *)tc; //默认居中
 -(void)setTitle:(NSString *)title titleFont:(UIFont *)tf titleColor:(UIColor *)tc titleAlignment:(int)ta;

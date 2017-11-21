@@ -54,4 +54,35 @@
     return YES;
 }
 
++(NSString *)verifyText:(NSArray<NSString *> *)texts aryLen:(NSArray<NSNumber *> *)lens hits:(NSArray<NSString *> *)hits
+{
+    if (texts.count != lens.count || lens.count != hits.count)
+    {
+        return nil;
+    }
+    NSInteger len = 0;
+    for (NSInteger i = 0; i < texts.count; i++)
+    {
+        len = [lens[i] integerValue];
+        if (len < 0)
+        {
+            if (texts[i].length != labs(len))
+            {
+                return hits[i];
+            }
+        }else if (texts[i].length < len)
+        {
+            return hits[i];
+        }
+    }
+    return nil;
+}
+
++(BOOL)verifyOnlyCharNumStr:(NSString *)str
+{
+    NSCharacterSet * cs = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyz1234567890"] invertedSet];
+    NSString * filer = [[str componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    return [filer isEqualToString:str];
+}
+
 @end

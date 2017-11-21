@@ -23,12 +23,18 @@ PropertyBOOL(isProduction);
 
 -(instancetype)initAppKey:(NSString *)key channel:(NSString *)channel isProduction:(BOOL)isProduction
 {
+    return [self initAppKey:key channel:channel isProduction:isProduction msgDelegate:nil];
+}
+
+-(instancetype)initAppKey:(NSString *)key channel:(NSString *)channel isProduction:(BOOL)isProduction msgDelegate:(id<JPushMsgDelegate>)delegate
+{
     self = [super init];
     if (self)
     {
         self.appKey = key;
         self.channel = channel;
         self.isProduction = isProduction;
+        _delegate = delegate;
     }
     return self;
 }

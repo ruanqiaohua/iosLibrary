@@ -11,5 +11,7 @@
 @interface VerifyUtil : NSObject
 
 +(BOOL)verifyIdCard:(NSString *)ic;
++(NSString *)verifyText:(NSArray<NSString *> *)texts aryLen:(NSArray<NSNumber *> *)lens hits:(NSArray<NSString *> *)hits;
++(BOOL)verifyOnlyCharNumStr:(NSString *)str;
 
 @end

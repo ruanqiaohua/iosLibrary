@@ -33,4 +33,5 @@ Pod::Spec.new do |s|
  s.dependency 'JPush'
  s.dependency 'UMengAnalytics-NO-IDFA'
  s.dependency 'YYCache'
+ s.dependency 'SPAlertController'
 end

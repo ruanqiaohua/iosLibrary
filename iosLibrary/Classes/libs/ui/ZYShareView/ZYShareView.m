@@ -131,6 +131,7 @@
 {
     if (!_shareSheetView) {
         _shareSheetView = [[ZYShareSheetView alloc] init];
+        _shareSheetView.backgroundColor = [UIColor whiteColor];
         _shareSheetView.frame = CGRectMake(0, ZY_ScreenHeight, ZY_ScreenWidth, _shareSheetView.initialHeight);
         __weak typeof(self) weakSelf = self;
         _shareSheetView.cancelBlock = ^{

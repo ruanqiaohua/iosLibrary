@@ -10,8 +10,8 @@
 
 @interface UIView (PlaceholderView)
 
--(void)ljh_setPlaceholderView:(UIView *)view type:(NSInteger)type;
--(void)ljg_showPlaceholderViewType:(NSInteger)type;
--(void)ljh_removePlaceholderView;
+-(void)setPlaceholderView:(UIView *)view type:(NSInteger)type;
+-(void)showPlaceholderViewType:(NSInteger)type;
+-(void)removePlaceholderView;
 
 @end

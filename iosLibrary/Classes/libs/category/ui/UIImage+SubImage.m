@@ -63,6 +63,16 @@
     return [self rescaleImageToSize:size];
 }
 
+- (UIImage *)rescaleImageBaseWidth:(CGFloat)width
+{
+    if (self.size.width <= width)
+    {
+        return self;
+    }
+    CGFloat scale = self.size.width / self.size.height;
+    return [self rescaleImageToSize:CGSizeMake(width, width / scale)];
+}
+
 #pragma mark - 指定大小生成一个平铺的图片
 - (UIImage *)getTiledImageWithSize:(CGSize)size
 {

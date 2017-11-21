@@ -11,57 +11,101 @@
 #import "toolMacro.h"
 #import "UIViewController+ViewControllerHelper.h"
 #import <MyLayout.h>
+#import "category_inc.h"
+#import "WebViewPhotoCache.h"
+#import "TagLayout.h"
+#import "UILabel+Html.h"
 
-@interface ViewController ()
+@interface ViewController()//<TagDelegate>
 {
     LWaveView * wave;
+    TagLayout * view;
 }
 @end
 
 @implementation ViewController
 
+-(void)loadView
+{
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    MyRelativeLayout * rootLayout = [MyRelativeLayout new];
+    rootLayout.backgroundColor = [UIColor whiteColor];
+    rootLayout.insetsPaddingFromSafeArea = ~UIRectEdgeBottom;  //默认情况下底部的安全区会和布局视图的底部padding进行叠加，当这样设置后底部安全区将不会叠加到底部的padding上去。您可以注释这句代码看看效果。
+    self.view = rootLayout;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    UIView * rl = ONEW(MyRelativeLayout);
-    rl.backgroundColor = [UIColor purpleColor];
-    [rl makeLayout:^(MyMaker *make)
-    {
-        make.width.height.equalTo(self.view);
-    }];
-    [self.view addSubview:rl];
-//    self.view.backgroundColor = [UIColor colorWithWhite:.9 alpha:.8];
+    UILabel * lab = [UILabel createWithFont:[UIFont systemFontOfSize:100] textColor:[UIColor blackColor]];
+    [lab setHtml:@"花羊羊领取了你的<font color = \"red\">红包</font>"];
+    lab.myCenterX = lab.myCenterY = 0;
+    lab.wrapContentSize = YES;
+    [self.view addSubview:lab];
+
+//    [NSURLProtocol registerClass:[WebViewPhotoCache class]];
 //
-//    wave = ONEW(LWaveView);
-//    [self.view addSubview:wave];
-//    wave.center = self.view.center;
-//    wave.bounds = CGRectMake(0, 0, 300, 300);
-//    wave.waveWidth = 200;
-//    wave.waveHeight = 10;
-//    wave.progress = 0.9;
-//    wave.waveBgColor = [UIColor colorWithRed:0.9 green:0.8 blue:0.9 alpha:0.4];
-//    wave.isWaveStart = YES;
-//    //
+//    self.view.backgroundColor = [UIColor cyanColor];
+//    UIWebView * web = ONEW(UIWebView);
+//    web.frame = self.view.frame;
+//    web.scalesPageToFit = NO;
+//    NSURL * baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
+//    NSString *html = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//    [web loadHTMLString:html baseURL:baseURL];
+//    [self.view addSubview:web];
+
 //    UIButton * btn = ONEW(UIButton);
-//    [btn addTarget:self action:@selector(addWaveClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [btn setTitle:@"添加" forState:UIControlStateNormal];
-//    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [btn setNormalTitle:@"提示" textColor:[UIColor blackColor]];
+//    [btn sizeToFit];
+//    btn.bottomPos.equalTo(self.view);
+//    btn.myCenterX = 0;
 //    [self.view addSubview:btn];
-//    btn.frame = CGRectMake((self.width - 30) / 2, self.height - 50, 100, 50);
-//    //
-//    NSTimer * verTimer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(uiTimerHandler:) userInfo:nil repeats:YES];
-//    [[NSRunLoop mainRunLoop] addTimer:verTimer forMode:NSDefaultRunLoopMode];
+//    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+//
+//    view = [TagLayout new];
+//
+//    TagInfo * fi = [TagInfo new];
+//    fi.name = @"文本1";
+//
+//    TagInfo * fi1 = [TagInfo new];
+//    fi1.name = @"文本2";
+//
+//    TagStyle * fbs = [TagStyle new];
+//    fbs.nlBgColor = [UIColor whiteColor];
+//    fbs.nlBorderColor = nil;
+//    fbs.nlTextColor = [UIColor blackColor];
+//    fbs.nlTextFont = [UIFont systemFontOfSize:15];
+//        //
+//    fbs.selBgColor = nil;
+//    fbs.selBorderColor = [UIColor purpleColor];
+//    fbs.selTextColor = [UIColor purpleColor];
+//        //
+//    fbs.borderWidth = 1;
+//    fbs.flagMinWidth = 100;
+//    fbs.borderRadius = 3;
+//
+//
+//    [self.view addSubview:view];
+//
+//    view.myTop = 60;
+//    view.myLeft = 0;
+//    view.widthSize.equalTo(self.view);
+//    view.heightSize.equalTo(self.view);
+//    [view addTags:@[fi, fi1] tagStyle:fbs];
+//    view.delegate = self;
+//    view.hidden = YES;
 }
 
--(void)uiTimerHandler:(NSTimer *)timer
-{
-    wave.progress += 0.01;
-}
-
--(void)addWaveClick:(id)sender
-{
-    [wave addWaveWithColor:[UIColor colorWithRed:30/255.0 green:150/255.0 blue:255/255.0 alpha:0.60f]];
-}
+//-(void)btnClick:(id)sender
+//{
+//    view.hidden = NO;
+//}
+//
+//-(void)clickTagInfo:(TagInfo *)ti
+//{
+//    view.hidden = YES;
+//}
 
 @end

@@ -26,4 +26,6 @@
 
 -(instancetype)initAppKey:(NSString *)key channel:(NSString *)channel isProduction:(BOOL)isProduction;
 
+-(instancetype)initAppKey:(NSString *)key channel:(NSString *)channel isProduction:(BOOL)isProduction msgDelegate:(id<JPushMsgDelegate>)delegate;
+
 @end
