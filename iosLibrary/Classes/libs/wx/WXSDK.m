@@ -110,7 +110,7 @@ singleton_implementation(WXSDK)
 {
     if (![self switchType:WxIdType_Pay])return;
     PayReq *request = [[PayReq alloc] init];
-    //request.openID = curWXAppId;
+    //request.openID = curWxInfo.appId;
     request.partnerId = partenerId;
     request.prepayId= prepayId;
     request.package = package;

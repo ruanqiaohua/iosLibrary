@@ -8,6 +8,8 @@
 
 #import "ContactsManager.h"
 #import <MessageUI/MessageUI.h>
+#import "ContactsIOS8.h"
+#import "ContactsIOS9.h"
 
 @interface ContactsManager()<MFMessageComposeViewControllerDelegate>
 
@@ -35,6 +37,15 @@ singleton_implementation(ContactsManager)
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     [controller dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(AbsContacts *)getContactsInst
+{
+    if (IOS_VERSION >= 9)
+    {
+        return ONEW(ContactsIOS9);
+    }
+    return ONEW(ContactsIOS8);
 }
 
 @end

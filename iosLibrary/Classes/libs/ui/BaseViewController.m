@@ -10,6 +10,8 @@
 #import "UIViewController+ViewControllerHelper.h"
 #import "toolMacro.h"
 #import "NSObject+NSObjectHelper.h"
+#import "SPAlertController.h"
+#import <SVProgressHUD.h>
 
 static __weak BaseViewController                    * curr_vc;
 static NSMutableArray<BaseViewController *>         * vc_set;
@@ -131,6 +133,16 @@ static __weak BaseViewController                    * exitToVC;
 }
 
 /**********        static funaction           **************/
++(BaseViewController *)getViewControllerByIndex:(NSInteger)index
+{
+    NSMutableArray * ary = [BaseViewController getVCSet];
+    if (ary.count > 0)
+    {
+        return ary[index];
+    }
+    return nil;
+}
+
 +(NSMutableArray *)getVCSet
 {
     @synchronized([BaseViewController class])
@@ -281,6 +293,61 @@ static __weak BaseViewController                    * exitToVC;
 }
 
 /*************        public funaction        ****************/
+-(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction
+{
+    SPAlertController * spac = [SPAlertController alertControllerWithTitle:title message:msg preferredStyle:SPAlertControllerStyleAlert animationType:SPAlertAnimationTypeDefault];
+    SPAlertAction * spAct;
+    for (NSInteger i = 0;i < actNames.count;i++)
+    {
+        spAct = [SPAlertAction actionWithTitle:actNames[i] style:SPAlertActionStyleDefault handler:^(SPAlertAction * _Nonnull action)
+                 {
+                     [self performUIAsync:^{
+                         clickAction(i);
+                     } time:0.1];
+                 }];
+        spAct.titleColor = i == rai ? [UIColor redColor] : [UIColor blackColor];
+        [spac addAction:spAct];
+    }
+    [self presentViewController:spac animated:YES completion:nil];
+}
+
+-(NSString *)getTFTextWithViewTag:(NSInteger)tag
+{
+    return ((UITextField *)[self.view viewWithTag:tag]).text;
+}
+
+-(void)setTFTextWithViewTag:(NSInteger)tag text:(NSString *)text
+{
+    ((UITextField *)[self.view viewWithTag:tag]).text = text;
+}
+
+-(NSString *)getLabTextWithViewTag:(NSInteger)tag
+{
+    return ((UILabel *)[self.view viewWithTag:tag]).text;
+}
+
+-(void)setLabTextWithViewTag:(NSInteger)tag text:(NSString *)text
+{
+    ((UILabel *)[self.view viewWithTag:tag]).text = text;
+}
+
+-(void)showProgress:(float)progess title:(NSString *)title
+{
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showProgress:progess status:title];
+}
+
+-(void)showDlgTitle:(NSString *)title
+{
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:title];
+}
+
+-(void)dismissHUD
+{
+    [SVProgressHUD dismiss];
+}
+
 -(void)closeWindowVC
 {
     [self onUnInitView];
@@ -373,7 +440,7 @@ static __weak BaseViewController                    * exitToVC;
 {
     return kbh;
 }
-/************************************************************************************************************/
+/************************************************************************/
 -(BOOL)onInitViewTime:(NSUInteger)time
 {
     return NO;

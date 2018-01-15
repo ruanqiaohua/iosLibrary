@@ -11,6 +11,7 @@
 @interface MenuRow : MyLinearLayout
 
 @property(readonly, nonatomic) UIImageView * ivImage;
+@property(readonly, nonatomic) UIImageView * ivTitleRightImage;
 @property(readonly, nonatomic) UILabel * labTitle;
 @property(readonly, nonatomic) UILabel * labValue;
 @property(readonly, nonatomic) UIImageView * rightArrow;
@@ -22,6 +23,7 @@
                rightImage:(UIImage *)ri rightSpace:(CGFloat)rs;
 
 - (instancetype)initImage:(UIImage *)img imgLeftSpace:(CGFloat)ils
+                    imgTitleRight:(UIImage *)img itrLeftSpace:(CGFloat)itrLS
                     title:(NSString *)title titleLeftSpace:(CGFloat)tls titleFont:(UIFont *)tf titleColor:(UIColor *)tc
                     value:(NSString *)value valueRightSpace:(CGFloat)vrs valueFont:(UIFont *)vf valueColor:(UIColor *)vc
                rightImage:(UIImage *)ri rightSpace:(CGFloat)rs;

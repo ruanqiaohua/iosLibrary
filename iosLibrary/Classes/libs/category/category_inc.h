@@ -22,5 +22,6 @@
 #import "UIImage+Rotate.h"
 #import "UIImage+SubImage.h"
 #import "UIView+Toast.h"
+#import "NSPointerArray+Helper.h"
 
 #endif /* category_inc_h */

@@ -55,6 +55,7 @@
 - (void)imageOnTheTitleRightWithSpace:(CGFloat)space;
 
 //设置正常态文本
+-(void)setNormalTitle:(NSString *)title;
 -(void)setNormalTitle:(NSString *_Nullable)title textColor:(UIColor *_Nullable)tc;
 -(void)setSelectTitle:(NSString *_Nullable)title textColor:(UIColor *_Nullable)tc;
 -(void)setNormalBackImage:(UIImage *_Nullable)img;

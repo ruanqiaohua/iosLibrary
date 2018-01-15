@@ -13,6 +13,7 @@
 @implementation MenuRow
 
 - (instancetype)initImage:(UIImage *)img imgLeftSpace:(CGFloat)ils
+                    imgTitleRight:(UIImage *)itrImage itrLeftSpace:(CGFloat)itrLS
                     title:(NSString *)title titleLeftSpace:(CGFloat)tls titleFont:(UIFont *)tf titleColor:(UIColor *)tc
                     value:(NSString *)value valueRightSpace:(CGFloat)vrs valueFont:(UIFont *)vf valueColor:(UIColor *)vc
                rightImage:(UIImage *)ri rightSpace:(CGFloat)rs
@@ -24,10 +25,14 @@
         {
             _ivImage = OIV_IMG(img);
             _ivImage.mySize = PTTO6SIZE(img.size);
-            _ivImage.myLeft = ils;
-            _ivImage.myCenterY = 0;
-            [self addSubview:_ivImage];
+        }else
+        {
+            _ivImage = ONEW(UIImageView);
+            _ivImage.mySize = CGSizeMake(0, 0);
         }
+        _ivImage.myLeft = ils;
+        _ivImage.myCenterY = 0;
+        [self addSubview:_ivImage];
         //
         _labTitle = [UILabel createWithFont:tf textColor:tc];
         _labTitle.wrapContentSize = YES;
@@ -35,6 +40,19 @@
         _labTitle.myLeft = tls;
         _labTitle.text = title;
         [self addSubview:_labTitle];
+        //
+        if (itrImage)
+        {
+            _ivTitleRightImage = OIV_IMG(itrImage);
+            _ivTitleRightImage.mySize = PTTO6SIZE(itrImage.size);
+        }else
+        {
+            _ivTitleRightImage = ONEW(UIImageView);
+            _ivTitleRightImage.mySize = CGSizeMake(0, 0);
+        }
+        _ivTitleRightImage.myLeft = itrLS;
+        _ivTitleRightImage.myCenterY = 0;
+        [self addSubview:_ivTitleRightImage];
         //
         if (value)
         {
@@ -69,12 +87,12 @@
 - (instancetype)initImage:(UIImage *)img imgLeftSpace:(CGFloat)ils title:(NSString *)title titleLeftSpace:(CGFloat)tls titleFont:(UIFont *)font titleTextColor:(UIColor *)ttc
                rightImage:(UIImage *)ri rightSpace:(CGFloat)rs
 {
-    return [self initImage:img imgLeftSpace:ils title:title titleLeftSpace:tls titleFont:font titleColor:ttc value:nil valueRightSpace:0 valueFont:nil valueColor:nil rightImage:ri rightSpace:rs];
+    return [self initImage:img imgLeftSpace:ils imgTitleRight:nil itrLeftSpace:0  title:title titleLeftSpace:tls titleFont:font titleColor:ttc value:nil valueRightSpace:0 valueFont:nil valueColor:nil rightImage:ri rightSpace:rs];
 }
 
 - (instancetype)initImage:(UIImage *)img imgLeftSpace:(CGFloat)ils title:(NSString *)title titleLeftSpace:(CGFloat)tls titleTextSize:(CGFloat)tts titleTextColor:(UIColor *)ttc rightImage:(UIImage *)ri rightSpace:(CGFloat)rs
 {
-    return [self initImage:img imgLeftSpace:ils title:title titleLeftSpace:tls titleFont:[UIFont systemFontOfSize:tts] titleColor:ttc value:nil valueRightSpace:0 valueFont:nil valueColor:nil rightImage:ri rightSpace:rs];
+    return [self initImage:img imgLeftSpace:ils imgTitleRight:nil itrLeftSpace:0 title:title titleLeftSpace:tls titleFont:[UIFont systemFontOfSize:tts] titleColor:ttc value:nil valueRightSpace:0 valueFont:nil valueColor:nil rightImage:ri rightSpace:rs];
 }
 
 -(void)addTarget:(id)target action:(SEL)action

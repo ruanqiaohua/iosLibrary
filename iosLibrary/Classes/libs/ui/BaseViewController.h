@@ -50,7 +50,21 @@
 -(void)closeWindowVCDelay:(int)sec;
 -(void)closeWindowVCWithData:(NSDictionary *)data delay:(int)sec;
 -(void)closeAnimated;
-//
+#pragma --------------------
+-(void)showProgress:(float)progess title:(NSString *)title;
+-(void)showDlgTitle:(NSString *)title;
+-(void)dismissHUD;
+-(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction;
+-(NSString *)getTFTextWithViewTag:(NSInteger)tag;
+-(void)setTFTextWithViewTag:(NSInteger)tag text:(NSString *)text;
+-(NSString *)getLabTextWithViewTag:(NSInteger)tag ;
+-(void)setLabTextWithViewTag:(NSInteger)tag text:(NSString *)text;
+#pragma -------------------- 键盘
+-(void)attemptKeyBoard;
+-(void)retract;
+-(CGFloat)onGetScorllHeightWithKBH:(CGFloat)kbh;
+#pragma -------------------- 静态方法
++(BaseViewController *)getViewControllerByIndex:(NSInteger)index;
 +(void)showPushClass:(Class)cls withVC:(BaseViewController *)vc data:(NSDictionary *)data;
 +(void)showPushVC:(BaseViewController *)bvc withVC:(BaseViewController *)vc data:(NSDictionary *)data;
 //present
@@ -65,10 +79,6 @@
 +(void)exitToIndex:(NSUInteger)index data:(NSDictionary *)data;
 +(void)popCount:(NSUInteger)count data:(NSDictionary *)data;
 +(void)directPopVC:(BaseViewController *)vcPop;
-//
--(void)attemptKeyBoard;
--(void)retract;
--(CGFloat)onGetScorllHeightWithKBH:(CGFloat)kbh;
 //
 +(BaseViewController *)getCurrVC;
 

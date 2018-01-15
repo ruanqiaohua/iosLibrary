@@ -15,6 +15,7 @@
 @protocol VersionDelegate
 
 -(void)versionManager:(VersionManager *)vm versionInfo:(VersionInfo *)vi;
+-(BaseViewController *)onConfirmUpdateVM:(VersionManager *)vm;
 
 @end
 
@@ -23,6 +24,6 @@
 @property(weak, nonatomic) id<VersionDelegate> delegate;
 
 -(void)reqUrl:(NSString *)url;
--(void)confirmUpdateUrl:(NSString *)url remark:(NSString *)remark vc:(BaseAppVC *)vc;
+-(void)confirmUpdateVersion:(VersionInfo *)vi vc:(BaseViewController *)vc;
 
 @end

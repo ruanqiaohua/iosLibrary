@@ -136,6 +136,11 @@
     labTitle.text = title;
 }
 
+-(void)setTitleColor:(UIColor *)tc
+{
+    labTitle.textColor = tc;
+}
+
 -(void)setTitle:(NSString *)title titleFont:(UIFont *)tf titleColor:(UIColor *)tc
 {
     [self setTitle:title titleFont:tf titleColor:tc titleAlignment:TITLE_ALIG_MIDDLE];

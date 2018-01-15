@@ -21,4 +21,26 @@
     [self addSubview:line];
 }
 
+-(void)setUiSpace:(NSArray<NSNumber *> *)uiSpace
+{
+    _uiSpace = uiSpace;
+    [self reqLayout];
+}
+
+-(void)setUiFont:(NSArray<UIFont *> *)uiFont
+{
+    _uiFont = uiFont;
+    [self reqFontChange];
+}
+
+-(void)setUiTextColor:(NSArray<UIColor *> *)uiTextColor
+{
+    _uiTextColor = uiTextColor;
+    [self reqTextColorChange];
+}
+
+-(void)reqLayout{}
+-(void)reqFontChange{}
+-(void)reqTextColorChange{}
+
 @end

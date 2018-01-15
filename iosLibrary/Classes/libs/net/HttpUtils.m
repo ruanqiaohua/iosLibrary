@@ -27,10 +27,10 @@ singleton_implementation(HttpUtils)
     if (self)
     {
         manager = [AFHTTPSessionManager manager];
-        manager.requestSerializer.timeoutInterval = 8;
         manager.requestSerializer = [AFHTTPRequestSerializer serializer];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        manager.requestSerializer.timeoutInterval = 8;
     }
     return self;
 }
@@ -92,10 +92,6 @@ singleton_implementation(HttpUtils)
 
 +(NSString *)URLDecodedString:(NSString *)stringURL
 {
-    //    if (IOS_VERSION >= 9.0)
-    //    {
-    //        return [stringURL stringByRemovingPercentEncoding];
-    //    }
     return [stringURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
@@ -161,7 +157,7 @@ singleton_implementation(HttpUtils)
 -(void)getUrl:(NSString *)url aesParam:(NSDictionary *)param onResult:(void (^)(NetResult * nr))onResult
 {
     WEAKOBJ(self);
-    NSString * reqUrl = [self catReqParam:param url:url isVer:YES isSign:YES];
+    NSString * reqUrl = [self catReqParam:param url:url isVer:NO isSign:YES];
     [manager GET:reqUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress)
      {
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)

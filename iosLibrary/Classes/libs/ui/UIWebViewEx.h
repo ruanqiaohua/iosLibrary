@@ -24,6 +24,7 @@
 @protocol WebJsInterface <NSObject>
 
 -(void)procJsCallWithFunName:(NSString *)fn params:(NSArray *)params;
+-(void)procJson:(NSString *)json;
 
 @end
 
@@ -43,5 +44,6 @@
 @property(weak,nonatomic) id<WebJsInterface> jsDelegate;
 
 -(void)setUrl:(NSString *)url;
+-(void)execJs:(NSString *)js;
 
 @end

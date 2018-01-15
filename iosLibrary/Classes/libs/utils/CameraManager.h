@@ -13,6 +13,8 @@
 @protocol CameraManagerDelegate <NSObject>
 
 -(void)onCMImage:(UIImage *)image;
+@optional
+-(void)onCMOpenResizeHit;
 
 @end
 

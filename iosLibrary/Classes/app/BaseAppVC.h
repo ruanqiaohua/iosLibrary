@@ -7,23 +7,23 @@
 //
 
 #import "BaseViewController.h"
-#import "TitleViewEx.h"
+#import <MyLayout.h>
+#import "UISkinConfig.h"
 
-@interface BaseAppVC : BaseViewController<TitleViewDelegate>
+@interface BaseAppVC : BaseViewController
 
-@property(strong, nonatomic) MyBaseLayout * rootLayout;
-@property(strong, nonatomic) MyBaseLayout * contentLayout;
-@property(strong, nonatomic) TitleViewEx  * titleView;
+@property(strong, nonatomic) MyBaseLayout   * rootLayout;
+@property(strong, nonatomic) MyBaseLayout   * contentLayout;
+@property(readonly, nonatomic) UISkinConfig * skinCfg;
 
++(UIView *)addHLineColor:(UIColor *)lc lrSpace:(CGFloat)space toView:(UIView *)view;
++(UIView *)addVLineColor:(UIColor *)lc tbSpace:(CGFloat)space toView:(UIView *)view;
+//-----------------------------------------------------
+-(void)setupConfig;
 -(void)setupRootLayout;
 -(void)setupSVContentLayout;
 -(void)setupVertContentLayout;
 -(void)initUI;
--(UIColor *)getRootBgColor;
--(UIColor *)getContentBgColor;
--(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction;
--(NSString *)getTFTextWithViewTag:(NSInteger)tag;
--(void)setTFTextWithViewTag:(NSInteger)tag text:(NSString *)text;
--(NSString *)getLabTextWithViewTag:(NSInteger)tag ;
--(void)setLabTextWithViewTag:(NSInteger)tag text:(NSString *)text;
+-(UISkinConfig *)getSkinConfig;
+
 @end

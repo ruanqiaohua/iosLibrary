@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AbsContacts.h"
 #import "toolMacro.h"
-#import "BaseViewController.h"
 
 @interface ContactsManager : NSObject
 
 singleton_interface
 
 -(void)sendSms:(BaseViewController *)vc tos:(NSArray *)phones content:(NSString * )text;
+-(AbsContacts *)getContactsInst;
 
 @end

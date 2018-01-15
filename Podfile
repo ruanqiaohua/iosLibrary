@@ -10,5 +10,6 @@ pod 'WechatOpenSDK'
 pod 'JPush'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'YYCache'
-pod 'SPAlertController'
+pod 'SVProgressHUD'
+pod 'IQKeyboardManager'
 end

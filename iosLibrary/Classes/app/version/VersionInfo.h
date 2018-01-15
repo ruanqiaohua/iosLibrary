@@ -13,5 +13,6 @@
 @property(nonatomic, copy) NSString * ver;
 @property(nonatomic, copy) NSString * url;
 @property(nonatomic, copy) NSString * remark;
+@property(nonatomic, assign) BOOL enforce;
 
 @end

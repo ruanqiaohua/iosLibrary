@@ -14,11 +14,11 @@
 - (UIImage *)subImageWithRect:(CGRect)rect
 {
     CGImageRef newImageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
-    
+
     UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    
+
     CGImageRelease(newImageRef);
-    
+
     return newImage;
 }
 

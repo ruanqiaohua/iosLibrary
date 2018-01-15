@@ -17,6 +17,10 @@
     [self doesNotRecognizeSelector:_cmd];
 }
 
+-(void)procJson:(NSString *)json
+{
+}
+
 @end
 
 @interface UIWebViewEx ()<UIWebViewDelegate>
@@ -48,6 +52,11 @@
 -(void)setUrl:(NSString *)url
 {
     [self loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]]];
+}
+
+-(void)execJs:(NSString *)js
+{
+    [self stringByEvaluatingJavaScriptFromString:js];
 }
 
 -(void)layoutSubviews
@@ -83,6 +92,9 @@
             {
                 [self.jsDelegate procJsCallWithFunName:fn params:ps];
             }
+        }else
+        {
+            [self.jsDelegate procJson:scheme];
         }
         return NO;
     }else if ([self.webDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
