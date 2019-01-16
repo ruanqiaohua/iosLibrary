@@ -13,6 +13,7 @@
 
 +(void)openUrl:(NSString *)url;
 +(void)callLocalPhone:(NSString *)phone;
++(CGSize)calSizeWithText:(NSString *)text font:(UIFont *)font;
 +(CGSize)calSizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)ms;
 
 @end

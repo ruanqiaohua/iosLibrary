@@ -23,6 +23,7 @@
 @protocol ITitleView;
 @class UIWebViewEx;
 @class LTitleView;
+@class WebPluginBase;
 
 #pragma ------------------- web外壳接口声明 ----------------
 @protocol IWebShell
@@ -47,8 +48,11 @@
 
 @property(readonly, nonatomic) LTitleView                     * titleView;
 @property(readonly, nonatomic) UIWebViewEx                    * webView;
-@property(readonly, nonatomic) NSMutableArray<IWebPlugin>     * plugins;
+@property(readonly, nonatomic) NSMutableArray<WebPluginBase *>* plugins;
 
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl closeLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js;
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn;
+-(NSString *)getTitleViewReturnBtn;
 -(void)loadWebPlugin;
 
 @end

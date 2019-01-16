@@ -62,7 +62,7 @@ const CGFloat YPOS_PER = 0.75;
             } completion:^(BOOL finished) {
                 [weak_rl removeFromSuperview];
             }];
-        } time:duration];
+        } sec:duration];
     }];
 }
 

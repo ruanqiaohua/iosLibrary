@@ -10,22 +10,24 @@
 #define toolMacro_h
 
 // object macro
-#define ONEW(cls)               [[[cls class] alloc] init]
-#define OIV_STR(imgStr)         [[UIImageView alloc] initWithImage:[UIImage imageNamed:(imgStr)]]
-#define OIV_IMG(img)            [[UIImageView alloc] initWithImage:img]
-#define OIMG_STR(imgStr)        [UIImage imageNamed:(imgStr)]
+#define ONEW(cls)                   [[[cls class] alloc] init]
+#define OIV_STR(imgStr)             [[UIImageView alloc] initWithImage:[UIImage imageNamed:(imgStr)]]
+#define OIV_IMG(img)                [[UIImageView alloc] initWithImage:img]
+#define OIMG_STR(imgStr)            [UIImage imageNamed:(imgStr)]
+#define TYPE_COV(type,var)          ((type *)var)
 
 //calc
-#define ITOS(value)             [NSString stringWithFormat:@"%d",value]
-#define LTOS(value)             [NSString stringWithFormat:@"%ld",value]
-#define SAFESTR(str)            (str) == nil ? @"" : str
-
+#define ITOS(value)                 [NSString stringWithFormat:@"%d",value]
+#define LTOS(value)                 [NSString stringWithFormat:@"%ld",value]
+#define SAFESTR(str)                (str) == nil ? @"" : str
+#define SAFE_DICT_INT(d,key,def)    d[key] == nil ? def : [d[key] integerValue]
+#define SAFE_DICT_BOOL(d,key,def)   d[key] == nil ? def : [d[key] boolValue]
 //info
 #define SYSTEM_NAV_HEIGHT       44
 #define IS_IPHONEX              (SCREEN_WIDTH == 375) && (SCREEN_HEIGHT == 812)
 #define IS_IPAD                 [[UIDevice currentDevice].model isEqualToString:@"iPad"]
 #define SYSTEM_STATUS_HEIGHT    ([[UIApplication sharedApplication] statusBarFrame].size.height)
-#define TITLE_VIEW_HEIGHT       (SYSTEM_STATUS_HEIGHT + SYSTEM_NAV_HEIGHT);
+#define TITLE_VIEW_HEIGHT       (IS_IPHONEX ? 88 : 64)
 #define APP_VERSION             [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define PROJ_NAME               [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey]
 #define IOS_VERSION             [[[UIDevice currentDevice] systemVersion] floatValue]
@@ -34,13 +36,15 @@
 //skin
 #define SCREEN_WIDTH            [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT           [[UIScreen mainScreen] bounds].size.height
-#define PXTO6SW(px)             (px) / 3.0 / 414.0 * SCREEN_WIDTH
-#define PXTO6SH(px)             (px) / 3.0 / 736.0 * SCREEN_HEIGHT
-#define PTTO6SW(pt)             (pt) / 414.0 * SCREEN_WIDTH
-#define PTTO6SH(pt)             (pt) / 736.0 * SCREEN_HEIGHT
+#define PXTO6SW(px)             (px) / 3.0f / 414.0f * SCREEN_WIDTH
+#define PXTO6SH(px)             (px) / 3.0f / 736.0f * SCREEN_HEIGHT
+#define PXTOSIZE(w,h)           CGSizeMake(PXTO6SW(w), PXTO6SW(h))
+#define PTTO6SW(pt)             (pt) / 414.0f * SCREEN_WIDTH
+#define PTTO6SH(pt)             (pt) / 736.0f * SCREEN_HEIGHT
 #define PTTO6SIZE(size)         CGSizeMake(PTTO6SW(size.width), PTTO6SW(size.height))
 #define PXTO6SIZE(size)         CGSizeMake(PXTO6SW(size.width), PXTO6SW(size.height))
 #define CUR_TIME_MS             (long)(CFAbsoluteTimeGetCurrent() * 1000)
+#define SYS_FONT(px)            [UIFont systemFontOfSize:PXTO6SW(px)]
 //color
 #define RGBA(r,g,b,a)            [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a]
 #define UIColorFromRGBA(rgbaValue) \

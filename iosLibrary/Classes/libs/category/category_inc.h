@@ -23,5 +23,6 @@
 #import "UIImage+SubImage.h"
 #import "UIView+Toast.h"
 #import "NSPointerArray+Helper.h"
+#import "UILabel+VerticalAlignment.h"
 
 #endif /* category_inc_h */

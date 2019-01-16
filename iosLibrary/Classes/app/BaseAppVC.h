@@ -24,6 +24,7 @@
 -(void)setupSVContentLayout;
 -(void)setupVertContentLayout;
 -(void)initUI;
+-(void)initData;
 -(UISkinConfig *)getSkinConfig;
 
 @end

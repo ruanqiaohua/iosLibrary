@@ -18,6 +18,8 @@
 
 @end
 
+#define CM  [CameraManager sharedInst]
+
 @interface CameraManager : NSObject
 
 @property(weak, nonatomic) id<CameraManagerDelegate> delegate;

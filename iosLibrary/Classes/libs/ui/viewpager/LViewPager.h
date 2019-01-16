@@ -12,8 +12,15 @@
 #define TAB_LOC_TOP        0x0
 #define TAB_LOC_BOTTOM     0x01
 
+@class LViewPager;
+@protocol LViewPagerDelegate <NSObject>
+-(BOOL)viewPager:(LViewPager *)vp selectIndex:(NSInteger)index;
+@end
+
 @interface LViewPager : UIView
 
+@property(weak, nonatomic) id<LViewPagerDelegate> delegate;
+@property(readonly, nonatomic) NSInteger viewPagerCount;
 @property(assign, nonatomic) NSUInteger tabLocation;
 @property(assign, nonatomic) BOOL enabledScroll; //设置viewPager是否允许滚动 默认支持
 @property(assign, nonatomic) NSUInteger selectIndex;//当前选择的页面的索引
@@ -41,6 +48,9 @@
 -(instancetype)initHostVC:(BaseViewController *)vc tabs:(NSArray *)tabs subVC:(NSArray *)svc;
 -(void)setTitleIcons:(NSArray *)icons selectIcons:(NSArray *)selIcons;
 //显示右上角红点数量，-1 为红点， 0 为去掉红点， 大于0 为红点中数字
--(void)setTipsNumber:(NSUInteger)number titleIndex:(NSUInteger)ti;
+-(void)setTipsNumber:(NSInteger)number titleIndex:(NSUInteger)ti;
+-(void)setTipsBageCenterOffset:(CGPoint)cp;
+-(void)setSelectTabIndex:(NSUInteger)index;
 -(void)enterViewController;
+
 @end

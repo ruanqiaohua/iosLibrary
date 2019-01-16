@@ -8,6 +8,7 @@
 
 #import "WebPluginBase.h"
 #import "WebShellVCBase.h"
+#import <YYModel.h>
 
 @implementation WebPluginBase
 
@@ -33,6 +34,26 @@
 -(BOOL)vcResultData:(NSDictionary *)data
 {
     return NO;
+}
+
+-(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc values:(NSDictionary *)values
+{
+    if (isProc && cb.length > 0)
+    {
+        [self.shell execJScript:[cb stringByReplacingOccurrencesOfString:@"#" withString:
+                                 [values yy_modelToJSONString]]];
+    }
+    return isProc;
+}
+
+-(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc alias:(NSString *)alias
+{
+    return [self procCallback:cb isProc:isProc values:@{SUCCESS:@(YES),METHOD:alias}];
+}
+
+-(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc isSuccess:(BOOL)isSuccess alias:(NSString *)alias
+{
+    return [self procCallback:cb isProc:isProc values:@{SUCCESS:@(isSuccess),METHOD:alias}];
 }
 
 @end

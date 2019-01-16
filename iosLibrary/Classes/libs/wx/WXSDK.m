@@ -142,6 +142,7 @@ singleton_implementation(WXSDK)
 
 -(void)shareLinkUrl:(NSString *)url title:(NSString *)title desc:(NSString *)desc imgUrl:(NSString *)imgUrl scene:(int)scene
 {
+    if (imgUrl.length == 0)return;
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:imgUrl] options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL)
      {

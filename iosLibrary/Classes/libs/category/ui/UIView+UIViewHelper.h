@@ -20,5 +20,8 @@
 
 -(void)setBorderColor:(UIColor *)bc borderWidth:(CGFloat)bw;
 -(void)addTapGestureSelector:(SEL)action target:(id)target;
-
+-(void)addShadowWithOpacity:(float)shadowOpacity
+           shadowRadius:(CGFloat)shadowRadius
+        cornerRadius:(CGFloat)cornerRadius
+        color:(UIColor *)color;
 @end

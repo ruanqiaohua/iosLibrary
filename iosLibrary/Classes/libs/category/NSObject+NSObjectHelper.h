@@ -10,9 +10,9 @@
 
 @interface NSObject (NSObjectHelper)
 
--(void)performAsync:(dispatch_block_t)block time:(float)delta;
+-(void)performAsync:(dispatch_block_t)block sec:(float)delta;
 -(void)performAsync:(dispatch_block_t)block;
--(void)performUIAsync:(dispatch_block_t)block time:(float)delta;
+-(void)performUIAsync:(dispatch_block_t)block sec:(float)delta;
 -(void)performUIAsync:(dispatch_block_t)block;
 
 @end

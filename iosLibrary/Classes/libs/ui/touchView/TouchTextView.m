@@ -9,6 +9,8 @@
 #import "TouchTextView.h"
 #import "UIView+UIViewHelper.h"
 #import "Utils.h"
+#import "toolMacro.h"
+#import "category_inc.h"
 
 #define CTRL_STATE_INIT         0
 #define CTRL_STATE_ZOOM         1
@@ -54,10 +56,10 @@
     if (self)
     {
         self.backgroundColor = [UIColor clearColor];
-        
-        _iv_scale = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ico_scale"]];
+        CGSize s = CGSizeMake(72, 72);
+        _iv_scale = OIV_IMG([OIMG_STR(@"ico_scale") rescaleImageToSize:PXTO6SIZE(s)]);
         [self addSubview:_iv_scale];
-        _iv_close = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ico_close_text"]];
+        _iv_close = OIV_IMG([OIMG_STR(@"ico_close_text") rescaleImageToSize:PXTO6SIZE(s)]);
         [self addSubview:_iv_close];
         
         _ctrl_state = CTRL_STATE_INIT;

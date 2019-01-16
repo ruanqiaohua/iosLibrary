@@ -55,12 +55,15 @@
 -(void)showDlgTitle:(NSString *)title;
 -(void)dismissHUD;
 -(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction;
+-(void)showSheetTitle:(NSString *)title msg:(NSString *)msg sheets:(NSArray<NSString *> *)sheets redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction;
+-(void)showInputTitle:(NSString *)title msg:(NSString *)msg placeholder:(NSString *)ph clickAction:(void(^)(NSString* text))clickAction;
 -(NSString *)getTFTextWithViewTag:(NSInteger)tag;
 -(void)setTFTextWithViewTag:(NSInteger)tag text:(NSString *)text;
 -(NSString *)getLabTextWithViewTag:(NSInteger)tag ;
 -(void)setLabTextWithViewTag:(NSInteger)tag text:(NSString *)text;
 #pragma -------------------- 键盘
 -(void)attemptKeyBoard;
+-(void)attemptKeyBoardWithView:(UIView *)view;
 -(void)retract;
 -(CGFloat)onGetScorllHeightWithKBH:(CGFloat)kbh;
 #pragma -------------------- 静态方法

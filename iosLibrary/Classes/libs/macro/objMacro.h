@@ -9,20 +9,22 @@
 #ifndef objMacro_h
 #define objMacro_h
 
-#define PropertyObj(s,type)             @property(strong, nonatomic) type * s
-#define PropertyWeakObj(s,type)         @property(weak, nonatomic) type * s
-#define PropertyBOOL(s)                 @property(assign, nonatomic) BOOL s
-#define PropertyCString(s)              @property(nonatomic,copy) NSString * s
-#define PropertySString(s)              @property(nonatomic,strong) NSString * s
-#define PropertyNSInteger(s)            @property(nonatomic,assign) NSInteger s
-#define PropertyFloat(s)                @property(nonatomic,assign) float s
-#define PropertyLongLong(s)             @property(nonatomic,assign) long long s
-#define PropertyNSDictionary(s)         @property(nonatomic,strong) NSDictionary * s
-#define PropertyNSArray(s)              @property(nonatomic,strong) NSArray * s
-#define PropertyNSArrayType(s,type)     @property(nonatomic,strong) NSArray<type*> * s
-#define PropertyNSMutableArray(s)       @property(nonatomic,strong) NSMutableArray * s
-#define PropertyDelegate(type)          @property(nonatomic,weak) id<type> delegate
-#define PropertyDelegate(type,name)     @property(nonatomic,weak) id<type> name
+#define PropertyObj(name,type)             @property(strong, nonatomic) type * name
+#define PropertyWeakObj(name,type)         @property(weak, nonatomic) type * name
+#define PropertyBOOL(name)                 @property(assign, nonatomic) BOOL name
+#define PropertyCString(name)              @property(nonatomic,copy) NSString * name
+#define PropertySString(name)              @property(nonatomic,strong) NSString * name
+#define PropertyNSInteger(name)            @property(nonatomic,assign) NSInteger name
+#define PropertyInt(name)                  @property(nonatomic,assign) int name
+#define PropertyFloat(name)                @property(nonatomic,assign) float name
+#define PropertyLong(name)                 @property(nonatomic,assign) long name
+#define PropertyLongLong(name)             @property(nonatomic,assign) long long name
+#define PropertyNSDictionary(name)         @property(nonatomic,strong) NSDictionary * name
+#define PropertyNSArray(name)              @property(nonatomic,strong) NSArray * name
+#define PropertyNSArrayType(name,type)     @property(nonatomic,strong) NSArray<type*> * name
+#define PropertyNSMutableArray(name)       @property(nonatomic,strong) NSMutableArray * name
+#define PropertyDelegate(type)             @property(nonatomic,weak) id<type> delegate
+//#define PropertyDelegate(type,name)        @property(nonatomic,weak) id<type> name
 
 
 #endif /* objMacro_h */

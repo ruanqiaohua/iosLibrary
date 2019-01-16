@@ -22,6 +22,8 @@
 -(void)setTitle:(NSString *)text leftImage:(UIImage *)lImg rightImage:(UIImage *)rImg;
 //设置右边内容(靠右)，排列：图片-文本-图片
 -(void)setValue:(NSString *)text leftImage:(UIImage *)lImg rightImage:(UIImage *)rImg;
+//
+-(void)setValueLeftImage:(UIImage *)li rightImage:(UIImage *)ri;
 
 -(void)setTitle:(NSString *)text;
 -(void)setValue:(NSString *)text;

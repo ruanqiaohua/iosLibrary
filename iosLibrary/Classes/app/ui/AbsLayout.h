@@ -11,6 +11,10 @@
 
 @interface AbsLayout : MyRelativeLayout
 
+//设置左边三个控件的间隔
+@property(nonatomic, strong) NSArray<NSNumber *> * uiLeftSpace;
+//设置右边三个控件的间隔
+@property(nonatomic, strong) NSArray<NSNumber *> * uiRightSpace;
 //设置布局中各控件间隔, 前三个是左间隔，后三个是右间隔
 @property(nonatomic, strong) NSArray<NSNumber *> * uiSpace;
 //设置布局中各控件字体

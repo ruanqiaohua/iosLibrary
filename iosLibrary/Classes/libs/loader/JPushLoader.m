@@ -87,6 +87,12 @@ PropertyBOOL(isProduction);
     [self initJPushOpt:launchOptions];
 }
 
+-(void)applicationDidBecomeActive:(UIApplication *)application
+{
+    application.applicationIconBadgeNumber = 0;
+    [JPUSHService resetBadge];
+}
+
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     [JPUSHService registerDeviceToken:deviceToken];

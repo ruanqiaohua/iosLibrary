@@ -294,7 +294,7 @@
 {
     [line removeFromSuperview];
     line.backgroundColor = color;
-    line.myHeight = PTTO6SH(height);
+    line.myHeight = height;
     [self addSubview:line];
 }
 

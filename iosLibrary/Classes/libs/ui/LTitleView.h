@@ -32,11 +32,14 @@
 -(UIView *)mdImageUrl:(NSString *)url location:(NSInteger)tvl index:(NSInteger)index;
 -(UIView *)mdText:(NSString *)text location:(NSInteger)tvl index:(NSInteger)index;
 -(void)removeAllByLocation:(NSInteger)tvl;
+-(void)setBottomLineColor:(UIColor *)color lineHeight:(CGFloat)height;
 
 @end
 
 @interface LTitleView : MyRelativeLayout<ITitleView>
 
 @property(assign, nonatomic) NSInteger space;
+@property(assign, nonatomic) CGFloat lrSpace;
+@property(weak, nonatomic) id<LTitleViewDelegate> delegate;
 
 @end

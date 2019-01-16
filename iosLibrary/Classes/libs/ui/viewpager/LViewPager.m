@@ -7,10 +7,9 @@
 //
 
 #import "LViewPager.h"
-#import "UIImage+SubImage.h"
-#import "UIView+UIViewHelper.h"
-#import "UIButton+WGBCustom.h"
 #import "toolMacro.h"
+#import "category_inc.h"
+#import <WZLBadgeImport.h>
 
 #define TAB_HEIGHT              PTTO6SH(50)
 #define TAB_TEXT_FONT_SIZE      15
@@ -92,6 +91,12 @@
         oldHeight = self.height;
         [self loadData];
     }
+}
+
+-(void)setEnabledScroll:(BOOL)enabledScroll
+{
+    _enabledScroll = enabledScroll;
+    svRoot.scrollEnabled = enabledScroll;
 }
 
 -(instancetype)initHostVC:(BaseViewController *)vc tabs:(NSArray *)tabs subVC:(NSArray *)svc
@@ -180,7 +185,7 @@
             btn.frame = CGRectMake(i * btnWidth, 0, btnWidth, self.tabHeight);
             [btn addTarget:self action:@selector(tabClick:) forControlEvents:UIControlEventTouchUpInside];
             [self.tabView addSubview:btn];
-            
+
             //vert line
             if (self.showVLine && i > 0)
             {
@@ -189,8 +194,7 @@
                 vv.frame = CGRectMake(0, (self.tabHeight - vhHeight) / 2, TAB_VLINE_WIDTH, vhHeight);
                 [btn addSubview:vv];
             }
-            
-            
+
             if (self.tabIcons)
             {
                 UIImage * img = OIMG_STR(self.tabIcons[i]);
@@ -250,6 +254,7 @@
         [llContent addSubview:view];
     }
     svRoot.contentSize = CGSizeMake(llContent.width, 0);
+    [self enterViewController];
 }
 
 - (void)setSelectTabIndex:(NSUInteger)index
@@ -272,10 +277,12 @@
         {
             if (_showAnimationMoveArrowLine)
             {
+                WEAKOBJ(self);
                 [UIView animateWithDuration:0.3 animations:^{
-                    CGRect frame = _viewSelectLine.frame;
+                    STRONGOBJ(self);
+                    CGRect frame = self->_viewSelectLine.frame;
                     frame.origin.x = btn.frame.origin.x;
-                    _viewSelectLine.frame = frame;
+                    self->_viewSelectLine.frame = frame;
                 }];
             }else
             {
@@ -285,7 +292,7 @@
             }
         }
     }
-    [self.vcs[index] performSelectorOnMainThread:@selector(viewWillAppear:) withObject:@YES waitUntilDone:NO];
+    [self.vcs[index] performSelectorOnMainThread:@selector(viewWillAppear:) withObject:@YES waitUntilDone:YES];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -298,7 +305,10 @@
 -(void)tabClick:(UIButton *)sender
 {
     NSInteger index = sender.tag - TAB_TAG_START;
-    
+    if (self.delegate && ![self.delegate viewPager:self selectIndex:index])
+    {
+        return;
+    }
     if (_showAnimationMoveArrowLine)
     {
         [UIView beginAnimations:@"navTab" context:nil];
@@ -314,7 +324,37 @@
 
 -(void)enterViewController
 {
-    [self.vcs[self.selectIndex] performSelectorOnMainThread:@selector(viewWillAppear:) withObject:@YES waitUntilDone:NO];
+    [self performUIAsync:^{
+        [self.vcs[self.selectIndex] performSelectorOnMainThread:@selector(viewWillAppear:) withObject:@YES waitUntilDone:YES];
+    } sec:0.1];
+}
+//显示右上角红点数量，-1 为红点， 0 为去掉红点， 大于0 为红点中数字
+-(void)setTipsNumber:(NSInteger)number titleIndex:(NSUInteger)ti;
+{
+    if (self.tabs.count <= ti) return;
+    UIButton * btn = [self.tabView viewWithTag:TAB_TAG_START + ti];
+    if (btn == NULL)return;
+    if (number == 0)
+    {
+        [btn clearBadge];
+    }else
+    {
+        btn.badgeCenterOffset = CGPointMake(-20, 20);
+        [btn showBadgeWithStyle:number < 0 ? WBadgeStyleRedDot : WBadgeStyleNumber value:number animationType:WBadgeAnimTypeNone];
+    }
+}
+
+-(void)setTipsBageCenterOffset:(CGPoint)cp
+{
+    for (int i = 0; i < self.tabs.count; i++)
+    {
+        [self.tabView viewWithTag:TAB_TAG_START + i].badgeCenterOffset = cp;
+    }
+}
+
+-(NSInteger)viewPagerCount
+{
+    return self.tabs.count;
 }
 
 @end

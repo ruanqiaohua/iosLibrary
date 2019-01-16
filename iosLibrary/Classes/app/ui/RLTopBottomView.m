@@ -52,4 +52,10 @@
     _labBottom.font = font;
 }
 
+-(void)setTopValue:(NSString *)tv bottomValue:(NSString *)bv
+{
+    if (tv.length > 0) _labTop.text = tv;
+    if (bv.length > 0) _labBottom.text = bv;
+}
+
 @end

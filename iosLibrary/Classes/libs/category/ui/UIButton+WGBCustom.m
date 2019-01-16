@@ -112,6 +112,19 @@
     }
 }
 
+-(void)setNormalTitle:(NSString *)title textColor:(UIColor *)tc font:(UIFont *)font
+{
+    [self setTitle:title forState:UIControlStateNormal];
+    if (tc)
+    {
+        [self setTitleColor:tc forState:UIControlStateNormal];
+    }
+    if (font)
+    {
+        self.titleLabel.font = font;
+    }
+}
+
 -(void)setSelectTitle:(NSString *)title
 {
     [self setTitle:title forState:UIControlStateSelected];

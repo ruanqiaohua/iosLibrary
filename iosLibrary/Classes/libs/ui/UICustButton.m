@@ -21,16 +21,16 @@
 
 @implementation UICustButton
 
--(void)setImage:(UIImage *)image withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis
+-(void)setImage:(UIImage *)image imgSize:(CGSize)is withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis
 {
     titleImageSpace = tis;
-    imgSize = PTTO6SIZE(image.size);
-    
+    imgSize = is;
+
     titleSize = [Utils calSizeWithText:title font:font maxSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT)];
     titleSize = CGSizeMake(titleSize.width, titleSize.height);
-    
+
     contentSize = CGSizeMake(MAX(imgSize.width, titleSize.width), imgSize.height + titleSize.height + tis);
-    
+
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.font = font;
     self.frame = CGRectMake(0, 0, contentSize.width, contentSize.height);
@@ -38,6 +38,16 @@
     [self setImage:image forState:UIControlStateNormal];
     [self setTitle:title forState:UIControlStateNormal];
     [self setTitleColor:tc forState:UIControlStateNormal];
+}
+
+-(void)setImage:(UIImage *)image withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis
+{
+    [self setImage:image imgSize:PTTO6SIZE(image.size) withTitle:title titleColor:tc withFont:font titleImageSpace:tis];
+}
+
+-(void)setImage:(UIImage *)image pixelSize:(BOOL)isPS withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis
+{
+    [self setImage:image imgSize:isPS ? PXTO6SIZE(image.size) : PTTO6SIZE(image.size) withTitle:title titleColor:tc withFont:font titleImageSpace:tis];
 }
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect

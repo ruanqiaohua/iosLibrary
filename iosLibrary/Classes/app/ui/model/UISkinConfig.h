@@ -13,10 +13,14 @@
 //titleView
 @property(strong, nonatomic) UIColor        * titleViewBgColor;
 @property(strong, nonatomic) UIColor        * titleViewFontColor;
-@property(strong, nonatomic) UIFont         * titleViewFont;
+@property(strong, nonatomic) UIFont         * titleViewTitleFont;
+@property(strong, nonatomic) UIFont         * titleViewBtnFont;
+@property(assign, nonatomic) CGFloat        titleViewLRSpace;//左右容器边间隔
+@property(assign, nonatomic) CGFloat        titleViewSpace;//各内容间隔
 //vc
 @property(strong, nonatomic) UIColor        * rootBgColor;
 @property(strong, nonatomic) UIColor        * contentBgColor;
+
 
 +(instancetype) createDefault;
 

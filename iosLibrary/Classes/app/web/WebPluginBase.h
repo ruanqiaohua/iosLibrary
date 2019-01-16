@@ -16,6 +16,21 @@
 #define EVENT_RESULT_DATA       2
 #define EVENT_EXEC              3
 
+#pragma --------------------------------------
+
+#define TITLE_MAX_LEN       12
+#define P_URL               @"url"
+#define P_TITLE             @"title"
+#define P_CLOSE_RELOAD      @"clsReload"//关闭刷新
+#define P_BTN_TYPE          @"btnType"
+#define P_INDEX             @"index"
+#define P_TITLE_LOCATION    @"titleLoc"
+#define P_ALIAS             @"alias"
+#define METHOD              @"method"
+#define SUCCESS             @"success"
+
+#pragma ---------------------------------------
+
 @protocol IWebShell;
 
 @protocol IWebPlugin
@@ -32,5 +47,9 @@
 @interface WebPluginBase : NSObject<IWebPlugin>
 
 @property(nonatomic, weak) id<IWebShell> shell;
+
+-(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc values:(NSDictionary *)values;
+-(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc alias:(NSString *)alias;
+-(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc isSuccess:(BOOL)isSuccess alias:(NSString *)alias;
 
 @end

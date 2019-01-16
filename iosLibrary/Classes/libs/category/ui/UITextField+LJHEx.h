@@ -10,9 +10,10 @@
 
 @interface UITextField (LJHEx)
 
-- (void)limitTextLength:(int)length;
-- (void)setMyLeftView:(UIView *)leftView width:(CGFloat)width height:(CGFloat)height;
-- (void)setPlaceholderColor:(UIColor *)pc placeholder:(NSString *)ph;
+-(void)limitTextLength:(int)length;
+-(void)setMyLeftView:(UIView *)leftView width:(CGFloat)width height:(CGFloat)height;
+-(void)setMyLeftViewWidth:(CGFloat)width height:(CGFloat)height;
+-(void)setPlaceholderColor:(UIColor *)pc placeholder:(NSString *)ph;
 +(UITextField *)createPHText:(NSString *)pht phtColor:(UIColor *)phtColor tag:(NSInteger)tag limitLen:(int)len keyBoardType:(NSInteger)kbt textColor:(UIColor *)tc textFont:(UIFont *)tf;
 
 @end

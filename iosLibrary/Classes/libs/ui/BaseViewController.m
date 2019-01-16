@@ -12,6 +12,7 @@
 #import "NSObject+NSObjectHelper.h"
 #import "SPAlertController.h"
 #import <SVProgressHUD.h>
+#import "UIView+UIViewHelper.h"
 
 static __weak BaseViewController                    * curr_vc;
 static NSMutableArray<BaseViewController *>         * vc_set;
@@ -25,6 +26,7 @@ static __weak BaseViewController                    * exitToVC;
 {
     BOOL            isOnceWillAppear;
     BOOL            isOnceDidAppear;
+    UIView          * inputLastView;
 }
 @end
 
@@ -233,11 +235,12 @@ static __weak BaseViewController                    * exitToVC;
 {
     if (index == vc_set.count - 1)
     {
-        [vc_set[index] closeWindowVC];
+        [vc_set[index] closeWindowVCWithData:data delay:0];
     }else if (index < vc_set.count)
     {
         exitTo = YES;
         exitToVC = vc_set[index];
+        exitToVC.showInfo.isReturn = YES;
         exitToVC.showInfo.data = data;
         vc_set[vc_set.count - 1].showInfo.isShowAnimated = NO;
         [vc_set[vc_set.count - 1] closeWindowVC];
@@ -293,9 +296,9 @@ static __weak BaseViewController                    * exitToVC;
 }
 
 /*************        public funaction        ****************/
--(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction
+-(void)showSPTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai style:(NSInteger)style clickAction:(void(^)(NSInteger index))clickAction
 {
-    SPAlertController * spac = [SPAlertController alertControllerWithTitle:title message:msg preferredStyle:SPAlertControllerStyleAlert animationType:SPAlertAnimationTypeDefault];
+    SPAlertController * spac = [SPAlertController alertControllerWithTitle:title message:msg preferredStyle:style animationType:SPAlertAnimationTypeDefault];
     SPAlertAction * spAct;
     for (NSInteger i = 0;i < actNames.count;i++)
     {
@@ -303,11 +306,44 @@ static __weak BaseViewController                    * exitToVC;
                  {
                      [self performUIAsync:^{
                          clickAction(i);
-                     } time:0.1];
+                     } sec:0.1];
                  }];
         spAct.titleColor = i == rai ? [UIColor redColor] : [UIColor blackColor];
         [spac addAction:spAct];
     }
+    [self presentViewController:spac animated:YES completion:nil];
+}
+
+-(void)showAlertTitle:(NSString *)title msg:(NSString *)msg actNames:(NSArray<NSString *> *)actNames redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction
+{
+    [self showSPTitle:title msg:msg actNames:actNames redActIndex:rai style:SPAlertControllerStyleAlert clickAction:clickAction];
+}
+
+-(void)showSheetTitle:(NSString *)title msg:(NSString *)msg sheets:(NSArray<NSString *> *)sheets redActIndex:(NSInteger)rai clickAction:(void(^)(NSInteger index))clickAction
+{
+    [self showSPTitle:title msg:msg actNames:sheets redActIndex:rai style:SPAlertControllerStyleActionSheet clickAction:clickAction];
+}
+
+-(void)showInputTitle:(NSString *)title msg:(NSString *)msg placeholder:(NSString *)ph clickAction:(void(^)(NSString * text))clickAction
+{
+    SPAlertController * spac = [SPAlertController alertControllerWithTitle:title message:msg preferredStyle:SPAlertControllerStyleAlert animationType:SPAlertAnimationTypeDefault];
+    [spac addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = ph;
+    }];
+    SPAlertAction * spAct;
+    spAct = [SPAlertAction actionWithTitle:@"确定" style:SPAlertActionStyleDefault handler:^(SPAlertAction * _Nonnull action)
+     {
+         [self performUIAsync:^{
+             clickAction(spac.textFields.firstObject.text);
+         } sec:0.1];
+     }];
+    spAct.titleColor = [UIColor blackColor];
+    [spac addAction:spAct];
+    spAct = [SPAlertAction actionWithTitle:@"取消" style:SPAlertActionStyleDefault handler:^(SPAlertAction * _Nonnull action)
+    {
+    }];
+    spAct.titleColor = [UIColor blackColor];
+    [spac addAction:spAct];
     [self presentViewController:spac animated:YES completion:nil];
 }
 
@@ -383,7 +419,7 @@ static __weak BaseViewController                    * exitToVC;
         __weak __typeof(self) ws = self;
         [self performUIAsync:^{
             [ws closeWindowVC];
-        } time:sec];
+        } sec:sec];
     }else
     {
         [self closeWindowVC];
@@ -417,17 +453,31 @@ static __weak BaseViewController                    * exitToVC;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidde:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+-(void)attemptKeyBoardWithView:(UIView *)view
+{
+    [self attemptKeyBoard];
+    inputLastView = view;
+}
+
 -(void)keyboardWillShow:(NSNotification *)notification
 {
     NSDictionary * info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;//得到鍵盤的高度
-    
-    CGFloat y = -[self onGetScorllHeightWithKBH:kbSize.height];
-    y = y > 0 ? 0 : y;
+    CGFloat y = 0;
+    if (inputLastView)
+    {
+        CGPoint p = [self.view convertPoint:inputLastView.frame.origin toView:nil];
+        CGFloat t = p.y + inputLastView.height;
+        y = (t - (self.view.height - kbSize.height)) * 1.5;
+        y = y < 0 ? 0 : y;
+    }else
+    {
+        y = [self onGetScorllHeightWithKBH:kbSize.height];
+    }
     [UIView beginAnimations:@"srcollView" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.275];
-    self.view.frame = CGRectMake(self.left, y, self.width, self.height);
+    self.view.frame = CGRectMake(self.left, -y, self.width, self.height);
     [UIView commitAnimations];
 }
 

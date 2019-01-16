@@ -12,4 +12,8 @@
 
 -(void)setImage:(UIImage *)image withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis;
 
+-(void)setImage:(UIImage *)image imgSize:(CGSize)is withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis;
+
+-(void)setImage:(UIImage *)image pixelSize:(BOOL)isPS withTitle:(NSString *)title titleColor:(UIColor *)tc withFont:(UIFont *)font titleImageSpace:(int)tis;
+
 @end

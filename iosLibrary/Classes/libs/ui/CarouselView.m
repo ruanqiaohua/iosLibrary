@@ -162,6 +162,16 @@
     [self setNeedsLayout];
 }
 
+-(void)setImageDatas:(NSArray *)datas enumObjFun:(NSString * (^)(NSObject * obj))eof
+{
+    NSMutableArray<NSString *> * ob = ONEW(NSMutableArray);
+    for (NSInteger i = 0; i < datas.count; i++)
+    {
+        [ob addObject:eof(datas[i])];
+    }
+    [self setImageDatas:ob];
+}
+
 -(void)setImageDatas:(NSArray<NSString *> *)datas
 {
     _isImageContent = YES;
@@ -189,6 +199,12 @@
     }
     [self setDatas:datas];
     [self setNeedsLayout];
+}
+
+-(void)setPageDotSelColor:(UIColor *)sc color:(UIColor *)col
+{
+    _pageControl.pageIndicatorTintColor = sc;
+    _pageControl.currentPageIndicatorTintColor = col;
 }
 
 -(BOOL)isHttpIndex:(NSInteger)index
@@ -275,7 +291,7 @@
     WEAKOBJ(self);
     [self performUIAsync:^{
         [weak_self scrollViewDidEndDecelerating:_sv_content];
-    } time:0.5];
+    } sec:0.5];
     
 }
 
@@ -284,13 +300,14 @@
     [_sv_content setContentOffset:CGPointMake(0, 0) animated:YES];
     [self performUIAsync:^{
         [self scrollViewDidEndDecelerating:_sv_content];
-    } time:0.5];
+    } sec:0.5];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGFloat x = _sv_content.contentOffset.x;
-    if (x >= self.width * 2)
+    NSLog(@"-------- x = %f", x);
+    if (x >= self.width)
     {
         _currentIndex++;
         if (_currentIndex == _dataItems.count - 1)
@@ -299,7 +316,7 @@
         }else if (_currentIndex == _dataItems.count)
         {
             _currentIndex = 0;
-            [self setContentWithLeft:_dataItems.count - 1 centerIndex:0 rightIndex:1];
+            [self setContentWithLeft:_dataItems.count - 1 centerIndex:0 rightIndex:MIN(1, _dataItems.count - 1)];
         }else
         {
             [self setContentWithLeft:_currentIndex - 1 centerIndex:_currentIndex rightIndex:_currentIndex + 1];

@@ -7,7 +7,15 @@
 //
 
 #import "UISkinConfig.h"
-
+#import "toolMacro.h"
 @implementation UISkinConfig
+
++(instancetype) createDefault
+{
+    UISkinConfig * cfg = [[UISkinConfig alloc] init];
+    cfg.rootBgColor = UIColorFromRGBA(0xffeef1f6);
+    cfg.contentBgColor = cfg.rootBgColor;
+    return cfg;
+}
 
 @end

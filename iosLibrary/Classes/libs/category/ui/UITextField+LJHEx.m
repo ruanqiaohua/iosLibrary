@@ -79,6 +79,14 @@ static NSString *kLimitTextLengthKey = @"kLimitTextLengthKey";
     self.leftView = leftView;
 }
 
+-(void)setMyLeftViewWidth:(CGFloat)width height:(CGFloat)height
+{
+    self.leftViewMode = UITextFieldViewModeAlways;
+    UIView * v = [[UIView alloc] init];
+    v.frame = CGRectMake(0, 0, width, height);
+    self.leftView = v;
+}
+
 - (void)setPlaceholderColor:(UIColor *)pc placeholder:(NSString *)ph
 {
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:ph attributes:@{NSForegroundColorAttributeName: pc}];

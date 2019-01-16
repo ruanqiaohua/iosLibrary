@@ -109,7 +109,7 @@ singleton_implementation(HttpUtils)
     onResult(nr);
 }
 
--(void)procFailureTask:(NSURLSessionDataTask * _Nullable)task error:(NSError * _Nonnull)error onStrResult:(void (^)(NSString * nr))onResult
+-(void)procFailureTask:(NSURLSessionDataTask * _Nullable)task error:(NSError * _Nonnull)error onStrResult:(void (^)(BOOL isSuccess, NSString * nr))onResult
 {
     NSString * str;
     if (task && task.response)
@@ -119,7 +119,7 @@ singleton_implementation(HttpUtils)
     {
         str = FRMSTR(@"网络错误（ec = %ld）",(long)error.code);
     }
-    onResult(str);
+    onResult(NO, str);
 }
 
 +(NetResult *)analyesDecodeData:(NSData *)data aesKey:(NSString *)aesKey
@@ -147,7 +147,9 @@ singleton_implementation(HttpUtils)
      {
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
      {
-         onResult([NetResult yy_modelWithJSON:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]]);
+         NSString * vl = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+         vl = [HttpUtils URLDecodedString:vl];
+         onResult([NetResult yy_modelWithJSON:vl]);
      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
      {
          [weak_self procFailureTask:task error:error onResult:onResult];
@@ -179,7 +181,7 @@ singleton_implementation(HttpUtils)
     [self getUrl:cmd.url param:cmd.params onResult:onResult];
 }
 
--(void)uploadFile:(NSDictionary<NSString *, NSData *> *)fileDatas reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(NSString * err)) failure
+-(void)uploadFile:(NSDictionary<NSString *, NSData *> *)fileDatas reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * nr))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(BOOL isSuccess, NSString * nr)) failure
 {
     WEAKOBJ(self);
     [manager POST:cmd.url parameters:[cmd.params yy_modelToJSONObject] constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
@@ -204,7 +206,7 @@ singleton_implementation(HttpUtils)
      }];
 }
 
--(void)uploadImage:(NSDictionary<NSString *, UIImage *> *)images reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(NSString * err)) failure
+-(void)uploadImage:(NSDictionary<NSString *, UIImage *> *)images reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(BOOL isSuccess, NSString * err)) failure
 {
     float icq = self.imageCompressionQuality;
     WEAKOBJ(self);
@@ -280,6 +282,26 @@ singleton_implementation(HttpUtils)
          
          [weak_self procFailureTask:task error:error onResult:onResult];
      }];
+}
+
+-(void)postUrl:(NSString *)url param:(NSDictionary *)param head:(NSDictionary *)head onResult:(void (^)(BOOL isSucess, NSString * result))onResult
+{
+    WEAKOBJ(self);
+    if (head)
+    {
+        for (NSString * key in head)
+        {
+            [manager.requestSerializer setValue:head[key] forHTTPHeaderField:key];
+        }
+    }
+    [manager POST:url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString * str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        onResult(YES, str);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [weak_self procFailureTask:task error:error onStrResult:onResult];
+    }];
 }
 
 @end

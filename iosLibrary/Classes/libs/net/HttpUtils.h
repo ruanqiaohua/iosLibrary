@@ -28,10 +28,12 @@ singleton_interface
 
 -(void)getCmd:(NetReqCmd *)cmd onResult:(void (^)(NetResult * nr))onResult;
 
--(void)uploadFile:(NSDictionary<NSString *, NSData *> *)fileDatas reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(NSString * err)) failure;
+-(void)uploadFile:(NSDictionary<NSString *, NSData *> *)fileDatas reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(BOOL isSuccess, NSString * err)) failure;
 
 -(void)uploadImage:(NSDictionary<NSString *, UIImage *> *)images reqCmd:(NetReqCmd *)cmd onResult:(void (^)(NetResult * nr))onResult;
 
--(void)uploadImage:(NSDictionary<NSString *, UIImage *> *)images reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(NSString * err)) failure;
+-(void)uploadImage:(NSDictionary<NSString *, UIImage *> *)images reqCmd:(NetReqCmd *)cmd onStrResult:(void (^)(NSString * result))onResult onProgress:(void (^)(float progress))onProgress failure:(void (^)(BOOL isSuccess, NSString * err)) failure;
+
+-(void)postUrl:(NSString *)url param:(NSDictionary *)param head:(NSDictionary *)head onResult:(void (^)(BOOL isSucess, NSString * result))onResult;
 
 @end

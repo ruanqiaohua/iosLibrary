@@ -59,13 +59,13 @@
 
 -(void)reqLayout
 {
-    _ivTitleLeft.myLeft = [self.uiSpace[0] floatValue];
-    _labTitle.leftPos.equalTo(_ivTitleLeft.rightPos).offset([self.uiSpace[1] floatValue]);
-    _ivTitleRight.leftPos.equalTo(_labTitle.rightPos).offset([self.uiSpace[2] floatValue]);
+    _ivTitleLeft.myLeft = [self.uiLeftSpace[0] floatValue];
+    _labTitle.leftPos.equalTo(_ivTitleLeft.rightPos).offset([self.uiLeftSpace[1] floatValue]);
+    _ivTitleRight.leftPos.equalTo(_labTitle.rightPos).offset([self.uiLeftSpace[2] floatValue]);
     //
-    _ivValueRight.rightPos.equalTo(self).offset([self.uiSpace[5] floatValue]);
-    _labValue.rightPos.equalTo(_ivValueRight.leftPos).offset([self.uiSpace[4] floatValue]);
-    _ivValueLeft.rightPos.equalTo(_labValue.leftPos).offset([self.uiSpace[3] floatValue]);
+    _ivValueRight.rightPos.equalTo(self).offset([self.uiRightSpace[2] floatValue]);
+    _labValue.rightPos.equalTo(_ivValueRight.leftPos).offset([self.uiRightSpace[1] floatValue]);
+    _ivValueLeft.rightPos.equalTo(_labValue.leftPos).offset([self.uiRightSpace[0] floatValue]);
 }
 
 -(void)reqFontChange
@@ -140,6 +140,20 @@
 {
     self.labValue.text = text;
     //[self.labValue sizeToFit];
+}
+
+-(void)setValueLeftImage:(UIImage *)li rightImage:(UIImage *)ri
+{
+    if (li)
+    {
+        self.ivValueLeft.image = li;
+        self.ivValueLeft.mySize = PTTO6SIZE(li.size);
+    }
+    if (ri)
+    {
+        self.ivValueRight.image = ri;
+        self.ivValueRight.mySize = PTTO6SIZE(ri.size);
+    }
 }
 
 -(void)addTopLineColor:(UIColor *)color height:(CGFloat)height

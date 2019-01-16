@@ -11,12 +11,32 @@
 #import "UIWebViewEx.h"
 #import "WebPluginBase.h"
 #import "toolMacro.h"
+#import <YYModel.h>
+//plugin
+#import "WebWXPlugin.h"
+#import "WebSystemPlugin.h"
+#import "WebTitleViewPlugin.h"
+#import "WebWindowPlugin.h"
 
-#define FUN_NAME    @"funName"
+#define FUN_NAME    @"method"
 #define PARAM       @"param"
 #define CALL_BACK   @"callback"
+#define JS_EXEC     @"exec"
+
+@interface WebShellVCBase()<WebJsInterface>
+@end
 
 @implementation WebShellVCBase
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        _plugins = ONEW(NSMutableArray);
+    }
+    return self;
+}
 
 -(void)initUI
 {
@@ -25,20 +45,23 @@
     [self.contentLayout addSubview:_titleView];
     _titleView.myHeight = TITLE_VIEW_HEIGHT;
     _titleView.widthSize.equalTo(self.contentLayout);
+    _titleView.space = self.skinCfg.titleViewSpace;
+    _titleView.lrSpace = self.skinCfg.titleViewLRSpace;
     //web
     _webView = ONEW(UIWebViewEx);
     [self.contentLayout addSubview:_webView];
     _webView.topPos.equalTo(_titleView.bottomPos);
     _webView.widthSize.equalTo(self.contentLayout);
     _webView.bottomPos.equalTo(self.contentLayout);
+    _webView.jsDelegate = self;
 }
 
 -(void)onInitData:(NSDictionary *)data
 {
+    [_webView setUrl:data[WS_URL]];
+    [self loadWebPlugin];
     [self activeWebPluginEvent:EVENT_INIT data:data];
 }
-
-
 
 -(void)onVCResult:(NSDictionary *)data
 {
@@ -48,18 +71,14 @@
     }
 }
 
--(UIImage *)getReturnBtnImage
-{
-    return nil;
-}
-
 -(void)activeWebPluginEvent:(NSInteger)event data:(NSDictionary *)data
 {
     switch (event)
     {
         case EVENT_INIT:
-            for (id<IWebPlugin> plg in _plugins)
+            for (WebPluginBase * plg in _plugins)
             {
+                plg.shell = self;
                 [plg initPluginWithData:data];
             }
             break;
@@ -78,7 +97,7 @@
         case EVENT_EXEC:
             for (id<IWebPlugin> plg in _plugins)
             {
-                if ([plg execWithFunName:data[FUN_NAME] param:data[PARAM] callback:data[CALL_BACK]]) break;
+                if ([plg execWithFunName:data[FUN_NAME] param:data callback:data[CALL_BACK]]) break;
             }
             break;
     }
@@ -93,9 +112,9 @@
                             WS_TITLE_LOCATION:@(tl),
                             WS_CLOSE_PARENT_CLOSE_LEVEL:@(level),
                             WS_CLOSE_RELOAD:@(bCloseReload),
-                            WS_CLOSE_EXEC_JS:js
+                            WS_CLOSE_EXEC_JS:SAFESTR(js)
                             };
-    [BaseViewController showPresentVC:self withVC:[BaseViewController getCurrVC] data:data];
+    [BaseViewController showPresentClass:[self class] withVC:self data:data];
 }
 
 -(void)closeWindowWithLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js
@@ -103,9 +122,9 @@
     NSDictionary * data = @{
                             WS_CLOSE_PARENT_CLOSE_LEVEL:@(level),
                             WS_CLOSE_RELOAD:@(bCloseReload),
-                            WS_CLOSE_EXEC_JS:js
+                            WS_CLOSE_EXEC_JS:SAFESTR(js)
                             };
-    [self closeWindowVCWithData:data delay:0];
+    [BaseViewController popCount:level data:data];
 }
 
 -(BaseAppVC *)getVC
@@ -150,14 +169,55 @@
     return self.titleView;
 }
 
--(void)jsCallWithFunName:(NSString *)name param:(NSObject *)param
+#pragma ------------- public fun
+-(NSString *)getTitleViewReturnBtn
 {
-
+    return nil;
 }
 
--(void)pluginCallbackWithFunName:(NSString *)name param:(NSObject *)param
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl closeLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js
 {
+    NSDictionary * data = @{WS_URL:url,
+                            WS_TITLE:title,
+                            WS_SHOW_RETURN:@(bShowReturn),
+                            WS_TITLE_LOCATION:@(TITLE_ALIG_MIDDLE),
+                            WS_CLOSE_PARENT_CLOSE_LEVEL:@(0),
+                            WS_CLOSE_RELOAD:@(NO),
+                            WS_CLOSE_EXEC_JS:SAFESTR(js)
+                            };
+    [BaseViewController showPresentClass:cls withVC:[BaseViewController getCurrVC] data:data];
+}
 
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn
+{
+    [WebShellVCBase openClass:cls url:url title:title bShowReturn:bShowReturn titleLocation:TITLE_ALIG_MIDDLE closeLevel:0 bCloseReload:NO closeExecJs:nil];
+}
+
+-(void)loadWebPlugin
+{
+    [self.plugins addObject:ONEW(WebWXPlugin)];
+    [self.plugins addObject:ONEW(WebTitleViewPlugin)];
+    [self.plugins addObject:ONEW(WebSystemPlugin)];
+    [self.plugins addObject:ONEW(WebWindowPlugin)];
+}
+
+#pragma ---------- web js
+-(void)procJsCallWithFunName:(NSString *)fn params:(NSArray *)params
+{
+    if ([fn isEqualToString:JS_EXEC])
+    {
+        NSData * jsonData = [params[0] dataUsingEncoding : NSUTF8StringEncoding];
+        NSArray * arr = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];
+        for (NSDictionary * dict in arr)
+        {
+            [self activeWebPluginEvent:EVENT_EXEC data:dict];
+        }
+    }
+}
+
+-(void)procJson:(NSString *)json
+{
+    
 }
 
 @end

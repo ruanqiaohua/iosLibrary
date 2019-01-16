@@ -56,6 +56,11 @@
     }
 }
 
++(CGSize)calSizeWithText:(NSString *)text font:(UIFont *)font
+{
+    return [Utils calSizeWithText:text font:font maxSize:CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT)];
+}
+
 +(CGSize)calSizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)ms
 {
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc]init];

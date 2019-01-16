@@ -32,7 +32,7 @@
         for (MyLinearLayout * ll in llAry)
         {
             [self addSubview:ll];
-            ll.myCenterY = 0;
+            ll.myCenterY = SYSTEM_STATUS_HEIGHT / 2;
             ll.wrapContentSize = YES;
         }
         llAry[1].myCenterX = 0;
@@ -49,11 +49,18 @@
     }
 }
 
+-(void)setLrSpace:(CGFloat)lrSpace
+{
+    llAry[0].myLeft = lrSpace;
+    llAry[2].myRight = lrSpace;
+}
+
 -(void)addBtn:(UIButton *)btn tag:(NSInteger)tag needClick:(BOOL)nc layout:(MyLinearLayout *)ll
 {
     [ll addSubview:btn];
     btn.myCenterY = 0;
     [btn sizeToFit];
+//    btn.wrapContentSize = YES;
     if (nc)
     {
         btn.tag = tag;
@@ -74,7 +81,7 @@
 
 -(NSInteger)addImageAsset:(NSString *)asset location:(NSInteger)tvl needClick:(BOOL)nc
 {
-    if (tvl >= llAry.count) return NON_INDEX;
+    if (tvl >= llAry.count || asset.length == 0) return NON_INDEX;
     MyLinearLayout * ll = llAry[tvl];
     NSInteger index = ll.subviews.count;
     //
@@ -87,7 +94,7 @@
 
 -(NSInteger)addImageUrl:(NSString *)url location:(NSInteger)tvl needClick:(BOOL)nc
 {
-    if (tvl >= llAry.count) return NON_INDEX;
+    if (tvl >= llAry.count || url.length == 0) return NON_INDEX;
     MyLinearLayout * ll = llAry[tvl];
     NSInteger index = ll.subviews.count;
     //
@@ -106,12 +113,12 @@
 
 -(NSInteger)addText:(NSString *)text font:(UIFont *)font textColor:(UIColor *)tc location:(NSInteger)tvl needClick:(BOOL)nc
 {
-    if (tvl >= llAry.count) return NON_INDEX;
+    if (tvl >= llAry.count || text.length == 0) return NON_INDEX;
     MyLinearLayout * ll = llAry[tvl];
     NSInteger index = ll.subviews.count;
     //
     UIButton * btn = ONEW(UIButton);
-    [btn setNormalTitle:text textColor:tc];
+    [btn setNormalTitle:text textColor:[UIColor blackColor]];
     btn.titleLabel.font = font;
     [self addBtn:btn tag:(tvl << 3) | (index & 7) needClick:nc layout:ll];
     return index;
@@ -169,6 +176,7 @@
     if (view)
     {
         [view setNormalTitle:text];
+        [view sizeToFit];
     }
     return view;
 }
@@ -178,6 +186,16 @@
     if (tvl >= llAry.count) return;
     MyLinearLayout * ll = llAry[tvl];
     [ll.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+}
+
+-(void)setBottomLineColor:(UIColor *)color lineHeight:(CGFloat)height
+{
+    UIView * line = ONEW(UIView);
+    line.backgroundColor = color;
+    line.myHeight = height;
+    line.widthSize.equalTo(self);
+    line.bottomPos.equalTo(self);
+    [self addSubview:line];
 }
 
 #pragma --------------------------------------------------------

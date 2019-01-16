@@ -44,6 +44,7 @@
         [self setupConfig];
         [self setupRootLayout];
         [self initUI];
+        [self initData];
         return YES;
     }
     return NO;
@@ -80,6 +81,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     sv.myHorzMargin = 0;
+    sv.showsVerticalScrollIndicator = NO;
     if (self.rootLayout.subviews.count > 0)
     {
         sv.topPos.equalTo(self.rootLayout.subviews.lastObject.bottomPos);
@@ -117,5 +119,6 @@
 }
 
 -(void)initUI{}
+-(void)initData{}
 
 @end

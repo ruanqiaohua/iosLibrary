@@ -21,9 +21,25 @@
     [self addSubview:line];
 }
 
+-(void)setUiLeftSpace:(NSArray<NSNumber *> *)uiLeftSpace
+{
+    _uiLeftSpace = uiLeftSpace;
+    _uiSpace = nil;
+    [self reqLayout];
+}
+
+-(void)setUiRightSpace:(NSArray<NSNumber *> *)uiRightSpace
+{
+    _uiRightSpace = uiRightSpace;
+    _uiSpace = nil;
+    [self reqLayout];
+}
+
 -(void)setUiSpace:(NSArray<NSNumber *> *)uiSpace
 {
     _uiSpace = uiSpace;
+    _uiLeftSpace = @[uiSpace[0],uiSpace[1],uiSpace[2]];
+    _uiRightSpace = @[uiSpace[3],uiSpace[4],uiSpace[5]];
     [self reqLayout];
 }
 

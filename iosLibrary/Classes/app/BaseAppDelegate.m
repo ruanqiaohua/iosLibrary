@@ -66,6 +66,8 @@
             [loader initLoaderWithDict:nil];
         }
     }
+    UIUserNotificationSettings * settting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settting];
     [self appDidFinishLaunching];
     return YES;
 }

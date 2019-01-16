@@ -23,6 +23,7 @@
 
 @interface CarouselView : UIView
 
+-(void)setImageDatas:(NSArray *)datas enumObjFun:(NSString * (^)(NSObject * obj))eof;
 -(void)setImageDatas:(NSArray<NSString *> *)datas;
 -(void)setLabelDatas:(NSArray<NSString *> *)datas font:(UIFont *)font textColor:(UIColor *)tc;
 -(void)setPageLocation:(int)pl space:(CGFloat)space;
@@ -30,6 +31,7 @@
 -(void)stopAutoPlay;
 -(void)next;
 -(void)last;
+-(void)setPageDotSelColor:(UIColor *)sc color:(UIColor *)col;
 
 @property(weak,nonatomic) id<CarouselDelegate> delegate;
 @property(assign,nonatomic) NSUInteger autoPlaySec;
