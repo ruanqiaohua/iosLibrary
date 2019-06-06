@@ -15,6 +15,7 @@
 
 -(instancetype)initWithTableView:(UITableView *)tv tvCell:(Class)tcCls isRefresh:(BOOL)isRefresh isLoaded:(BOOL)isLoaded isFirstRefresh:(BOOL)isFirstRefresh viewController:(BaseAppVC *)vc;
 
+-(void)initData;
 -(void)setTableViewCell:(BaseTableCell *)cell;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "WebPluginBase.h"
 #import "WebShellVCBase.h"
+#import "toolMacro.h"
 #import <YYModel.h>
 
 @implementation WebPluginBase
@@ -48,12 +49,12 @@
 
 -(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc alias:(NSString *)alias
 {
-    return [self procCallback:cb isProc:isProc values:@{SUCCESS:@(YES),METHOD:alias}];
+    return [self procCallback:cb isProc:isProc isSuccess:YES alias:alias];
 }
 
 -(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc isSuccess:(BOOL)isSuccess alias:(NSString *)alias
 {
-    return [self procCallback:cb isProc:isProc values:@{SUCCESS:@(isSuccess),METHOD:alias}];
+    return [self procCallback:cb isProc:isProc values:@{SUCCESS:@(isSuccess),METHOD:SAFESTR(alias)}];
 }
 
 @end

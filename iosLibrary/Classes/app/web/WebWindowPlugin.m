@@ -25,11 +25,8 @@
         NSString * url = SAFESTR(param[WS_URL]);
         NSString * title = SAFESTR(param[WS_TITLE]);
         NSInteger tvl = SAFE_DICT_INT(param, WS_TITLE_LOCATION, TVL_MIDDLE);
-        NSInteger cl = SAFE_DICT_INT(param, WS_CLOSE_PARENT_CLOSE_LEVEL, 0);
-        BOOL bReload = SAFE_DICT_BOOL(param, WS_CLOSE_RELOAD, NO);
-        NSString * js = SAFESTR(param[WS_CLOSE_EXEC_JS]);
-
-        [self.shell openUrl:url title:title bShowReturn:isShowReturn titleLocation:tvl closeLevel:cl bCloseReload:bReload closeExecJs:js];
+        BOOL bNextSelfClose = SAFE_DICT_BOOL(param, P_WND_IS_NEXT_SELF_CLOSE, NO);
+        [self.shell openUrl:url title:title bShowReturn:isShowReturn titleLocation:tvl bNextSelfClose:bNextSelfClose];
         isProc = YES;
     }else if ([name isEqualToString:WND_EXIT_TO] || [name isEqualToString:WND_CLOSE_WINDOW])
     {
@@ -37,6 +34,10 @@
         BOOL bReload = SAFE_DICT_BOOL(param, P_CLOSE_RELOAD, NO);
         NSString * js = SAFESTR(param[P_CLOSE_EXEC_JS]);
         [self.shell closeWindowWithLevel:cl bCloseReload:bReload closeExecJs:js];
+        isProc = YES;
+    }else if ([name isEqualToString:WND_RELOAD])
+    {
+        [[self.shell getWebView] reloadEx];
         isProc = YES;
     }
     isProc = isProc || !([self execOtherWithFunName:name param:param callback:cb] == EXEC_OTHER_NO_PROC);

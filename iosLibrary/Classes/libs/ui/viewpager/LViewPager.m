@@ -259,6 +259,7 @@
 
 - (void)setSelectTabIndex:(NSUInteger)index
 {
+    if (self.tabs.count <= index)return;
     _selectIndex = index;
     if (self.tabs)
     {
@@ -302,24 +303,30 @@
     [self setSelectTabIndex:index];
 }
 
--(void)tabClick:(UIButton *)sender
+-(void)setSelectIndex:(NSUInteger)selectIndex
 {
-    NSInteger index = sender.tag - TAB_TAG_START;
-    if (self.delegate && ![self.delegate viewPager:self selectIndex:index])
+    if (_selectIndex == selectIndex)return;
+    if (self.delegate && ![self.delegate viewPager:self selectIndex:selectIndex])
     {
         return;
     }
+    _selectIndex = selectIndex;
     if (_showAnimationMoveArrowLine)
     {
         [UIView beginAnimations:@"navTab" context:nil];
         [UIView setAnimationDuration:0.3];
-        [self setSelectTabIndex:index];
-        svRoot.contentOffset = CGPointMake(index * self.frame.size.width, 0);
+        [self setSelectTabIndex:selectIndex];
+        svRoot.contentOffset = CGPointMake(selectIndex * self.frame.size.width, 0);
         [UIView commitAnimations];
     }else{
-        [self setSelectTabIndex:index];
-        svRoot.contentOffset = CGPointMake(index * self.frame.size.width, 0);
+        [self setSelectTabIndex:selectIndex];
+        svRoot.contentOffset = CGPointMake(selectIndex * self.frame.size.width, 0);
     }
+}
+
+-(void)tabClick:(UIButton *)sender
+{
+    self.selectIndex = sender.tag - TAB_TAG_START;
 }
 
 -(void)enterViewController

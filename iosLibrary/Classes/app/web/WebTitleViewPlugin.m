@@ -212,7 +212,7 @@
     switch (bi.btnType)
     {
         case BTN_TYPE_NORMAL:
-            [self.shell openUrl:bi.openUrl title:bi.title bShowReturn:YES titleLocation:TVL_MIDDLE closeLevel:0 bCloseReload:bi.closeReload closeExecJs:@""];
+            [self.shell openUrl:bi.openUrl title:bi.title bShowReturn:YES titleLocation:TVL_MIDDLE bNextSelfClose:NO];
             break;
         case BTN_TYPE_JS:
             [self.shell execJScript:FRMSTR(@"event_callback(%@)", [@{METHOD:bi.data} yy_modelToJSONString])];

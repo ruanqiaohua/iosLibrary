@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
  s.ios.deployment_target = '7.0'
 
  s.source_files = 'iosLibrary/Classes/**/*'
- s.resources = ['iosLibrary/Assets/*.{png,bundle}']
+ s.resources = ['iosLibrary/Assets/**/*']
 
  # s.public_header_files = 'Pod/Classes/**/*.h'
  s.frameworks = 'Foundation', 'UIKit', 'AVFoundation', 'AVKit', 'CoreGraphics', 'CoreText'

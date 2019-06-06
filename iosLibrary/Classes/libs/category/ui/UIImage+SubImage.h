@@ -25,6 +25,9 @@
 /** 在指定的size里面生成一个平铺的图片 */
 - (UIImage *)getTiledImageWithSize:(CGSize)size;
 
+//图片转为Base64
+-(NSString *)imageToBase64;
+
 /** UIView转化为UIImage */
 + (UIImage *)imageFromView:(UIView *)view;
 

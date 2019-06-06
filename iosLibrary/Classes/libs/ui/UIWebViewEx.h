@@ -45,5 +45,6 @@
 
 -(void)setUrl:(NSString *)url;
 -(void)execJs:(NSString *)js;
+-(void)reloadEx;
 
 @end

@@ -88,6 +88,25 @@
     return bgImage;
 }
 
+-(NSString *)imageToBase64
+{
+    NSData * imageData = nil;
+    NSString * mimeType = nil;//图片要压缩的比例，此处100根据需求，自行设置
+    imageData = UIImageJPEGRepresentation(self,0.5);
+    if (imageData)
+    {
+        mimeType = @"image/jpeg";
+    }else
+    {
+        imageData = UIImagePNGRepresentation(self);
+        if (imageData)
+        {
+            mimeType = @"image/png";
+        }else return @"";
+    }
+    return [NSString stringWithFormat:@"data:%@;base64,%@", mimeType,[imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+}
+
 #pragma mark - UIView转化为UIImage
 + (UIImage *)imageFromView:(UIView *)view
 {

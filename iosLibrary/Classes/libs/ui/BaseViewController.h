@@ -20,9 +20,10 @@
 @interface ShowInfo : NSObject
 
 @property(strong,nonatomic) NSDictionary    * data;
-@property(assign,nonatomic) BOOL            isReturn;
+@property(assign,nonatomic) BOOL            isReturnData;//是否有返回数据,因为返回与打开都是用同一个data带数据，所以要标识一下
 @property(assign,nonatomic) NSUInteger      showType;
 @property(assign,nonatomic) BOOL            isShowAnimated;
+@property(assign,nonatomic) BOOL            isNextCloseSelfColse;//当下次窗体关闭时，本窗体一同关闭
 
 @end
 

@@ -31,7 +31,7 @@
         tv.delegate = self;
         tv.dataSource = self;
         [tv registerClass:tcCls forCellReuseIdentifier:NSStringFromClass(tcCls)];
-            //
+        //
         if (isRefresh)
         {
             [self addRefresh];
@@ -43,18 +43,21 @@
         if (isFirstRefresh)
         {
             if (isRefresh) [tv.mj_header beginRefreshing];
-            else [self onRefresh];
+            else [self reqNetDataPage:1];
         }
+        [self initData];
 
     }
     return self;
 }
 
+-(void)initData{}
+
 /****************** UITableViewDataSource *************************/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataList.count;
+    return [self getDataList].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,7 +65,7 @@
     BaseTableCell * cell = (BaseTableCell *) [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(cellClass) forIndexPath:indexPath];
     [self setTableViewCell:cell];
     cell.listAdapter = self;
-    [cell setDataList:self.dataList index:indexPath.row];
+    [cell setDataList:[self getDataList] index:indexPath.row];
     return cell;
 }
 

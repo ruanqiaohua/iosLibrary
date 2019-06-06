@@ -19,10 +19,15 @@
 #import "SngRowLayout.h"
 #import "SPAlertController.h"
 #import "RLTopBottomView.h"
+#import "ScrollTabbar.h"
+#import "ZFScanViewController.h"
+#import "SRActionSheet.h"
+#import "CameraManager.h"
+#import "HttpUtils.h"
 
-@interface ViewController()
+@interface ViewController()<CameraManagerDelegate>
 {
-    SngRowLayout    * srl;
+    //'iosLibrary/Assets/*.{png,bundle,html,css,js}',
 }
 @end
 
@@ -41,17 +46,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    RLTopBottomView * tbv = ONEW(RLTopBottomView);
-    tbv.myWidth = SCREEN_WIDTH / 3;
-    tbv.myHeight = PXTO6SW(450);
-    tbv.myTop = 64;
-    tbv.backgroundColor = [UIColor whiteColor];
-    [tbv setSpace:PXTO6SH(30)];
-    [self.view addSubview:tbv];
-    tbv.labTop.text = @"100";
-    tbv.labBottom.text = @"测试";
+    UIButton * btn = ONEW(UIButton);
+    [btn setNormalTitle:@"上传文件" textColor:[UIColor blackColor]];
+    btn.titleLabel.font = SYS_FONT(39);
+    btn.wrapContentSize = YES;
+    [btn addTarget:self action:@selector(upClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:btn];
 }
 
+-(void)upClick:(id)sender
+{
+    [CameraManager sharedInst].delegate = self;
+    [CameraManager sharedInst].maxImageWHPX = 500;
+    [[CameraManager sharedInst] openPhotoLibraryWithVC:self];
+}
 
++(NSString *)imageBase64WithDataURL:(UIImage *)image
+{
+    NSData * imageData = nil;
+    NSString * mimeType = nil;//图片要压缩的比例，此处100根据需求，自行设置
+    CGFloat x = 100 / image.size.height;
+    if (x > 1)
+    {
+        x = 1.0;
+    }
+    imageData = UIImageJPEGRepresentation(image,x);
+    mimeType = @"image/jpeg";
+    return [NSString stringWithFormat:@"data:%@;base64,%@", mimeType,[imageData base64EncodedStringWithOptions:0]];
+}
+
+-(void)onCMImage:(UIImage *)image
+{
+//    NSString * b64 = [image imageToBase64];
+//    [API postUrl:@"http://115.29.64.206:8763/dguser/photo/uploadPhotoBaseFile" param:@{@"content":b64} onResult:^(BOOL isOK, NSString *msg, NSDictionary *dict)
+//     {
+//         NSLog(@"isOk = %d, msg = %@ val = %@",isOK,msg,dict);
+//     }];
+}
 
 @end

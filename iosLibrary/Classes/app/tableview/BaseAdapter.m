@@ -30,7 +30,7 @@
     WEAKOBJ(self);
     MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 
-        [weak_self onRefresh];
+        [weak_self reqNetDataPage:1];
     }];
     header.lastUpdatedTimeLabel.hidden = YES;
     header.stateLabel.hidden = YES;
@@ -43,7 +43,7 @@
     WEAKOBJ(self);
     MJRefreshBackNormalFooter * footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
 
-        [weak_self onLoadMore];
+        [weak_self reqNetDataPage:[weak_self getCurPage] + 1];
     }];
     footer.stateLabel.hidden = YES;
     self.dataView.mj_footer = footer;
@@ -120,14 +120,22 @@
     [self.dataView.mj_footer endRefreshing];
 }
 
+-(NSArray *)getDataList
+{
+    return self.dataList;
+}
+
+-(NSInteger)getCurPage
+{
+    return self.curPage;
+}
+
+-(void)reqNetDataPage:(NSInteger)page{}
 //////////////////////////
 -(BOOL)isNeedRowMenuIndexPath:(NSIndexPath *)ip
 {
     return NO;
 }
-
--(void)onRefresh{}
--(void)onLoadMore{}
 -(void)onRowMenuClick:(TableViewMenuItem *)item data:(DataBase *)data{}
 -(NSArray<TableViewMenuItem *> *) getRowMenuItemIndexPath:(NSIndexPath *)ip
 {

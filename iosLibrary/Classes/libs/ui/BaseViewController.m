@@ -66,17 +66,17 @@ static __weak BaseViewController                    * exitToVC;
     {
         [self onInitViewTime:INIT_TIME_WILL_APPEAR];
         isOnceWillAppear = YES;
-        if (!self.showInfo.isReturn)
+        if (!self.showInfo.isReturnData)
         {
             [self onInitData:self.showInfo.data];
             self.showInfo.data = nil;
         }
     }
     //
-    if (self.showInfo.isReturn)
+    if (self.showInfo.isReturnData)
     {
         [self onVCResult:self.showInfo.data];
-        self.showInfo.isReturn = NO;
+        self.showInfo.isReturnData = NO;
         self.showInfo.data = nil;
     }
     if (exitTo)
@@ -100,6 +100,11 @@ static __weak BaseViewController                    * exitToVC;
             exitToVC = nil;
         }
     }
+    if (isOnceWillAppear && self.showInfo.isNextCloseSelfColse)
+    {
+        [self closeWindowVC];
+        return;
+    }
     [self onWillEnter];
 }
 
@@ -120,7 +125,7 @@ static __weak BaseViewController                    * exitToVC;
 -(void)setReturnData:(NSDictionary *)data
 {
     self.showInfo.data = data;
-    self.showInfo.isReturn = YES;
+    self.showInfo.isReturnData = YES;
 }
 
 /***********************************************************************/
@@ -160,7 +165,7 @@ static __weak BaseViewController                    * exitToVC;
 +(void)showVC:(BaseViewController *)bvc showType:(NSUInteger)st isAnimated:(BOOL)anim withVC:(BaseViewController *)vc data:(NSDictionary *)data
 {
     bvc.showInfo.isShowAnimated = anim;
-    bvc.showInfo.isReturn = NO;
+    bvc.showInfo.isReturnData = NO;
     bvc.showInfo.showType = st;
     bvc.showInfo.data = data;
     NSMutableArray * vcs = [BaseViewController getVCSet];
@@ -240,7 +245,7 @@ static __weak BaseViewController                    * exitToVC;
     {
         exitTo = YES;
         exitToVC = vc_set[index];
-        exitToVC.showInfo.isReturn = YES;
+        exitToVC.showInfo.isReturnData = YES;
         exitToVC.showInfo.data = data;
         vc_set[vc_set.count - 1].showInfo.isShowAnimated = NO;
         [vc_set[vc_set.count - 1] closeWindowVC];

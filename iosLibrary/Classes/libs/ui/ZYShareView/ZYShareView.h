@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZYShareItem.h"
 
+//分享面板
 @interface ZYShareView : UIView
 
 /** 顶部标题Label, 默认内容为"分享" */

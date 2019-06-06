@@ -9,6 +9,7 @@
 #import "ImgTxtBtn.h"
 #import "toolMacro.h"
 #import "category_inc.h"
+#import <UIImageView+WebCache.h>
 
 @interface ImgTxtBtn()
 {
@@ -44,6 +45,11 @@
     txtSelColor = tsc;
     if (imgStr.length > 0)
     {
+        if ([imgStr hasPrefix:@"http"])
+        {
+            [_img sd_setImageWithURL:[NSURL URLWithString:imgStr]];
+            return;
+        }
         _img.image = OIMG_STR(imgStr);
         _img.mySize = PTTO6SIZE(_img.image.size);
     }else _img.mySize = CGSizeZero;

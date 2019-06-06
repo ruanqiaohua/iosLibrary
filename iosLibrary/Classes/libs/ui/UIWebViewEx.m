@@ -49,6 +49,15 @@
     return self;
 }
 
+-(void)loadRequest:(NSURLRequest *)request
+{
+    [super loadRequest:request];
+    if (!bWebLoadErr)
+    {
+        lastUrl = request.URL.absoluteString;
+    }
+}
+
 -(void)setUrl:(NSString *)url
 {
     [self loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]]];
@@ -116,7 +125,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [loading_view stopAnimating];
-    bWebLoadErr = [webView.request.URL.absoluteString isEqualToString:@"error.html"];
+    bWebLoadErr = [webView.request.URL.absoluteString hasSuffix:@"error.html"];
     [self.webDelegate webViewDidFinishLoad:webView];
 }
 
@@ -125,7 +134,7 @@
     [loading_view stopAnimating];
     if ([error code] != NSURLErrorCancelled)
     {
-        lastUrl = webView.request.URL.absoluteString;
+        bWebLoadErr = YES;
         NSString* path = [[NSBundle mainBundle] pathForResource:@"error" ofType:@"html"];
         NSURL* url = [NSURL fileURLWithPath:path];
         NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
@@ -150,6 +159,12 @@
     {
         [self.webDelegate scrollViewDidScroll:scrollView];
     }
+}
+
+-(void)reloadEx
+{
+    bWebLoadErr = NO;
+    [self setUrl:lastUrl];
 }
 
 @end

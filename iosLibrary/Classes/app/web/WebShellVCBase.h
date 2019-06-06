@@ -28,7 +28,7 @@
 #pragma ------------------- web外壳接口声明 ----------------
 @protocol IWebShell
 
--(void)openUrl:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl closeLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js;
+-(void)openUrl:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl bNextSelfClose:(BOOL)bNextSelfClose;
 -(void)closeWindowWithLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js;
 -(BaseAppVC *)getVC;
 -(Class)getVCClass;
@@ -50,7 +50,7 @@
 @property(readonly, nonatomic) UIWebViewEx                    * webView;
 @property(readonly, nonatomic) NSMutableArray<WebPluginBase *>* plugins;
 
-+(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl closeLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js;
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl;
 +(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn;
 -(NSString *)getTitleViewReturnBtn;
 -(void)loadWebPlugin;

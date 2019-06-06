@@ -38,9 +38,11 @@
 -(void)endRefresh;
 -(void)endLoadMore;
 //////////////////////
+-(NSArray *)getDataList;
+-(NSInteger)getCurPage;
+-(void)reqNetDataPage:(NSInteger)page;
+///////////
 -(BOOL)isNeedRowMenuIndexPath:(NSIndexPath *)ip;
--(void)onRefresh;
--(void)onLoadMore;
 -(void)onRowMenuClick:(TableViewMenuItem *)item data:(DataBase *)data;
 -(NSArray<TableViewMenuItem *> *) getRowMenuItemIndexPath:(NSIndexPath *)ip;
 

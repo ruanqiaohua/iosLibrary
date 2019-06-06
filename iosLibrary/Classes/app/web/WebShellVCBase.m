@@ -104,16 +104,14 @@
 }
 
 #pragma -------------------------------------------------
--(void)openUrl:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl closeLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js
+-(void)openUrl:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl bNextSelfClose:(BOOL)bNextSelfClose
 {
     NSDictionary * data = @{WS_URL:url,
                             WS_TITLE:title,
                             WS_SHOW_RETURN:@(bShowReturn),
-                            WS_TITLE_LOCATION:@(tl),
-                            WS_CLOSE_PARENT_CLOSE_LEVEL:@(level),
-                            WS_CLOSE_RELOAD:@(bCloseReload),
-                            WS_CLOSE_EXEC_JS:SAFESTR(js)
+                            WS_TITLE_LOCATION:@(tl)
                             };
+    self.showInfo.isNextCloseSelfColse = bNextSelfClose;
     [BaseViewController showPresentClass:[self class] withVC:self data:data];
 }
 
@@ -175,22 +173,19 @@
     return nil;
 }
 
-+(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl closeLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl
 {
     NSDictionary * data = @{WS_URL:url,
                             WS_TITLE:title,
                             WS_SHOW_RETURN:@(bShowReturn),
-                            WS_TITLE_LOCATION:@(TITLE_ALIG_MIDDLE),
-                            WS_CLOSE_PARENT_CLOSE_LEVEL:@(0),
-                            WS_CLOSE_RELOAD:@(NO),
-                            WS_CLOSE_EXEC_JS:SAFESTR(js)
+                            WS_TITLE_LOCATION:@(TITLE_ALIG_MIDDLE)
                             };
     [BaseViewController showPresentClass:cls withVC:[BaseViewController getCurrVC] data:data];
 }
 
 +(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn
 {
-    [WebShellVCBase openClass:cls url:url title:title bShowReturn:bShowReturn titleLocation:TITLE_ALIG_MIDDLE closeLevel:0 bCloseReload:NO closeExecJs:nil];
+    [WebShellVCBase openClass:cls url:url title:title bShowReturn:bShowReturn titleLocation:TITLE_ALIG_MIDDLE];
 }
 
 -(void)loadWebPlugin

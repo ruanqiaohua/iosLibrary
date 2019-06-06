@@ -69,4 +69,10 @@
     return [text boundingRectWithSize:ms options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
 }
 
++(NSString *)maskPhone:(NSString *)phone
+{
+    NSString *string = [phone stringByReplacingOccurrencesOfString:[phone substringWithRange:NSMakeRange(3,4)]withString:@"****"];
+    return string;
+}
+
 @end

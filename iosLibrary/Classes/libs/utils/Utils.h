@@ -15,5 +15,5 @@
 +(void)callLocalPhone:(NSString *)phone;
 +(CGSize)calSizeWithText:(NSString *)text font:(UIFont *)font;
 +(CGSize)calSizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)ms;
-
++(NSString *)maskPhone:(NSString *)phone;
 @end
