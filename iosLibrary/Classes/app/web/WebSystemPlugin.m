@@ -42,7 +42,12 @@
         isProc = YES;
     }
     isProc = isProc || !([self execOtherWithFunName:name param:param callback:cb] == EXEC_OTHER_NO_PROC);
-    return [self procCallback:cb isProc:isProc alias:param[P_ALIAS]];
+    if (isProc)
+    {
+        [self procCallback:cb param:param isSuccess:YES values:nil];
+        return YES;
+    }
+    return NO;
 }
 
 @end

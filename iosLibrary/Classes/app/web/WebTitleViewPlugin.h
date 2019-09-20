@@ -28,6 +28,8 @@
 //
 #define TV_SET_TITLE        @"settitle"
 #define TV_SET_RETURN       @"setreturn"
+#define TV_SHOW_RETURN      @"isShowReturn"
+#define P_IS_SHOW           @"isShow"
 //
 #define BTN_TYPE_NORMAL     0
 #define BTN_TYPE_PK         1//不使用
@@ -37,6 +39,6 @@
 
 @interface WebTitleViewPlugin : WebPluginBase
 
-
+-(void)setReturnShow:(BOOL)isShow;
 
 @end

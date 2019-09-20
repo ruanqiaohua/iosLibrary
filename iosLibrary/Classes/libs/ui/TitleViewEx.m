@@ -65,9 +65,9 @@
     [self addSubview:llTitleLayout];
     //
     labTitle = ONEW(UILabel);
-    labTitle.numberOfLines = 1;
     labTitle.widthSize.equalTo(labTitle.widthSize).max(SCREEN_WIDTH * 0.5);
     labTitle.heightSize.equalTo(llTitleLayout);
+    labTitle.numberOfLines = 1;
     [llTitleLayout addSubview:labTitle];
     //
     ivTitleIco = ONEW(UIImageView);

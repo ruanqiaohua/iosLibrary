@@ -13,7 +13,7 @@
 		5A0B2E971F8F0C9C00B32FD3 /* LWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0B2E951F8F0C9900B32FD3 /* LWaveView.m */; };
 		5A1138B41F8FAD3C00D11852 /* UIView+PlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1138B31F8FAD3C00D11852 /* UIView+PlaceholderView.m */; };
 		5A1DCB4D2177082400B9D01F /* HttpNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1DCB4C2177082400B9D01F /* HttpNet.m */; };
-		5A2EE5C41FE3AB8C001794AD /* RLTopBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2EE5C31FE3AB8C001794AD /* RLTopBottomView.m */; };
+		5A2EE5C41FE3AB8C001794AD /* TBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2EE5C31FE3AB8C001794AD /* TBTextView.m */; };
 		5A30762A1FB142EB0068D412 /* TagLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3076291FB142EB0068D412 /* TagLayout.m */; };
 		5A3076331FB3E1200068D412 /* UITextField+LJHEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3076321FB3E1200068D412 /* UITextField+LJHEx.m */; };
 		5A40BAFE1FD7DB5C00B73C6B /* SPAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BAFD1FD7DB5C00B73C6B /* SPAlertController.m */; };
@@ -151,8 +151,8 @@
 		5A1138B31F8FAD3C00D11852 /* UIView+PlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+PlaceholderView.m"; sourceTree = "<group>"; };
 		5A1DCB4B2177082400B9D01F /* HttpNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpNet.h; sourceTree = "<group>"; };
 		5A1DCB4C2177082400B9D01F /* HttpNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpNet.m; sourceTree = "<group>"; };
-		5A2EE5C21FE3AB8C001794AD /* RLTopBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RLTopBottomView.h; sourceTree = "<group>"; };
-		5A2EE5C31FE3AB8C001794AD /* RLTopBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RLTopBottomView.m; sourceTree = "<group>"; };
+		5A2EE5C21FE3AB8C001794AD /* TBTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBTextView.h; sourceTree = "<group>"; };
+		5A2EE5C31FE3AB8C001794AD /* TBTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBTextView.m; sourceTree = "<group>"; };
 		5A3076281FB142EB0068D412 /* TagLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagLayout.h; sourceTree = "<group>"; };
 		5A3076291FB142EB0068D412 /* TagLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagLayout.m; sourceTree = "<group>"; };
 		5A3076311FB3E1200068D412 /* UITextField+LJHEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+LJHEx.h"; sourceTree = "<group>"; };
@@ -432,8 +432,8 @@
 				5A52913A1FBE7DD900D1576E /* SngRowLayout.m */,
 				5A52913C1FBE85A200D1576E /* AbsLayout.h */,
 				5A52913D1FBE85A200D1576E /* AbsLayout.m */,
-				5A2EE5C21FE3AB8C001794AD /* RLTopBottomView.h */,
-				5A2EE5C31FE3AB8C001794AD /* RLTopBottomView.m */,
+				5A2EE5C21FE3AB8C001794AD /* TBTextView.h */,
+				5A2EE5C31FE3AB8C001794AD /* TBTextView.m */,
 				7879405F229B94CE00FB69EE /* ScrollTabbar.h */,
 				7879405E229B94CE00FB69EE /* ScrollTabbar.m */,
 				5AB4EFFA215B128D00B0CE84 /* ImgTxtBtn.h */,
@@ -534,6 +534,8 @@
 				5A66BEE21F7D29990014EDD6 /* UIImageView+Ex.m */,
 				5A66BEE31F7D29990014EDD6 /* UILabel+Html.h */,
 				5A66BEE41F7D29990014EDD6 /* UILabel+Html.m */,
+				5AB4F050215CC1B200B0CE84 /* UILabel+VerticalAlignment.h */,
+				5AB4F051215CC1B200B0CE84 /* UILabel+VerticalAlignment.m */,
 				5A66BEE71F7D29990014EDD6 /* UIView+UIViewHelper.h */,
 				5A66BEE81F7D29990014EDD6 /* UIView+UIViewHelper.m */,
 				5A66BEE91F7D29990014EDD6 /* UIViewController+ViewControllerHelper.h */,
@@ -544,8 +546,6 @@
 				5ACBAB4B1FA1BF5800F6B220 /* UIView+Toast.m */,
 				5A3076311FB3E1200068D412 /* UITextField+LJHEx.h */,
 				5A3076321FB3E1200068D412 /* UITextField+LJHEx.m */,
-				5AB4F050215CC1B200B0CE84 /* UILabel+VerticalAlignment.h */,
-				5AB4F051215CC1B200B0CE84 /* UILabel+VerticalAlignment.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1239,7 +1239,7 @@
 				5A93906E2015B8B7002927ED /* UIColor+Zirkfied.m in Sources */,
 				5A66BF781F7D299A0014EDD6 /* LViewPager.m in Sources */,
 				5A66BE581F7B44C80014EDD6 /* BaseAppVC.m in Sources */,
-				5A2EE5C41FE3AB8C001794AD /* RLTopBottomView.m in Sources */,
+				5A2EE5C41FE3AB8C001794AD /* TBTextView.m in Sources */,
 				5A5291381FBE7C7E00D1576E /* ViewDataModel.m in Sources */,
 				5A52913E1FBE85A200D1576E /* AbsLayout.m in Sources */,
 				5A66BF5E1F7D299A0014EDD6 /* UIViewController+ViewControllerHelper.m in Sources */,

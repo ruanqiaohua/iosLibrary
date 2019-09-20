@@ -40,6 +40,7 @@
 
 @interface UIWebViewEx : UIWebView
 
+@property(assign,nonatomic) BOOL bWebLoadErr;
 @property(weak,nonatomic) id<WebViewDelegate> webDelegate;
 @property(weak,nonatomic) id<WebJsInterface> jsDelegate;
 

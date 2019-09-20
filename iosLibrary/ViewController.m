@@ -18,7 +18,7 @@
 #import "ContactsManager.h"
 #import "SngRowLayout.h"
 #import "SPAlertController.h"
-#import "RLTopBottomView.h"
+#import "TBTextView.h"
 #import "ScrollTabbar.h"
 #import "ZFScanViewController.h"
 #import "SRActionSheet.h"

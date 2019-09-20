@@ -9,6 +9,7 @@
 #import "ImgTxtBtn.h"
 #import "toolMacro.h"
 #import "category_inc.h"
+#import <WZLBadgeImport.h>
 #import <UIImageView+WebCache.h>
 
 @interface ImgTxtBtn()
@@ -18,6 +19,8 @@
     //
     UIColor     * txtColor;
     UIColor     * txtSelColor;
+    //
+    UIView      * badgeView;
 }
 @end
 
@@ -30,7 +33,8 @@
     {
         _img = ONEW(UIImageView);
         _text = ONEW(UILabel);
-        _text.wrapContentSize = YES;
+        _text.wrapContentHeight = YES;
+        _text.numberOfLines = 1;
         [self addSubview:_img];
         [self addSubview:_text];
     }
@@ -48,6 +52,14 @@
         if ([imgStr hasPrefix:@"http"])
         {
             [_img sd_setImageWithURL:[NSURL URLWithString:imgStr]];
+            WEAKOBJ(_img);
+            [_img sd_setImageWithURL:[NSURL URLWithString:imgStr] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                if (image)
+                {
+                    weak__img.image = image;
+                    weak__img.mySize = PXTO6SIZE(image.size);
+                }
+            }];
             return;
         }
         _img.image = OIMG_STR(imgStr);
@@ -66,6 +78,8 @@
     _img.myCenterX = 0;
     _text.myCenterX = 0;
     _img.centerYPos.equalTo(@[_text.centerYPos.offset(space)]);
+    _text.widthSize.equalTo(self);
+    _text.textAlignment = NSTextAlignmentCenter;
 }
 
 -(void)setLeftImageStr:(NSString *)imgStr leftSelImgStr:(NSString *)selImgStr bottomText:(NSString *)txt font:(UIFont *)font txtColor:(UIColor *)tc txtSelColor:(UIColor *)tsc space:(CGFloat)space
@@ -109,6 +123,29 @@
             _text.textColor = txtColor;
         }
     }
+}
+
+-(void)showBadgeWithOffsetPoint:(CGPoint)point
+{
+    if (badgeView == nil)
+    {
+        badgeView = ONEW(UIView);
+        badgeView.rightPos.equalTo(self).offset(point.x);
+        badgeView.topPos.equalTo(self).offset(point.y);
+        badgeView.mySize = CGSizeMake(10, 10);
+        [self addSubview:badgeView];
+    }
+    [badgeView showBadge];
+}
+
+-(void)hiddenBadge
+{
+    [badgeView clearBadge];
+}
+
+-(void)showBadgeNumber:(NSInteger)number offsetPoint:(CGPoint)point
+{
+    
 }
 
 @end

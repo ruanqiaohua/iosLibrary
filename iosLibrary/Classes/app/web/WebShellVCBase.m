@@ -180,6 +180,7 @@
                             WS_SHOW_RETURN:@(bShowReturn),
                             WS_TITLE_LOCATION:@(TITLE_ALIG_MIDDLE)
                             };
+//    [BaseViewController showPushClass:cls withVC:[BaseViewController getCurrVC] data:data];
     [BaseViewController showPresentClass:cls withVC:[BaseViewController getCurrVC] data:data];
 }
 

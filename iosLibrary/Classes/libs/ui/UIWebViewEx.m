@@ -25,7 +25,6 @@
 
 @interface UIWebViewEx ()<UIWebViewDelegate>
 {
-    BOOL                            bWebLoadErr;
     NSString                        * lastUrl;
     UIActivityIndicatorView         * loading_view;
 }
@@ -52,7 +51,7 @@
 -(void)loadRequest:(NSURLRequest *)request
 {
     [super loadRequest:request];
-    if (!bWebLoadErr)
+    if (!self.bWebLoadErr)
     {
         lastUrl = request.URL.absoluteString;
     }
@@ -90,7 +89,7 @@
             NSArray * ps = [scheme componentsSeparatedByString:@"!"];
             if ([fn isEqualToString:@"reload"])
             {
-                if (bWebLoadErr)
+                if (self.bWebLoadErr)
                 {
                     [webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:lastUrl]]];
                 }else
@@ -125,7 +124,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [loading_view stopAnimating];
-    bWebLoadErr = [webView.request.URL.absoluteString hasSuffix:@"error.html"];
+    self.bWebLoadErr = [webView.request.URL.absoluteString hasSuffix:@"error.html"];
     [self.webDelegate webViewDidFinishLoad:webView];
 }
 
@@ -134,7 +133,7 @@
     [loading_view stopAnimating];
     if ([error code] != NSURLErrorCancelled)
     {
-        bWebLoadErr = YES;
+        self.bWebLoadErr = YES;
         NSString* path = [[NSBundle mainBundle] pathForResource:@"error" ofType:@"html"];
         NSURL* url = [NSURL fileURLWithPath:path];
         NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
@@ -163,7 +162,7 @@
 
 -(void)reloadEx
 {
-    bWebLoadErr = NO;
+    self.bWebLoadErr = NO;
     [self setUrl:lastUrl];
 }
 

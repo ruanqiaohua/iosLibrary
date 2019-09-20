@@ -46,6 +46,7 @@
     if (self)
     {
         titleLocation = TVL_MIDDLE;
+        returnBtnIndex = -1;
         titleIndex = -1;
         dictBtnInfo = [[NSMutableDictionary alloc] init];
     }
@@ -81,7 +82,7 @@
         NSString * retStr = bShowReturn ? [self.shell getTitleViewReturnBtn] : nil;
         if (retStr)
         {
-            [[self.shell getTitleView] addImageAsset:retStr location:TVL_LEFT needClick:YES];
+            returnBtnIndex = [[self.shell getTitleView] addImageAsset:retStr location:TVL_LEFT needClick:YES];
         }
     }
 }
@@ -164,21 +165,34 @@
         {
             [tv mdText:title location:tvl index:titleIndex];
         }
-        isProc = true;
+        isProc = YES;
     } else if ([name isEqualToString:TV_SET_RETURN])
     {
         returnBtnIndex = [tv addImageAsset:param[P_IB_RES_ID] location:TVL_LEFT needClick:YES];
-        isProc = true;
+        isProc = YES;
     } else if ([name isEqualToString:TV_ADD_TAG])
     {
         index = [tv addImageUrl:SAFESTR(param[P_IB_IMG_URL]) location:TVL_MIDDLE needClick:YES];
         [self getParam:param key:KEY_GEN(TVL_MIDDLE, index)];
         [self.shell jsCallWithFunName:name param:SAFESTR(param[P_TAP_DATA])];
-        isProc = true;
+        isProc = YES;
+    } else if ([name isEqualToString:TV_SHOW_RETURN] && returnBtnIndex != -1)
+    {
+        [tv showViewWithIndex:returnBtnIndex location:TVL_LEFT isShow:[param[P_IS_SHOW] boolValue]];
+        isProc = YES;
     }
     isProc = isProc || !([self execOtherWithFunName:name param:param callback:cb] == EXEC_OTHER_NO_PROC);
-    if (!cb)return isProc;
-    return [self procCallback:cb isProc:isProc alias:param[P_ALIAS]];
+    if (isProc)
+    {
+        [self procCallback:cb param:param isSuccess:YES values:nil];
+        return YES;
+    }
+    return NO;
+}
+
+-(void)setReturnShow:(BOOL)isShow
+{
+    [self execWithFunName:TV_SHOW_RETURN param:@{P_IS_SHOW:@(isShow)} callback:nil];
 }
 
 -(BOOL)vcResultData:(NSDictionary *)data

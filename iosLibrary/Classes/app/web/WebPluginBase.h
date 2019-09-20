@@ -48,8 +48,6 @@
 
 @property(nonatomic, weak) id<IWebShell> shell;
 
--(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc values:(NSDictionary *)values;
--(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc alias:(NSString *)alias;
--(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc isSuccess:(BOOL)isSuccess alias:(NSString *)alias;
+-(BOOL)procCallback:(NSString *)cb param:(NSDictionary *)param isSuccess:(BOOL)isSuccess values:(NSDictionary *)values;
 
 @end

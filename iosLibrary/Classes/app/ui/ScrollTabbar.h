@@ -33,7 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSArray<NSString *> * selectIcons;
 @property(assign, nonatomic) CGFloat iconTxtSpace;
 //////////////
+@property(assign, nonatomic) NSInteger lineSkipIndex;//点击后line不移动到该位置
 @property(assign, nonatomic) CGFloat lineHeight;
+@property(assign, nonatomic) CGFloat lineWidth;
 @property(strong, nonatomic) UIColor * lineSelectColor;
 @property(strong, nonatomic) UIColor * lineColor;
 @property(assign, nonatomic) BOOL isLineWidthEqualText;

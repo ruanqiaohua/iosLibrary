@@ -37,24 +37,26 @@
     return NO;
 }
 
--(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc values:(NSDictionary *)values
+-(BOOL)procCallback:(NSString *)cb param:(NSDictionary *)param isSuccess:(BOOL)isSuccess values:(NSDictionary *)values
 {
-    if (isProc && cb.length > 0)
+    if (cb.length > 0)
     {
+        NSMutableDictionary * dict;
+        if (values)
+        {
+            dict = [[NSMutableDictionary alloc] initWithDictionary:values];
+        }else
+        {
+            dict = ONEW(NSMutableDictionary);
+        }
+        dict[METHOD] = SAFESTR(param[METHOD]);
+        dict[P_ALIAS] = SAFESTR(param[P_ALIAS]);
+        dict[SUCCESS] = @(YES);
         [self.shell execJScript:[cb stringByReplacingOccurrencesOfString:@"#" withString:
-                                 [values yy_modelToJSONString]]];
+                                 [dict yy_modelToJSONString]]];
+        return YES;
     }
-    return isProc;
-}
-
--(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc alias:(NSString *)alias
-{
-    return [self procCallback:cb isProc:isProc isSuccess:YES alias:alias];
-}
-
--(BOOL)procCallback:(NSString *)cb isProc:(BOOL)isProc isSuccess:(BOOL)isSuccess alias:(NSString *)alias
-{
-    return [self procCallback:cb isProc:isProc values:@{SUCCESS:@(isSuccess),METHOD:SAFESTR(alias)}];
+    return YES;
 }
 
 @end

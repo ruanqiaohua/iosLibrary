@@ -35,6 +35,7 @@
         }
         self.bounces = NO;
         _selectedIndex = -1;
+        _lineSkipIndex = -1;
     }
     return self;
 }
@@ -104,11 +105,19 @@
     llLine.backgroundColor = self.lineColor;
     [self addSubview:llLine];
     
-    if (self.isLineWidthEqualText)
+    if (self.lineWidth > 0)
+    {
+        w = self.lineWidth;
+    }else if (self.isLineWidthEqualText)
     {
         w = [Utils calSizeWithText:self.titles[index] font:font].width;
     }
     [self createLineWithLineWidth:w view:llLine];
+    WEAKOBJ(self);
+    [self performUIAsync:^{
+        weak_self.selectedIndex = 0;
+    } sec:0.3];
+    
 }
 
 -(void)createLineWithLineWidth:(CGFloat)width view:(UIView *)view
@@ -150,14 +159,17 @@
 
             [self scrollRectToVisible:rc animated:YES];
 
-            // line view
-            CGRect trackRc = [self convertRect:to.bounds fromView:to];
-            CGFloat offx = 0;
-            if (self.isLineWidthEqualText)
+            if (self.lineSkipIndex != selectedIndex)
             {
-                offx = (CGRectGetWidth(to.frame) - CGRectGetWidth(lineView.frame)) / 2;
+                // line view
+                CGRect trackRc = [self convertRect:to.bounds fromView:to];
+                CGFloat offx = 0;
+                //if (self.isLineWidthEqualText)
+                {
+                    offx = (CGRectGetWidth(to.frame) - CGRectGetWidth(lineView.frame)) / 2;
+                }
+                lineView.frame = CGRectMake(trackRc.origin.x + offx, lineView.frame.origin.y, CGRectGetWidth(lineView.frame), CGRectGetHeight(lineView.bounds));
             }
-            lineView.frame = CGRectMake(trackRc.origin.x + offx, lineView.frame.origin.y, CGRectGetWidth(lineView.frame), CGRectGetHeight(lineView.bounds));
         }
         _selectedIndex = selectedIndex;
     }
