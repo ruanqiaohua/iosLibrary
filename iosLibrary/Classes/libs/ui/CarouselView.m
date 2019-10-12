@@ -11,6 +11,7 @@
 #import "toolMacro.h"
 #import "UIImageView+WebCache.h"
 #import "NSObject+NSObjectHelper.h"
+#import "YYWeakProxy.h"
 
 @interface CarouselView()<UIScrollViewDelegate>
 {
@@ -77,7 +78,7 @@
     if (_dataItems.count == 0)return;
     [_sv_content setContentOffset:CGPointMake(self.width * 2, 0) animated:YES];
     _isAutoScroll = YES;
-    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(scrollViewDidEndDecelerating:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.5f target:[YYWeakProxy proxyWithTarget:self] selector:@selector(scrollViewDidEndDecelerating:) userInfo:nil repeats:NO];
 }
 
 -(instancetype)init

@@ -16,8 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - IQKeyboardManager (6.2.0)
   - JCore (1.2.6)
-  - JMessage (3.8.0):
-    - JCore (~> 1.0)
   - JPush (3.1.2):
     - JCore (~> 1.2.6)
   - MJRefresh (3.1.15.7)
@@ -35,7 +33,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - IQKeyboardManager
-  - JMessage
   - JPush
   - MJRefresh
   - MyLayout
@@ -52,7 +49,6 @@ SPEC REPOS:
     - AFNetworking
     - IQKeyboardManager
     - JCore
-    - JMessage
     - JPush
     - MJRefresh
     - MyLayout
@@ -68,7 +64,6 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
-  JMessage: 14355feac1f0b914c2ec813aede07cdcc8eddd1f
   JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   MyLayout: 833c4b24a69a1e3fd33abe827eeb2fdf19193408
@@ -80,6 +75,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: fc339aad59e2b34666c37941a720a4cfd23afcd8
+PODFILE CHECKSUM: 78552b48c711276497579ebd85bf3db408eff8a6
 
 COCOAPODS: 1.6.0

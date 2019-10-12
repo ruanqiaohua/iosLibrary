@@ -28,7 +28,6 @@ Pod::Spec.new do |s|
  s.dependency 'YYModel'
  s.dependency 'WechatOpenSDK'
  s.dependency 'JPush'
- s.dependency 'JMessage'
  s.dependency 'UMengAnalytics-NO-IDFA'
  s.dependency 'YYCache'
  s.dependency 'SVProgressHUD'

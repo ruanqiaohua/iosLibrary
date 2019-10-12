@@ -8,17 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "WebViewDelegate.h"
 
-@protocol LWebViewExDelegate <NSObject>
+API_AVAILABLE(ios(8.0))
+@interface LWebViewEx : WKWebView<IWebView>
 
-//-(void)
-
-@end
-
-@interface LWebViewEx : WKWebView
-
--(void)loadUrl:(NSString *)url;
++(instancetype)get;
+//js
 -(void)addJsFunNames:(NSArray<NSString *> *)js;
+-(void)removeJsFunName:(NSString *)fun;
+-(void)removeAllJs;
+//cookie
+-(NSString *)getCurrentCookieWithDomain:(NSString *)domain;
 -(void)clearCache;
 
 @end

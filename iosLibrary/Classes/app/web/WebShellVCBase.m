@@ -9,6 +9,7 @@
 #import "WebShellVCBase.h"
 #import "LTitleView.h"
 #import "UIWebViewEx.h"
+#import "LWebViewEx.h"
 #import "WebPluginBase.h"
 #import "toolMacro.h"
 #import <YYModel.h>
@@ -48,17 +49,24 @@
     _titleView.space = self.skinCfg.titleViewSpace;
     _titleView.lrSpace = self.skinCfg.titleViewLRSpace;
     //web
-    _webView = ONEW(UIWebViewEx);
-    [self.contentLayout addSubview:_webView];
-    _webView.topPos.equalTo(_titleView.bottomPos);
-    _webView.widthSize.equalTo(self.contentLayout);
-    _webView.bottomPos.equalTo(self.contentLayout);
+    if (IOS_VERSION >= 8)
+    {
+        _webView = [LWebViewEx get];
+    }else
+    {
+        _webView = ONEW(UIWebViewEx);
+    }
+    UIView * v = [_webView getWebView];
+    [self.contentLayout addSubview:v];
+    v.topPos.equalTo(_titleView.bottomPos);
+    v.widthSize.equalTo(self.contentLayout);
+    v.bottomPos.equalTo(self.contentLayout);
     _webView.jsDelegate = self;
 }
 
 -(void)onInitData:(NSDictionary *)data
 {
-    [_webView setUrl:data[WS_URL]];
+    [_webView loadUrl:data[WS_URL]];
     [self loadWebPlugin];
     [self activeWebPluginEvent:EVENT_INIT data:data];
 }
@@ -149,7 +157,7 @@
 
 -(void)execJScript:(NSString *)js
 {
-    [self.webView execJs:js];
+    [self.webView runJs:js];
 }
 
 -(void)execPluginWithFunName:(NSString *)name param:(NSDictionary *)param callback:(NSString *)cb
@@ -157,7 +165,7 @@
     [self activeWebPluginEvent:EVENT_EXEC data:@{FUN_NAME:name,PARAM:param,CALL_BACK:cb}];
 }
 
--(UIWebViewEx *)getWebView
+-(id<IWebView>)getWebView
 {
     return self.webView;
 }

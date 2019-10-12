@@ -129,11 +129,20 @@
 		5AF6A4CB1F95990E00D9F6F7 /* WebViewPhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF6A4CA1F95990E00D9F6F7 /* WebViewPhotoCache.m */; };
 		5AF9B5D0218A9829000CF2B0 /* JMessageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9B5CF218A9829000CF2B0 /* JMessageLoader.m */; };
 		70F221F53986DA635A831DB5 /* libPods-iosLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 724CF1EA31FE52C7EF9FD224 /* libPods-iosLibrary.a */; };
+		78235BC223516A0100820174 /* WeakWebViewScriptMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78235BC123516A0100820174 /* WeakWebViewScriptMessageDelegate.m */; };
 		7850EE0D22A8B28A007E5616 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0422A8B28A007E5616 /* error.html */; };
 		7850EE0E22A8B28A007E5616 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0722A8B28A007E5616 /* mobile.css */; };
 		7850EE1022A8B28A007E5616 /* icon_wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0A22A8B28A007E5616 /* icon_wifi.png */; };
 		7850EE1122A8B28A007E5616 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0C22A8B28A007E5616 /* jquery.js */; };
 		78794060229B94CF00FB69EE /* ScrollTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879405E229B94CE00FB69EE /* ScrollTabbar.m */; };
+		7886EB98235019BE00500629 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886EB97235019BE00500629 /* YYWeakProxy.m */; };
+		7886EB9A235034AE00500629 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EB99235034AE00500629 /* CoreTelephony.framework */; };
+		7886EB9C235034BE00500629 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EB9B235034BE00500629 /* CoreAudio.framework */; };
+		7886EB9E235034CA00500629 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EB9D235034C900500629 /* SystemConfiguration.framework */; };
+		7886EBA0235034D100500629 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EB9F235034D000500629 /* CFNetwork.framework */; };
+		7886EBA2235034D900500629 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EBA1235034D900500629 /* Security.framework */; };
+		7886EBA4235034E200500629 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EBA3235034E200500629 /* AudioToolbox.framework */; };
+		7886EBA6235034E900500629 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EBA5235034E900500629 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -371,12 +380,27 @@
 		5AF9B5CE218A9829000CF2B0 /* JMessageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMessageLoader.h; sourceTree = "<group>"; };
 		5AF9B5CF218A9829000CF2B0 /* JMessageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMessageLoader.m; sourceTree = "<group>"; };
 		724CF1EA31FE52C7EF9FD224 /* libPods-iosLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78235BC023516A0100820174 /* WeakWebViewScriptMessageDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeakWebViewScriptMessageDelegate.h; sourceTree = "<group>"; };
+		78235BC123516A0100820174 /* WeakWebViewScriptMessageDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeakWebViewScriptMessageDelegate.m; sourceTree = "<group>"; };
+		78235BC32351838400820174 /* WebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewDelegate.h; sourceTree = "<group>"; };
 		7850EE0422A8B28A007E5616 /* error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = error.html; sourceTree = "<group>"; };
 		7850EE0722A8B28A007E5616 /* mobile.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mobile.css; sourceTree = "<group>"; };
 		7850EE0A22A8B28A007E5616 /* icon_wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wifi.png; sourceTree = "<group>"; };
 		7850EE0C22A8B28A007E5616 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		7879405E229B94CE00FB69EE /* ScrollTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTabbar.m; sourceTree = "<group>"; };
 		7879405F229B94CE00FB69EE /* ScrollTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTabbar.h; sourceTree = "<group>"; };
+		7886EB96235019BD00500629 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		7886EB97235019BE00500629 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		7886EB99235034AE00500629 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7886EB9B235034BE00500629 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		7886EB9D235034C900500629 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7886EB9F235034D000500629 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7886EBA1235034D900500629 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7886EBA3235034E200500629 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7886EBA5235034E900500629 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7886EBA72350350100500629 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7886EBA82350350F00500629 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7886EBA92350351A00500629 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,8 +408,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7886EB9A235034AE00500629 /* CoreTelephony.framework in Frameworks */,
 				5ACA7A0420468DE900D1F126 /* CoreText.framework in Frameworks */,
+				7886EBA0235034D100500629 /* CFNetwork.framework in Frameworks */,
+				7886EBA6235034E900500629 /* MobileCoreServices.framework in Frameworks */,
 				5ACA7A0220468D0500D1F126 /* CoreGraphics.framework in Frameworks */,
+				7886EB9C235034BE00500629 /* CoreAudio.framework in Frameworks */,
+				7886EBA4235034E200500629 /* AudioToolbox.framework in Frameworks */,
+				7886EB9E235034CA00500629 /* SystemConfiguration.framework in Frameworks */,
+				7886EBA2235034D900500629 /* Security.framework in Frameworks */,
 				70F221F53986DA635A831DB5 /* libPods-iosLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,8 +709,6 @@
 				5A66BF231F7D29990014EDD6 /* TitleViewEx.m */,
 				5A5D073D1FFCC03A00A68C51 /* LTitleView.h */,
 				5A5D073E1FFCC03A00A68C51 /* LTitleView.m */,
-				5A66BF2B1F7D29990014EDD6 /* UIWebViewEx.h */,
-				5A66BF2C1F7D29990014EDD6 /* UIWebViewEx.m */,
 				5A66BF301F7D29990014EDD6 /* WSPlaceholderTextView.h */,
 				5A66BF311F7D29990014EDD6 /* WSPlaceholderTextView.m */,
 				5A3076281FB142EB0068D412 /* TagLayout.h */,
@@ -751,6 +780,8 @@
 		5A66BF431F7D29990014EDD6 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				7886EB96235019BD00500629 /* YYWeakProxy.h */,
+				7886EB97235019BE00500629 /* YYWeakProxy.m */,
 				5A66BF441F7D29990014EDD6 /* CameraManager.h */,
 				5A66BF451F7D29990014EDD6 /* CameraManager.m */,
 				5A66BF461F7D29990014EDD6 /* MotionManager.h */,
@@ -791,6 +822,11 @@
 			children = (
 				5A762EA21FAB02E100471827 /* LWebViewEx.h */,
 				5A762EA31FAB02E100471827 /* LWebViewEx.m */,
+				78235BC023516A0100820174 /* WeakWebViewScriptMessageDelegate.h */,
+				78235BC123516A0100820174 /* WeakWebViewScriptMessageDelegate.m */,
+				78235BC32351838400820174 /* WebViewDelegate.h */,
+				5A66BF2B1F7D29990014EDD6 /* UIWebViewEx.h */,
+				5A66BF2C1F7D29990014EDD6 /* UIWebViewEx.m */,
 			);
 			path = web;
 			sourceTree = "<group>";
@@ -999,6 +1035,16 @@
 		BB0215C6619E8FA1F4CA6935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7886EBA92350351A00500629 /* libresolv.tbd */,
+				7886EBA82350350F00500629 /* libsqlite3.0.tbd */,
+				7886EBA72350350100500629 /* libz.tbd */,
+				7886EBA5235034E900500629 /* MobileCoreServices.framework */,
+				7886EBA3235034E200500629 /* AudioToolbox.framework */,
+				7886EBA1235034D900500629 /* Security.framework */,
+				7886EB9F235034D000500629 /* CFNetwork.framework */,
+				7886EB9D235034C900500629 /* SystemConfiguration.framework */,
+				7886EB9B235034BE00500629 /* CoreAudio.framework */,
+				7886EB99235034AE00500629 /* CoreTelephony.framework */,
 				5ACA7A0320468DE900D1F126 /* CoreText.framework */,
 				5ACA7A0120468D0500D1F126 /* CoreGraphics.framework */,
 				724CF1EA31FE52C7EF9FD224 /* libPods-iosLibrary.a */,
@@ -1058,6 +1104,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1178,6 +1225,7 @@
 				5A4748D721DF4F76008044C0 /* ImageViewAnimationHelper.m in Sources */,
 				5AC74DE51F2998BE00146115 /* main.m in Sources */,
 				5A66BF971F8C6AC60014EDD6 /* UMengLoader.m in Sources */,
+				7886EB98235019BE00500629 /* YYWeakProxy.m in Sources */,
 				5A40BAFE1FD7DB5C00B73C6B /* SPAlertController.m in Sources */,
 				5A30762A1FB142EB0068D412 /* TagLayout.m in Sources */,
 				5A66BF651F7D299A0014EDD6 /* DispatchTimer.m in Sources */,
@@ -1213,6 +1261,7 @@
 				5A5D073F1FFCC03A00A68C51 /* LTitleView.m in Sources */,
 				5A66BF6D1F7D299A0014EDD6 /* AVPlayerEx.m in Sources */,
 				5A66BF751F7D299A0014EDD6 /* TouchTextView.m in Sources */,
+				78235BC223516A0100820174 /* WeakWebViewScriptMessageDelegate.m in Sources */,
 				5A66BF671F7D299A0014EDD6 /* UINavigationController+Swizzling.m in Sources */,
 				5A66BF691F7D299A0014EDD6 /* FXBlurView.m in Sources */,
 				5A66BF7B1F7D299A0014EDD6 /* XJImage.m in Sources */,
@@ -1379,7 +1428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X6LYX897R;
 				INFOPLIST_FILE = iosLibrary/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljh.iosLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1399,7 +1448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X6LYX897R;
 				INFOPLIST_FILE = iosLibrary/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ljh.iosLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";

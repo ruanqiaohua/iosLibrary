@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseAppVC.h"
+#import "WebViewDelegate.h"
 
 #pragma ------------------- 宏定义 -------------------
 #define WS_CLOSE_RELOAD                 @"bCloseRelad"//当前关闭后，父窗体的web刷新
@@ -26,7 +27,7 @@
 @class WebPluginBase;
 
 #pragma ------------------- web外壳接口声明 ----------------
-@protocol IWebShell
+@protocol IWebShell<NSObject>
 
 -(void)openUrl:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl bNextSelfClose:(BOOL)bNextSelfClose;
 -(void)closeWindowWithLevel:(NSInteger)level bCloseReload:(BOOL)bCloseReload closeExecJs:(NSString *)js;
@@ -35,7 +36,7 @@
 -(id<IWebPlugin>)getWebPluginWithName:(NSString *)name;
 -(void)execJScript:(NSString *)js;
 -(void)execPluginWithFunName:(NSString *)name param:(NSDictionary *)param callback:(NSString *)cb;
--(UIWebViewEx *)getWebView;
+-(id<IWebView>)getWebView;
 -(id<ITitleView>)getTitleView;
 -(void)jsCallWithFunName:(NSString *)name param:(NSObject *)param;
 -(void)pluginCallbackWithFunName:(NSString *)name param:(NSObject *)param;
@@ -47,7 +48,7 @@
 @interface WebShellVCBase : BaseAppVC<IWebShell>
 
 @property(readonly, nonatomic) LTitleView                     * titleView;
-@property(readonly, nonatomic) UIWebViewEx                    * webView;
+@property(readonly, nonatomic) id<IWebView>                   webView;
 @property(readonly, nonatomic) NSMutableArray<WebPluginBase *>* plugins;
 
 +(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl;

@@ -53,7 +53,14 @@
 {
     if ([data[WS_CLOSE_RELOAD] boolValue])
     {
-        [[self.shell getWebView] reload];
+        NSInteger type = [[self.shell getWebView] getWebType];
+        if (type == WEB_TYPE_WK)
+        {
+            [((WKWebView *)[[self.shell getWebView] getWebView]) reload];
+        }else
+        {
+            [((UIWebView *)[[self.shell getWebView] getWebView]) reload];
+        }
     }
     NSString * js = data[WS_CLOSE_EXEC_JS];
     if (js.length > 0)

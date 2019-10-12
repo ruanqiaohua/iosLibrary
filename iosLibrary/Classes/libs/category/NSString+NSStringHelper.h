@@ -10,10 +10,12 @@
 
 @interface NSString (NSStringHelper)
 
--(NSString *) md5;
--(NSString *) encode;
--(NSString *) decoded;
--(BOOL) isInt;
+-(NSString *)md5;
+-(NSString *)encode;
+-(NSString *)decoded;
+//截取字符串，从找到fs开始; isHead(YES)从头部开始 （NO）从尾部开始
+-(NSString *)cutStr:(NSString *)fs isHead:(BOOL)isHead;
+-(BOOL)isInt;
 -(BOOL)validateRegular:(NSString *)regular;
 -(NSArray *)split:(NSString *)str;
 -(NSString *)maskRange:(NSRange)range;

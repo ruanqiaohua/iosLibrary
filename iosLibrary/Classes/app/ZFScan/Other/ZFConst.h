@@ -11,9 +11,6 @@
 #import "ZFColor.h"
 #import "UIImage+Zirkfied.h"
 
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-
 /**
  *  导航栏高度
  */

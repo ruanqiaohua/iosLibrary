@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ZFMaskView.h"
 #import <ImageIO/ImageIO.h>
+#import "toolMacro.h"
 
 @interface ZFScanViewController ()<AVCaptureMetadataOutputObjectsDelegate>
 
