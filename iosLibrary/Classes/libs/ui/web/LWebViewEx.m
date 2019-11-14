@@ -26,9 +26,9 @@
 
 @synthesize webDelegate,jsDelegate,isWebLoadErr;
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame configuration:configuration];
     if (self)
     {
         // UI代理
@@ -37,10 +37,10 @@
         self.navigationDelegate = self;
         // 是否允许手势左滑返回上一级, 类似导航控制的左滑返回
         //self.allowsBackForwardNavigationGestures = YES;
-        
+
         //保存js回调的所有名字，用于注销
         jsNameList = ONEW(NSMutableArray);
-        
+
         loadingView = [[UIActivityIndicatorView alloc] init];
         loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
         loadingView.hidesWhenStopped = YES;
@@ -51,7 +51,7 @@
 
 +(WKWebViewConfiguration *)configWebView
 {
-    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];            
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     // 创建设置对象
     WKPreferences *preference = [[WKPreferences alloc]init];
     //最小字体大小 当将javaScriptEnabled属性设置为NO时，可以看到明显的效果
@@ -98,6 +98,7 @@
 
 -(void)loadUrl:(NSString *)url
 {
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL * nurl = [NSURL URLWithString:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:nurl];
     NSString * cookie = [self getCurrentCookieWithDomain:[nurl host]];
@@ -121,7 +122,11 @@
 
 -(void)runJs:(NSString *)js
 {
-    [self evaluateJavaScript:js completionHandler:nil];
+    [self evaluateJavaScript:js completionHandler:^(id _Nullable name, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 -(void)reloadEx
@@ -264,7 +269,8 @@
     {
         decisionHandler([self.webDelegate webView:self shouldStartLoadWithUrl:navigationAction.request.URL webViewType:WEB_TYPE_WK] ? WKNavigationActionPolicyAllow : WKNavigationActionPolicyCancel);
         return;
-    }else if (![scheme hasPrefix:@"http"])//不是http开头
+    }else if (![scheme hasPrefix:@"http"] && [scheme rangeOfString:@"file://"].location == NSNotFound &&
+              [scheme rangeOfString:@"://"].location != NSNotFound)//第三方协议开头
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:scheme]];
         decisionHandler(WKNavigationActionPolicyCancel);
@@ -293,6 +299,10 @@
     if ([error code] != NSURLErrorCancelled)
     {
         NSString * path = [[NSBundle mainBundle] pathForResource:@"error" ofType:@"html"];
+        if ([self.webDelegate respondsToSelector:@selector(getErrorWeb)])
+        {
+            path = [self.webDelegate getErrorWeb];
+        }
         NSURL * url = [NSURL fileURLWithPath:path];
         NSURLRequest * request = [NSURLRequest requestWithURL:url] ;
         [webView loadRequest:request];
@@ -404,6 +414,18 @@
     {
         [self.jsDelegate procJsCallWithFunName:message.name params:ps];
     }
+}
+
+- (void)dealloc
+{
+    //移除注册的js方法
+    for (NSString * js in jsNameList)
+    {
+        [[self configuration].userContentController removeScriptMessageHandlerForName:js];
+    }
+    self.navigationDelegate = nil;
+    self.UIDelegate = nil;
+    self.scrollView.delegate = nil;
 }
 
 @end

@@ -15,9 +15,9 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - IQKeyboardManager (6.2.0)
-  - JCore (1.2.6)
-  - JPush (3.1.2):
-    - JCore (~> 1.2.6)
+  - JCore (2.1.4-noidfa)
+  - JPush (3.2.4-noidfa):
+    - JCore (< 3.0.0, >= 2.0.0)
   - MJRefresh (3.1.15.7)
   - MyLayout (1.6.1)
   - SDWebImage (4.4.5):
@@ -33,7 +33,8 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - IQKeyboardManager
-  - JPush
+  - JCore (= 2.1.4-noidfa)
+  - JPush (= 3.2.4-noidfa)
   - MJRefresh
   - MyLayout
   - SDWebImage (~> 4.0)
@@ -63,8 +64,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
-  JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
-  JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
+  JCore: 2f15311e6889ab43ed5d629802ef793cac566465
+  JPush: 2ff11d3013b360bc1b7da16741027e88f12fe3e6
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   MyLayout: 833c4b24a69a1e3fd33abe827eeb2fdf19193408
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
@@ -75,6 +76,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 78552b48c711276497579ebd85bf3db408eff8a6
+PODFILE CHECKSUM: f0968cee0d6a0a49ec1ef5e9f048df1fc0b6bad4
 
 COCOAPODS: 1.6.0

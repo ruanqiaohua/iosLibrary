@@ -29,7 +29,7 @@
                                  SUCCESS:@(YES),
                                  P_VER:APP_VERSION
                                  };
-            [self.shell execJScript: [cb stringByReplacingOccurrencesOfString:@"#" withString:[d yy_modelToJSONString]]];
+            [self.shell runJScript: [cb stringByReplacingOccurrencesOfString:@"#" withString:[d yy_modelToJSONString]]];
         }
         return YES;
     }else if ([name isEqualToString:CALL_PHONE])

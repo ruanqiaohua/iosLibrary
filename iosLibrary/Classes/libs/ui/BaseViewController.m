@@ -187,6 +187,7 @@ static __weak BaseViewController                    * exitToVC;
             [vc.navigationController pushViewController:bvc animated:anim];
             break;
         case VC_SHOW_PRESENT:
+            bvc.modalPresentationStyle = 0;
             [vc presentViewController:bvc animated:anim completion:nil];
             break;
     }

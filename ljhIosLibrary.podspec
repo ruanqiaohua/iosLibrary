@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
  s.dependency 'AFNetworking', '~> 3.1.0'
  s.dependency 'YYModel'
  s.dependency 'WechatOpenSDK'
+ s.dependency 'JCore'
  s.dependency 'JPush'
  s.dependency 'UMengAnalytics-NO-IDFA'
  s.dependency 'YYCache'

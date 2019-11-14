@@ -65,7 +65,7 @@
     NSString * js = data[WS_CLOSE_EXEC_JS];
     if (js.length > 0)
     {
-        [self.shell execJScript:js];
+        [self.shell runJScript:js];
     }
     return NO;
 }

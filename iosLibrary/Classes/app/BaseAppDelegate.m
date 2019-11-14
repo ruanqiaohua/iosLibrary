@@ -98,8 +98,8 @@
             }
         }
     }
+    PXTO6SH(<#px#>)
 }
-
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {

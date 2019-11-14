@@ -52,7 +52,7 @@
         dict[METHOD] = SAFESTR(param[METHOD]);
         dict[P_ALIAS] = SAFESTR(param[P_ALIAS]);
         dict[SUCCESS] = @(YES);
-        [self.shell execJScript:[cb stringByReplacingOccurrencesOfString:@"#" withString:
+        [self.shell runJScript:[cb stringByReplacingOccurrencesOfString:@"#" withString:
                                  [dict yy_modelToJSONString]]];
         return YES;
     }

@@ -19,11 +19,6 @@
 #import "WebTitleViewPlugin.h"
 #import "WebWindowPlugin.h"
 
-#define FUN_NAME    @"method"
-#define PARAM       @"param"
-#define CALL_BACK   @"callback"
-#define JS_EXEC     @"exec"
-
 @interface WebShellVCBase()<WebJsInterface>
 @end
 
@@ -49,11 +44,10 @@
     _titleView.space = self.skinCfg.titleViewSpace;
     _titleView.lrSpace = self.skinCfg.titleViewLRSpace;
     //web
-    if (IOS_VERSION >= 8)
-    {
+    if (@available(iOS 8.0, *)) {
         _webView = [LWebViewEx get];
-    }else
-    {
+        [((LWebViewEx *)_webView) addJsFunNames:@[@"exec"]];
+    } else {
         _webView = ONEW(UIWebViewEx);
     }
     UIView * v = [_webView getWebView];
@@ -155,7 +149,7 @@
     return nil;
 }
 
--(void)execJScript:(NSString *)js
+-(void)runJScript:(NSString *)js
 {
     [self.webView runJs:js];
 }
@@ -181,20 +175,29 @@
     return nil;
 }
 
-+(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl isDirect:(BOOL)isDirect
 {
     NSDictionary * data = @{WS_URL:url,
                             WS_TITLE:title,
                             WS_SHOW_RETURN:@(bShowReturn),
                             WS_TITLE_LOCATION:@(TITLE_ALIG_MIDDLE)
                             };
-//    [BaseViewController showPushClass:cls withVC:[BaseViewController getCurrVC] data:data];
-    [BaseViewController showPresentClass:cls withVC:[BaseViewController getCurrVC] data:data];
+    if (isDirect)
+    {
+        [BaseAppVC showVCClass:cls showType:VC_SHOW_DIRECT isAnimated:NO withVC:nil data:data];
+        return;
+    }
+    [BaseAppVC showVCClass:cls showType:VC_SHOW_PRESENT isAnimated:YES withVC:[BaseAppVC getCurrVC] data:data];
+}
+
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn isDirect:(BOOL)isDirect
+{
+    [WebShellVCBase openClass:cls url:url title:title bShowReturn:bShowReturn titleLocation:TITLE_ALIG_MIDDLE isDirect:isDirect];
 }
 
 +(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn
 {
-    [WebShellVCBase openClass:cls url:url title:title bShowReturn:bShowReturn titleLocation:TITLE_ALIG_MIDDLE];
+    [WebShellVCBase openClass:cls url:url title:title bShowReturn:bShowReturn titleLocation:TITLE_ALIG_MIDDLE isDirect:NO];
 }
 
 -(void)loadWebPlugin
@@ -208,7 +211,7 @@
 #pragma ---------- web js
 -(void)procJsCallWithFunName:(NSString *)fn params:(NSArray *)params
 {
-    if ([fn isEqualToString:JS_EXEC])
+    if ([fn isEqualToString:WEB_JS_EXEC])
     {
         NSData * jsonData = [params[0] dataUsingEncoding : NSUTF8StringEncoding];
         NSArray * arr = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];

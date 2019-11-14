@@ -100,7 +100,7 @@ PropertyBOOL(isProduction);
 
 //---------------- JPUSHRegisterDelegate ----------------//
 -(void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler
-{
+API_AVAILABLE(ios(10.0))API_AVAILABLE(ios(10.0))API_AVAILABLE(ios(10.0)) API_AVAILABLE(ios(10.0)){
     if (@available(iOS 10.0, *))
     {
         completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge);
@@ -110,8 +110,8 @@ PropertyBOOL(isProduction);
     } // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
 
--(void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler
-{
+-(void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler
+API_AVAILABLE(ios(10.0))API_AVAILABLE(ios(10.0)) API_AVAILABLE(ios(10.0)){
     completionHandler();
 }
 

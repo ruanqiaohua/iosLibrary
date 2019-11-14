@@ -34,7 +34,7 @@
 -(BaseAppVC *)getVC;
 -(Class)getVCClass;
 -(id<IWebPlugin>)getWebPluginWithName:(NSString *)name;
--(void)execJScript:(NSString *)js;
+-(void)runJScript:(NSString *)js;
 -(void)execPluginWithFunName:(NSString *)name param:(NSDictionary *)param callback:(NSString *)cb;
 -(id<IWebView>)getWebView;
 -(id<ITitleView>)getTitleView;
@@ -51,7 +51,8 @@
 @property(readonly, nonatomic) id<IWebView>                   webView;
 @property(readonly, nonatomic) NSMutableArray<WebPluginBase *>* plugins;
 
-+(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl;
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn titleLocation:(NSUInteger)tl isDirect:(BOOL)isDirect;
++(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn isDirect:(BOOL)isDirect;
 +(void)openClass:(Class)cls url:(NSString *)url title:(NSString *)title bShowReturn:(BOOL)bShowReturn;
 -(NSString *)getTitleViewReturnBtn;
 -(void)loadWebPlugin;

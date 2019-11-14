@@ -229,7 +229,8 @@
             [self.shell openUrl:bi.openUrl title:bi.title bShowReturn:YES titleLocation:TVL_MIDDLE bNextSelfClose:NO];
             break;
         case BTN_TYPE_JS:
-            [self.shell execJScript:FRMSTR(@"event_callback(%@)", [@{METHOD:bi.data} yy_modelToJSONString])];
+            [self.shell runJScript:FRMSTR(@"event_callback(%@)", bi.data)];
+            //[self.shell runJScript:FRMSTR(@"event_callback(%@)", [@{METHOD:bi.data} yy_modelToJSONString])];
             break;
         case BTN_TYPE_UI:
             [self.shell pluginCallbackWithFunName:SAFESTR((NSString *)bi.data) param:nil];

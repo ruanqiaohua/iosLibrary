@@ -14,6 +14,9 @@
 #define WEB_TYPE_WK     1
 #define WEB_JS_SCHEME   @"ios:"
 #define WEB_JS_EXEC     @"exec"
+#define FUN_NAME        @"method"
+#define PARAM           @"param"
+#define CALL_BACK       @"callback"
 
 @protocol WebViewDelegate <NSObject>
 
@@ -25,10 +28,12 @@
 //网页加载完成
 -(void)webView:(id)webView didFinishLoadWithWebViewType:(NSInteger)type;
 //网页加载失败
-- (void)webView:(id)webView didFailLoadWithError:(NSError *)error webViewType:(NSInteger)type;
+-(void)webView:(id)webView didFailLoadWithError:(NSError *)error webViewType:(NSInteger)type;
 //
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)sv;
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView;
+//返回错误页面
+-(NSString *)getErrorWeb;
 @end
 
 @protocol WebJsInterface <NSObject>
