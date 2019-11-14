@@ -456,7 +456,7 @@
 		34B1CD6BDDCECB882BA0E08F3F69FAA8 /* MyRelativeLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MyRelativeLayout.h; path = MyLayout/Lib/MyRelativeLayout.h; sourceTree = "<group>"; };
 		354D426DAD56AD0EB8FDA6656D749194 /* MyFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MyFlowLayout.h; path = MyLayout/Lib/MyFlowLayout.h; sourceTree = "<group>"; };
 		35D9B4C355B4B1C088BD4D6ED998F56C /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
-		397F49009E0823DAD63241EFE438AA71 /* libjcore-ios-1.2.6.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.2.6.a"; sourceTree = "<group>"; };
+		369B581DFF65870266A491957D0BB8C6 /* libjcore-noidfa-ios-2.1.4.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-noidfa-ios-2.1.4.a"; sourceTree = "<group>"; };
 		3A6040938726EA5E078AD94253FF3239 /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
 		3C5B70C3B3213D866CD4836C6220A8ED /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		3CB04897F0624D64F88F7EF704BC1E27 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
@@ -568,6 +568,7 @@
 		99AAA692A773E201388C0E769F3FCF13 /* MyLayoutInner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MyLayoutInner.h; path = MyLayout/Lib/MyLayoutInner.h; sourceTree = "<group>"; };
 		99B06109D8BDA48C183D01E4ABA5CD2A /* MyMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MyMaker.m; path = MyLayout/Lib/MyMaker.m; sourceTree = "<group>"; };
 		9CB15886C94E2A29503CB358B1C66015 /* UIImage+ForceDecode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ForceDecode.m"; path = "SDWebImage/UIImage+ForceDecode.m"; sourceTree = "<group>"; };
+		9D86CD0FAE3CFACFD3BEF285832DA7DB /* libjpush-noidfa-ios-3.2.4.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-noidfa-ios-3.2.4.a"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E3E42FD128ECBA1597195334AB3EBF8 /* YYCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYCache-dummy.m"; sourceTree = "<group>"; };
 		9E58815CA27F9618F24937B5356A9EF8 /* YYClassInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYClassInfo.m; path = YYModel/YYClassInfo.m; sourceTree = "<group>"; };
@@ -588,7 +589,6 @@
 		AC9E4EE7AB3E6226E29DCFB88849B9BD /* IQKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManager.h; path = IQKeyboardManager/IQKeyboardManager.h; sourceTree = "<group>"; };
 		AD6B3DB071075F36CEC46E880CE76528 /* MyGridNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MyGridNode.h; path = MyLayout/Lib/MyGridNode.h; sourceTree = "<group>"; };
 		ADC8CCB49D416AF0C1EC720338676081 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		AE07AAE149BF07C6F22C1ADBB0A84008 /* libjpush-ios-3.1.2.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.1.2.a"; sourceTree = "<group>"; };
 		AE6859423A91B2C3DDC21A6ED28983E1 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQNSArray+Sort.h"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		B05C9CDD8DB872BF5DEEBAA061F7F5F0 /* NSBundle+MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+MJRefresh.h"; path = "MJRefresh/NSBundle+MJRefresh.h"; sourceTree = "<group>"; };
 		B073FF991BBFFA657CB7271A314EE46E /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
@@ -823,7 +823,7 @@
 		2E9CCFD07EBFAABF12758688A2DB0B2E /* JCore */ = {
 			isa = PBXGroup;
 			children = (
-				3EC07E84E7D2EC1F1A5CDE4168995E93 /* Frameworks */,
+				BBB28FFAB557B67E15AADC382C5A5FC0 /* Frameworks */,
 				F3A51A58DF9B4C9ED8FC3E38332B5F1D /* Support Files */,
 			);
 			name = JCore;
@@ -932,14 +932,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3EC07E84E7D2EC1F1A5CDE4168995E93 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				397F49009E0823DAD63241EFE438AA71 /* libjcore-ios-1.2.6.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3EF8FB3E91B76DEC66748F1C3307B988 /* IQKeyboardManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,7 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				2953A00E058C8218D67F332261E60DDC /* JPUSHService.h */,
-				C149864F1B0992AF5310750E5A7F2687 /* Frameworks */,
+				6E4C31BAA828AA6851A06C241AB0A13F /* Frameworks */,
 				434D73EB8F78A38D309FB3FA8CC70C00 /* Support Files */,
 			);
 			name = JPush;
@@ -1101,6 +1093,14 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/IQKeyboardManager";
+			sourceTree = "<group>";
+		};
+		6E4C31BAA828AA6851A06C241AB0A13F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D86CD0FAE3CFACFD3BEF285832DA7DB /* libjpush-noidfa-ios-3.2.4.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		779D8A4B1F64825E1B49D466195BBE4B /* Pods-iosLibrary */ = {
@@ -1337,6 +1337,14 @@
 			name = Serialization;
 			sourceTree = "<group>";
 		};
+		BBB28FFAB557B67E15AADC382C5A5FC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				369B581DFF65870266A491957D0BB8C6 /* libjcore-noidfa-ios-2.1.4.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C140A4C1995A9265D2A698142E5EBB7B /* Security */ = {
 			isa = PBXGroup;
 			children = (
@@ -1344,14 +1352,6 @@
 				B32ED2187018E2274745BA756D6EC5D8 /* AFSecurityPolicy.m */,
 			);
 			name = Security;
-			sourceTree = "<group>";
-		};
-		C149864F1B0992AF5310750E5A7F2687 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AE07AAE149BF07C6F22C1ADBB0A84008 /* libjpush-ios-3.1.2.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -2121,6 +2121,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		046C8D64FAAD8870A8922E4D9545530A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAAD303354F51B8C3E1579098E9387CF /* JPush.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		05DF210AC65EBB0E593AAF976B2C2177 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2316,6 +2330,19 @@
 			};
 			name = Debug;
 		};
+		4880C53EC1AD3BA34853C23674902BA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4A461CBB5B6AFA99F595DD3BE76559A /* JCore.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		4AE74578B40592D1E79C5EBFB41231C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DBC2DBA5B97312EDEE8A4FB9F4E6FF21 /* MJRefresh.xcconfig */;
@@ -2339,13 +2366,13 @@
 			};
 			name = Debug;
 		};
-		5CCDE57115253CA0AC013D16E1E2F725 /* Release */ = {
+		634518FC66FFDA243BFCC001491D115F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAAD303354F51B8C3E1579098E9387CF /* JPush.xcconfig */;
+			baseConfigurationReference = F4A461CBB5B6AFA99F595DD3BE76559A /* JCore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2525,20 +2552,6 @@
 			};
 			name = Debug;
 		};
-		9A57F577CDD07C34FF1C73C798765B3D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4A461CBB5B6AFA99F595DD3BE76559A /* JCore.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		9FD0E5219FDC0DA3689C27F8D1CD2175 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58353FC2A7C1DD75139E149B6B68DC4C /* SDWebImage.xcconfig */;
@@ -2569,19 +2582,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		A9C52DF6B0A1B304AA94E8181360B265 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAAD303354F51B8C3E1579098E9387CF /* JPush.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2771,13 +2771,13 @@
 			};
 			name = Debug;
 		};
-		EE6C2372BA6F9459392BD5815C951861 /* Debug */ = {
+		F1A63B5522E145DAFD739E80069C472D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4A461CBB5B6AFA99F595DD3BE76559A /* JCore.xcconfig */;
+			baseConfigurationReference = FAAD303354F51B8C3E1579098E9387CF /* JPush.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2872,8 +2872,8 @@
 		4EE7338F2FBA1E0EC226EF8C45298469 /* Build configuration list for PBXAggregateTarget "JCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EE6C2372BA6F9459392BD5815C951861 /* Debug */,
-				9A57F577CDD07C34FF1C73C798765B3D /* Release */,
+				4880C53EC1AD3BA34853C23674902BA6 /* Debug */,
+				634518FC66FFDA243BFCC001491D115F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2899,8 +2899,8 @@
 		8FECBDA288EFDA57C5108034E2414BDF /* Build configuration list for PBXAggregateTarget "JPush" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9C52DF6B0A1B304AA94E8181360B265 /* Debug */,
-				5CCDE57115253CA0AC013D16E1E2F725 /* Release */,
+				F1A63B5522E145DAFD739E80069C472D /* Debug */,
+				046C8D64FAAD8870A8922E4D9545530A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
