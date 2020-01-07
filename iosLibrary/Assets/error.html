@@ -11,7 +11,7 @@
 <script src="style/js/jquery.js"></script>
 </head>
 <body>
-	
+
 	<div id="jsFeedback" class="ui-fb">
 		<!--
 			fb-ok		成功
@@ -26,7 +26,7 @@
 		</a>
 	</div>
 	<!-- end ui-fb -->
-	
+
 	<script>
 		$(function(){
 			var fh = $("#jsFeedback").height();
@@ -57,12 +57,12 @@
 			if(browser.versions.android){
 				window.android.exec('[{"method":"reload"}]');
 			}else{
-			
-                var url = "ios:exec:[{\"method\":\"reload\"}]";
-				document.location = url;
+                // var url = "ios:exec:[{\"method\":\"reload\"}]";
+				//document.location = url;
+			  	window.webkit.messageHandlers.exec.postMessage(JSON.stringify({"method":"reload"}));
 			}
 		}
 	</script>
-	
+
 </body>
 </html>

@@ -52,8 +52,9 @@ singleton_interface
 @property(weak, nonatomic) id<WXSDKDelegate> delegate;
 
 +(BOOL)isInstall;
--(void)addAppId:(NSString *)appId secret:(NSString *)secret type:(WXIdType)type;
+-(void)addAppId:(NSString *)appId secret:(NSString *)secret universalLink:(NSString *)ul type:(WXIdType)type;
 -(BOOL)handleOpenURL:url;
+-(BOOL)handleOpenUniversalLink:ul;
 -(void)loginWX;
 -(void)menuShareUrl:(NSString *)url title:(NSString *)title desc:(NSString *)desc imgUrl:(NSString *)imgUrl shareType:(int)st;
 -(void)payWithPartnerId:(NSString *)partenerId prepayId:(NSString *)prepayId package:(NSString *)package nonceStr:(NSString *)nonceStr timeStamp:(UInt32)timeStamp sign:(NSString *)sign;

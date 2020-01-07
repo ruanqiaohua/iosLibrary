@@ -9,12 +9,14 @@
 #import "WXSDK.h"
 #import <WXApi.h>
 #import "SDWebImageManager.h"
-#import "ZYShareView.h"
+#import "WHActivityView.h"
 #import "NSString+NSStringHelper.h"
+#import "BaseAppVC.h"
 
 @interface WxAppInfo : NSObject
 @property(copy, nonatomic) NSString * appId;
 @property(copy, nonatomic) NSString * secret;
+@property(copy, nonatomic) NSString * universalLink;
 @end
 @implementation WxAppInfo
 @end
@@ -26,6 +28,7 @@
     NSMutableDictionary<NSString *, WxAppInfo *> * dictAppInfo;
     WXIdType curType;
     WxAppInfo * curWxInfo;
+    WHActivityView * activityView;
 }
 @end
 
@@ -49,15 +52,16 @@ singleton_implementation(WXSDK)
     return [WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi];
 }
 
--(void)addAppId:(NSString *)appId secret:(NSString *)secret type:(WXIdType)type
+-(void)addAppId:(NSString *)appId secret:(NSString *)secret universalLink:(NSString *)ul type:(WXIdType)type
 {
     WxAppInfo * info = ONEW(WxAppInfo);
     info.appId = appId;
     info.secret = secret;
+    info.universalLink = ul;
     dictAppInfo[FRMSTR(@"%lu",(unsigned long)type)] = info;
     if (curType == WxIdType_None)
     {
-        [WXApi registerApp:appId];
+        [WXApi registerApp:appId universalLink:ul];
         curType = type;
         curWxInfo = info;
     }
@@ -68,42 +72,56 @@ singleton_implementation(WXSDK)
     return [WXApi handleOpenURL:url delegate:self];
 }
 
+-(BOOL)handleOpenUniversalLink:ul
+{
+    return [WXApi handleOpenUniversalLink:ul delegate:self];
+}
+
 -(void)loginWX
 {
     if (![self switchType:WxIdType_Login])return;
     SendAuthReq * req =[[SendAuthReq alloc ] init];
     req.scope = @"snsapi_userinfo";
     req.state = @"wx";
-    [WXApi sendReq:req];
+    [WXApi sendReq:req completion:^(BOOL success) {
+        
+    }];
 }
 
 -(void)menuShareUrl:(NSString *)url title:(NSString *)title desc:(NSString *)desc imgUrl:(NSString *)imgUrl shareType:(int)st
 {
     if (![self switchType:WxIdType_Login])return;
     NSMutableArray * shareItemsArray = ONEW(NSMutableArray);
+    @synchronized (self)
+    {
+        if (activityView)
+        {
+            [activityView removeFromSuperview];
+            activityView = nil;
+        }
+        
+        UIWindow * window = [[BaseAppVC getCurrVC].view window];
+        activityView = [[WHActivityView alloc]initWithTitle:nil referView:window isNeed:NO];
+        activityView.numberOfButtonPerLine = 3;//6
+    }
+    
     if (st & WX_SHARE_TYPE_FIREND)
     {
-        ZYShareItem * sess = [ZYShareItem itemWithTitle:@"发送给朋友"
-                                                   icon:@"ico_wx"
-                                                handler:
-                              ^{
-                                  [self shareLinkUrl:url title:title desc:desc imgUrl:imgUrl scene:WXSceneSession];
-                              }];
-        [shareItemsArray addObject:sess];
+        WEAKOBJ(self);
+        ButtonView * bv = [[ButtonView alloc]initWithText:@"发送给朋友" image:[UIImage imageNamed:@"ico_wx"] handler:^(ButtonView *buttonView){
+            [weak_self shareLinkUrl:url title:title desc:desc imgUrl:imgUrl scene:WXSceneSession];
+        }];
+        [activityView addButtonView:bv];
     }
     if (st & WX_SHARE_TYPE_TIMELINE)
     {
-        ZYShareItem * timeline = [ZYShareItem itemWithTitle:@"分享朋友圈"
-                                                       icon:@"ico_timeline"
-                                                    handler:
-                                  ^{
-                                      [self shareLinkUrl:url title:title desc:desc imgUrl:imgUrl scene:WXSceneTimeline];
-                                  }];
-        [shareItemsArray addObject:timeline];
+        WEAKOBJ(self);
+        ButtonView * bv = [[ButtonView alloc]initWithText:@"分享朋友圈" image:[UIImage imageNamed:@"ico_timeline"] handler:^(ButtonView *buttonView){
+            [weak_self shareLinkUrl:url title:title desc:desc imgUrl:imgUrl scene:WXSceneTimeline];
+        }];
+        [activityView addButtonView:bv];
     }
-    
-    ZYShareView * menu = [ZYShareView shareViewWithShareItems:shareItemsArray functionItems:nil];
-    [menu show];
+    [activityView show];
 }
 
 -(void)payWithPartnerId:(NSString *)partenerId prepayId:(NSString *)prepayId package:(NSString *)package nonceStr:(NSString *)nonceStr timeStamp:(UInt32)timeStamp sign:(NSString *)sign
@@ -117,7 +135,8 @@ singleton_implementation(WXSDK)
     request.nonceStr = nonceStr;
     request.timeStamp = timeStamp;
     request.sign= sign;
-    [WXApi sendReq:request];
+    [WXApi sendReq:request completion:^(BOOL success) {
+    }];
 }
 
 /************** private fun *********************/
@@ -133,7 +152,7 @@ singleton_implementation(WXSDK)
         WxAppInfo * info = dictAppInfo[FRMSTR(@"%lu",(unsigned long)type)];
         if (info)
         {
-            [WXApi registerApp:info.appId];
+            [WXApi registerApp:info.appId universalLink:info.universalLink];
             curWxInfo = info;
         }
     }
@@ -167,8 +186,9 @@ singleton_implementation(WXSDK)
          req.bText = NO;
          req.message = message;
          req.scene = scene;
-         BOOL ss = [WXApi sendReq:req];
-         NSLog(@"%d",ss);
+         [WXApi sendReq:req completion:^(BOOL success) {
+            NSLog(@"%d",success);
+         }];
      }];
 }
 

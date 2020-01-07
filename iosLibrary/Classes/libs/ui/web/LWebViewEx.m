@@ -318,6 +318,19 @@
 {
     [self autoSetCookie];
     [loadingView stopAnimating];
+    // 禁止放大缩小
+    NSString *injectionJSString = @"var script = document.createElement('meta');"
+    "script.name = 'viewport';"
+    "script.content=\"width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no\";"
+    "document.getElementsByTagName('head')[0].appendChild(script);";
+    [self evaluateJavaScript:injectionJSString completionHandler:nil];
+    
+    //计算出webView滚动视图滚动的高度
+    [self evaluateJavaScript:@"document.body.scrollWidth"completionHandler:^(id _Nullable result,NSError * _Nullable error){
+        
+//        CGFloat ratio =  CGRectGetWidth(self.frame) / [result floatValue];
+        [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:nil];
+    }];
     //self.isWebLoadErr = [webView.request.URL.absoluteString hasSuffix:@"error.html"];
     if ([self.webDelegate respondsToSelector:@selector(webView:didFinishLoadWithWebViewType:)])
     {

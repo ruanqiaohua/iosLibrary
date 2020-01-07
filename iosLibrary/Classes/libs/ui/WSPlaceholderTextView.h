@@ -11,8 +11,8 @@
 @interface WSPlaceholderTextView : UITextView
 
 /** 占位文字 */
-@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, copy) NSString * placeholder;
 /** 占位文字颜色 */
-@property (nonatomic, strong) UIColor *placeholderColor;
+@property (nonatomic, strong) UIColor * placeholderColor;
 
 @end

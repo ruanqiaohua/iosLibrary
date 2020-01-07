@@ -86,10 +86,10 @@
                 [btn setTopImageStr:self.icons ? self.icons[i] : nil topSelImgStr:self.selectIcons ? self.selectIcons[i] : nil bottomText:self.titles[i] font:font txtColor:self.textColor txtSelColor:self.textSelectColor space:self.iconTxtSpace];
                 break;
             case ST_IMG_LEFT:
-                [btn setLeftImageStr:self.icons ? self.icons[i] : nil leftSelImgStr:self.selectIcons ? self.selectIcons[i] : nil bottomText:self.titles[i] font:font txtColor:self.textColor txtSelColor:self.textSelectColor space:self.iconTxtSpace];
+                [btn setLeftImageStr:self.icons ? self.icons[i] : nil leftSelImgStr:self.selectIcons ? self.selectIcons[i] : nil rightText:self.titles[i] font:font txtColor:self.textColor txtSelColor:self.textSelectColor space:self.iconTxtSpace];
                 break;
             case ST_IMG_RIGHT:
-                [btn setRightImageStr:self.icons ? self.icons[i] : nil rightSelImgStr:self.selectIcons ? self.selectIcons[i] : nil bottomText:self.titles[i] font:font txtColor:self.textColor txtSelColor:self.textSelectColor space:self.iconTxtSpace];
+                [btn setRightImageStr:self.icons ? self.icons[i] : nil rightSelImgStr:self.selectIcons ? self.selectIcons[i] : nil leftText:self.titles[i] font:font txtColor:self.textColor txtSelColor:self.textSelectColor space:self.iconTxtSpace];
                 break;
         }
         btn.tag = BTN_TAG_BASE + i;

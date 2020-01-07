@@ -31,12 +31,11 @@
     self = [super init];
     if (self)
     {
+        self.gravity = MyGravity_Center;
         _img = ONEW(UIImageView);
         _text = ONEW(UILabel);
-        _text.wrapContentHeight = YES;
         _text.numberOfLines = 1;
-        [self addSubview:_img];
-        [self addSubview:_text];
+        _text.textAlignment = NSTextAlignmentCenter;
     }
     return self;
 }
@@ -73,30 +72,39 @@
 
 -(void)setTopImageStr:(NSString *)imgStr topSelImgStr:(NSString *)selImgStr bottomText:(NSString *)txt font:(UIFont *)font txtColor:(UIColor *)tc txtSelColor:(UIColor *)tsc space:(CGFloat)space
 {
+    [self setOrientation:MyOrientation_Vert];
     [self setImgStr:imgStr selImgStr:selImgStr text:txt font:font txtColor:tc txtSelColor:tsc];
     //
-    _img.myCenterX = 0;
-    _text.myCenterX = 0;
-    _img.centerYPos.equalTo(@[_text.centerYPos.offset(space)]);
-    _text.widthSize.equalTo(self);
-    _text.textAlignment = NSTextAlignmentCenter;
+    [self removeAllSubviews];
+    [self addSubview:_img];
+    _text.wrapContentSize = YES;
+    _text.myTop = space;
+    [self addSubview:_text];
 }
 
--(void)setLeftImageStr:(NSString *)imgStr leftSelImgStr:(NSString *)selImgStr bottomText:(NSString *)txt font:(UIFont *)font txtColor:(UIColor *)tc txtSelColor:(UIColor *)tsc space:(CGFloat)space
+-(void)setLeftImageStr:(NSString *)imgStr leftSelImgStr:(NSString *)selImgStr rightText:(NSString *)txt font:(UIFont *)font txtColor:(UIColor *)tc txtSelColor:(UIColor *)tsc space:(CGFloat)space
 {
+    [self setOrientation:MyOrientation_Horz];
     [self setImgStr:imgStr selImgStr:selImgStr text:txt font:font txtColor:tc txtSelColor:tsc];
     //
-    _img.myCenterY = 0;
-    _text.myCenterY = 0;
-    _img.centerXPos.equalTo(@[_text.centerXPos.offset(space)]);
+    [self removeAllSubviews];
+    [self addSubview:_img];
+    _text.wrapContentSize = YES;
+    _text.myLeft = space;
+    [self addSubview:_text];
 }
 
--(void)setRightImageStr:(NSString *)imgStr rightSelImgStr:(NSString *)selImgStr bottomText:(NSString *)txt font:(UIFont *)font txtColor:(UIColor *)tc txtSelColor:(UIColor *)tsc space:(CGFloat)space
+-(void)setRightImageStr:(NSString *)imgStr rightSelImgStr:(NSString *)selImgStr leftText:(NSString *)txt font:(UIFont *)font txtColor:(UIColor *)tc txtSelColor:(UIColor *)tsc space:(CGFloat)space
 {
+    [self setOrientation:MyOrientation_Horz];
     [self setImgStr:imgStr selImgStr:selImgStr text:txt font:font txtColor:tc txtSelColor:tsc];
-    _img.myCenterY = 0;
-    _text.myCenterY = 0;
-    _text.centerXPos.equalTo(@[_img.centerXPos.offset(space)]);
+    
+    [self removeAllSubviews];
+    _text.wrapContentSize = YES;
+    [self addSubview:_text];
+    
+    _img.myLeft = space;
+    [self addSubview:_img];
 }
 
 -(void)setIsSelect:(BOOL)isSelect

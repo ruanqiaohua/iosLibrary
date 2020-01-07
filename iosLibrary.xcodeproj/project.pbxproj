@@ -77,11 +77,6 @@
 		5A66BF791F7D299A0014EDD6 /* WSPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF311F7D29990014EDD6 /* WSPlaceholderTextView.m */; };
 		5A66BF7A1F7D299A0014EDD6 /* XJAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF341F7D29990014EDD6 /* XJAlbum.m */; };
 		5A66BF7B1F7D299A0014EDD6 /* XJImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF361F7D29990014EDD6 /* XJImage.m */; };
-		5A66BF7C1F7D299A0014EDD6 /* ZYShareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF391F7D29990014EDD6 /* ZYShareItem.m */; };
-		5A66BF7D1F7D299A0014EDD6 /* ZYShareItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF3B1F7D29990014EDD6 /* ZYShareItemCell.m */; };
-		5A66BF7E1F7D299A0014EDD6 /* ZYShareSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF3D1F7D29990014EDD6 /* ZYShareSheetCell.m */; };
-		5A66BF7F1F7D299A0014EDD6 /* ZYShareSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF3F1F7D29990014EDD6 /* ZYShareSheetView.m */; };
-		5A66BF801F7D299A0014EDD6 /* ZYShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF411F7D29990014EDD6 /* ZYShareView.m */; };
 		5A66BF811F7D299A0014EDD6 /* CameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF451F7D29990014EDD6 /* CameraManager.m */; };
 		5A66BF821F7D299A0014EDD6 /* MotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF471F7D29990014EDD6 /* MotionManager.m */; };
 		5A66BF831F7D299A0014EDD6 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A66BF4A1F7D29990014EDD6 /* Utils.m */; };
@@ -134,6 +129,8 @@
 		7850EE0E22A8B28A007E5616 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0722A8B28A007E5616 /* mobile.css */; };
 		7850EE1022A8B28A007E5616 /* icon_wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0A22A8B28A007E5616 /* icon_wifi.png */; };
 		7850EE1122A8B28A007E5616 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = 7850EE0C22A8B28A007E5616 /* jquery.js */; };
+		7872095023AA07D500C930E1 /* WHActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7872094F23AA07D500C930E1 /* WHActivityView.m */; };
+		7872CB6223C42D7500CA89E8 /* SKAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7872CB6123C42D7500CA89E8 /* SKAutoScrollLabel.m */; };
 		78794060229B94CF00FB69EE /* ScrollTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879405E229B94CE00FB69EE /* ScrollTabbar.m */; };
 		7886EB98235019BE00500629 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886EB97235019BE00500629 /* YYWeakProxy.m */; };
 		7886EB9A235034AE00500629 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886EB99235034AE00500629 /* CoreTelephony.framework */; };
@@ -291,17 +288,6 @@
 		5A66BF341F7D29990014EDD6 /* XJAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJAlbum.m; sourceTree = "<group>"; };
 		5A66BF351F7D29990014EDD6 /* XJImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJImage.h; sourceTree = "<group>"; };
 		5A66BF361F7D29990014EDD6 /* XJImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJImage.m; sourceTree = "<group>"; };
-		5A66BF381F7D29990014EDD6 /* ZYShareItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareItem.h; sourceTree = "<group>"; };
-		5A66BF391F7D29990014EDD6 /* ZYShareItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYShareItem.m; sourceTree = "<group>"; };
-		5A66BF3A1F7D29990014EDD6 /* ZYShareItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareItemCell.h; sourceTree = "<group>"; };
-		5A66BF3B1F7D29990014EDD6 /* ZYShareItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYShareItemCell.m; sourceTree = "<group>"; };
-		5A66BF3C1F7D29990014EDD6 /* ZYShareSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareSheetCell.h; sourceTree = "<group>"; };
-		5A66BF3D1F7D29990014EDD6 /* ZYShareSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYShareSheetCell.m; sourceTree = "<group>"; };
-		5A66BF3E1F7D29990014EDD6 /* ZYShareSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareSheetView.h; sourceTree = "<group>"; };
-		5A66BF3F1F7D29990014EDD6 /* ZYShareSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYShareSheetView.m; sourceTree = "<group>"; };
-		5A66BF401F7D29990014EDD6 /* ZYShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareView.h; sourceTree = "<group>"; };
-		5A66BF411F7D29990014EDD6 /* ZYShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYShareView.m; sourceTree = "<group>"; };
-		5A66BF421F7D29990014EDD6 /* ZYShareViewDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYShareViewDefine.h; sourceTree = "<group>"; };
 		5A66BF441F7D29990014EDD6 /* CameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraManager.h; sourceTree = "<group>"; };
 		5A66BF451F7D29990014EDD6 /* CameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraManager.m; sourceTree = "<group>"; };
 		5A66BF461F7D29990014EDD6 /* MotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionManager.h; sourceTree = "<group>"; };
@@ -387,6 +373,10 @@
 		7850EE0722A8B28A007E5616 /* mobile.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mobile.css; sourceTree = "<group>"; };
 		7850EE0A22A8B28A007E5616 /* icon_wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wifi.png; sourceTree = "<group>"; };
 		7850EE0C22A8B28A007E5616 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
+		7872094E23AA07D400C930E1 /* WHActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHActivityView.h; sourceTree = "<group>"; };
+		7872094F23AA07D500C930E1 /* WHActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHActivityView.m; sourceTree = "<group>"; };
+		7872CB6023C42D7500CA89E8 /* SKAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAutoScrollLabel.h; sourceTree = "<group>"; };
+		7872CB6123C42D7500CA89E8 /* SKAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAutoScrollLabel.m; sourceTree = "<group>"; };
 		7879405E229B94CE00FB69EE /* ScrollTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTabbar.m; sourceTree = "<group>"; };
 		7879405F229B94CE00FB69EE /* ScrollTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTabbar.h; sourceTree = "<group>"; };
 		7886EB96235019BD00500629 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
@@ -689,8 +679,9 @@
 		5A66BF121F7D29990014EDD6 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				7872CB5F23C42D7500CA89E8 /* SKAutoScrollLabel */,
+				7872094D23AA07AA00C930E1 /* activityView */,
 				5A762EA11FAB021E00471827 /* web */,
-				5A66BF371F7D29990014EDD6 /* ZYShareView */,
 				5A66BF321F7D29990014EDD6 /* XJAlbum */,
 				5A66BF2D1F7D29990014EDD6 /* viewpager */,
 				5A66BF241F7D29990014EDD6 /* touchView */,
@@ -757,24 +748,6 @@
 				5A66BF361F7D29990014EDD6 /* XJImage.m */,
 			);
 			path = XJAlbum;
-			sourceTree = "<group>";
-		};
-		5A66BF371F7D29990014EDD6 /* ZYShareView */ = {
-			isa = PBXGroup;
-			children = (
-				5A66BF381F7D29990014EDD6 /* ZYShareItem.h */,
-				5A66BF391F7D29990014EDD6 /* ZYShareItem.m */,
-				5A66BF3A1F7D29990014EDD6 /* ZYShareItemCell.h */,
-				5A66BF3B1F7D29990014EDD6 /* ZYShareItemCell.m */,
-				5A66BF3C1F7D29990014EDD6 /* ZYShareSheetCell.h */,
-				5A66BF3D1F7D29990014EDD6 /* ZYShareSheetCell.m */,
-				5A66BF3E1F7D29990014EDD6 /* ZYShareSheetView.h */,
-				5A66BF3F1F7D29990014EDD6 /* ZYShareSheetView.m */,
-				5A66BF401F7D29990014EDD6 /* ZYShareView.h */,
-				5A66BF411F7D29990014EDD6 /* ZYShareView.m */,
-				5A66BF421F7D29990014EDD6 /* ZYShareViewDefine.h */,
-			);
-			path = ZYShareView;
 			sourceTree = "<group>";
 		};
 		5A66BF431F7D29990014EDD6 /* utils */ = {
@@ -1032,6 +1005,24 @@
 			path = js;
 			sourceTree = "<group>";
 		};
+		7872094D23AA07AA00C930E1 /* activityView */ = {
+			isa = PBXGroup;
+			children = (
+				7872094E23AA07D400C930E1 /* WHActivityView.h */,
+				7872094F23AA07D500C930E1 /* WHActivityView.m */,
+			);
+			path = activityView;
+			sourceTree = "<group>";
+		};
+		7872CB5F23C42D7500CA89E8 /* SKAutoScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				7872CB6023C42D7500CA89E8 /* SKAutoScrollLabel.h */,
+				7872CB6123C42D7500CA89E8 /* SKAutoScrollLabel.m */,
+			);
+			path = SKAutoScrollLabel;
+			sourceTree = "<group>";
+		};
 		BB0215C6619E8FA1F4CA6935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1174,7 +1165,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosLibrary/Pods-iosLibrary-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManager/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
@@ -1217,7 +1208,6 @@
 				5A52913B1FBE7DD900D1576E /* SngRowLayout.m in Sources */,
 				5A5D07391FFB35E300A68C51 /* WebPluginBase.m in Sources */,
 				5AC74DE81F2998BE00146115 /* AppDelegate.m in Sources */,
-				5A66BF7F1F7D299A0014EDD6 /* ZYShareSheetView.m in Sources */,
 				5A449A0C2010744800CC9444 /* WebWindowPlugin.m in Sources */,
 				5A66BF511F7D299A0014EDD6 /* aes_ecb.c in Sources */,
 				5A5291091FB4003D00D1576E /* CountDownTimer.m in Sources */,
@@ -1227,6 +1217,7 @@
 				5A66BF971F8C6AC60014EDD6 /* UMengLoader.m in Sources */,
 				7886EB98235019BE00500629 /* YYWeakProxy.m in Sources */,
 				5A40BAFE1FD7DB5C00B73C6B /* SPAlertController.m in Sources */,
+				7872095023AA07D500C930E1 /* WHActivityView.m in Sources */,
 				5A30762A1FB142EB0068D412 /* TagLayout.m in Sources */,
 				5A66BF651F7D299A0014EDD6 /* DispatchTimer.m in Sources */,
 				5A66BF941F8B1CD80014EDD6 /* JPushLoader.m in Sources */,
@@ -1250,14 +1241,11 @@
 				5AE9EE7B205780B2009AA414 /* BaseTableCell.m in Sources */,
 				5A66BF851F7D299A0014EDD6 /* WXSDK.m in Sources */,
 				5A66BF701F7D299A0014EDD6 /* CustomLabel.m in Sources */,
-				5A66BF7C1F7D299A0014EDD6 /* ZYShareItem.m in Sources */,
 				5A66BF621F7D299A0014EDD6 /* DaiNavigationTransition+TransitionStack.m in Sources */,
-				5A66BF7D1F7D299A0014EDD6 /* ZYShareItemCell.m in Sources */,
 				5A66BF841F7D299A0014EDD6 /* VerifyUtil.m in Sources */,
 				5A449A0520074EDE00CC9444 /* UISkinConfig.m in Sources */,
 				5A0839B81FC6CD4C007237F3 /* ContactsIOS9.m in Sources */,
 				5A66BF631F7D299A0014EDD6 /* DaiNavigationTransition.m in Sources */,
-				5A66BF801F7D299A0014EDD6 /* ZYShareView.m in Sources */,
 				5A5D073F1FFCC03A00A68C51 /* LTitleView.m in Sources */,
 				5A66BF6D1F7D299A0014EDD6 /* AVPlayerEx.m in Sources */,
 				5A66BF751F7D299A0014EDD6 /* TouchTextView.m in Sources */,
@@ -1276,6 +1264,7 @@
 				5A66BF741F7D299A0014EDD6 /* TouchPlate.m in Sources */,
 				78794060229B94CF00FB69EE /* ScrollTabbar.m in Sources */,
 				5A66BF7A1F7D299A0014EDD6 /* XJAlbum.m in Sources */,
+				7872CB6223C42D7500CA89E8 /* SKAutoScrollLabel.m in Sources */,
 				5A66BF6E1F7D299A0014EDD6 /* BaseViewController.m in Sources */,
 				5A449A0F2011787400CC9444 /* WebWXPlugin.m in Sources */,
 				5A66BF661F7D299A0014EDD6 /* UINavigationController+ForIOS6.m in Sources */,
@@ -1301,7 +1290,6 @@
 				5A4E5B542161D5BA005CD38A /* BaseAdapter.m in Sources */,
 				5A0B2E971F8F0C9C00B32FD3 /* LWaveView.m in Sources */,
 				5AB4F052215CC1B200B0CE84 /* UILabel+VerticalAlignment.m in Sources */,
-				5A66BF7E1F7D299A0014EDD6 /* ZYShareSheetCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
