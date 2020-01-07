@@ -14,18 +14,18 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - IQKeyboardManager (6.2.0)
+  - IQKeyboardManager (6.5.4)
   - JCore (2.1.4-noidfa)
   - JPush (3.2.4-noidfa):
     - JCore (< 3.0.0, >= 2.0.0)
-  - MJRefresh (3.1.15.7)
-  - MyLayout (1.6.1)
-  - SDWebImage (4.4.5):
-    - SDWebImage/Core (= 4.4.5)
-  - SDWebImage/Core (4.4.5)
+  - MJRefresh (3.3.1)
+  - MyLayout (1.9.0)
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
   - SVProgressHUD (2.2.5)
   - UMengAnalytics-NO-IDFA (4.2.5)
-  - WechatOpenSDK (1.8.4)
+  - WechatOpenSDK (1.8.6)
   - WZLBadge (1.2.6)
   - YYCache (1.0.4)
   - YYModel (1.0.4)
@@ -63,15 +63,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
   JCore: 2f15311e6889ab43ed5d629802ef793cac566465
   JPush: 2ff11d3013b360bc1b7da16741027e88f12fe3e6
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  MyLayout: 833c4b24a69a1e3fd33abe827eeb2fdf19193408
-  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
+  MyLayout: 6a17ff3a67287af6a9d7bfa302fd275cacbf7236
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
-  WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
+  WechatOpenSDK: 368ae03b72ee3ea1328c4f11326fbb5d2721d118
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
